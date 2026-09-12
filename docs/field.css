@@ -99,8 +99,7 @@ nav {
   font-family: var(--ui);
   font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: lowercase;
+  letter-spacing: 0.08em;
 }
 
 nav a {
