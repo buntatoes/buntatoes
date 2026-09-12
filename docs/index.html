@@ -4,21 +4,42 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buntos</title>
-  <meta name="description" content="A dark canvas. Move. Click." />
-  <link rel="stylesheet" href="./furnace.css" />
+  <meta name="description" content="Local tools. Human review. Linux." />
+  <link rel="stylesheet" href="board.css" />
 </head>
 <body>
-  <canvas id="fire" aria-label="Dark particle field. Move the pointer to gather it. Click for a flare."></canvas>
-  <div class="ui">
-    <h1>Buntos</h1>
-    <p class="tag">Local tools. Human review. Linux.</p>
-    <p class="hint">Move through the dark. Click for a flare.</p>
-    <p class="links">
+  <div class="scan" aria-hidden="true"></div>
+  <header class="hud frame">
+    <p class="mark">buntos<span class="dim">@</span>void</p>
+    <p id="clock" class="clock">--:--:--</p>
+    <nav>
+      <a href="langs.html">languages</a>
       <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
       <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
-      <a href="https://github.com/buntatoes">GitHub</a>
-    </p>
-  </div>
-  <script src="./furnace.js"></script>
+      <a href="https://github.com/buntatoes">github</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h1>Buntos</h1>
+      <p class="lede">Local tools. Human review. Linux.</p>
+      <ul class="nodes" id="nodes"></ul>
+      <article class="frame dossier">
+        <p class="kicker" id="kicker">01 // local tools</p>
+        <p id="copy">Pointer on the scope. Keys 1 2 3 dock a node.</p>
+      </article>
+    </section>
+    <section>
+      <div class="frame scope-frame">
+        <div class="scope-meta">
+          <span>scope</span>
+          <span id="scope-readout">idle sine</span>
+        </div>
+        <canvas id="scope" width="720" height="280" aria-label="Oscilloscope. Pointer changes frequency and amplitude."></canvas>
+      </div>
+      <p class="hint">This is not a furnace. Pointer on the grid drives a phosphor trace. Keys 1 2 3, j/k, or click a node.</p>
+    </section>
+  </main>
+  <script src="board.js"></script>
 </body>
 </html>
