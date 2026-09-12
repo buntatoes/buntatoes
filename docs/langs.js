@@ -241,12 +241,32 @@
   var yearReadout = document.getElementById("year-readout");
   var timeFill = document.getElementById("time-fill");
   var timeMarks = document.getElementById("time-marks");
+  var skyEl = document.getElementById("sky");
+  var railLive = document.querySelector(".rail-live");
 
   var selectedId = LANGS[0].id;
   var year = LANGS[0].year;
+  var resizeTimer = 0;
 
   function yearPct(y) {
     return ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
+  }
+
+  function eraClass(y) {
+    if (y < 1990) {
+      return "era-early";
+    }
+    if (y < 2010) {
+      return "era-mid";
+    }
+    return "era-late";
+  }
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/"/g, "&quot;");
   }
 
   function byId(id) {
@@ -280,6 +300,165 @@
       return prefer;
     }
     return best;
+  }
+
+  function placeOrbs() {
+    var counts = {};
+    var seen = {};
+    var placed = [];
+    var i;
+    var lang;
+    var n;
+    var slot;
+    var spread;
+    var x;
+    var y;
+
+    for (i = 0; i < LANGS.length; i += 1) {
+      counts[LANGS[i].year] = (counts[LANGS[i].year] || 0) + 1;
+    }
+
+    for (i = 0; i < LANGS.length; i += 1) {
+      lang = LANGS[i];
+      n = counts[lang.year];
+      slot = seen[lang.year] || 0;
+      seen[lang.year] = slot + 1;
+      spread = n > 1 ? (slot - (n - 1) / 2) * 5.4 : 0;
+      x = yearPct(lang.year) + spread;
+      x = Math.max(7, Math.min(93, x));
+      y = 18 + ((lang.rank - 1) / (LANGS.length - 1)) * 62;
+      y += Math.sin((lang.year - YEAR_MIN) * 0.13 + lang.rank * 0.7) * 6;
+      y = Math.max(16, Math.min(82, y));
+      placed.push({ lang: lang, x: x, y: y });
+    }
+    return placed;
+  }
+
+  function linksFor(placed) {
+    var pairs = {};
+    var links = [];
+    var i;
+    var j;
+    var dx;
+    var dy;
+    var d;
+    var nearest;
+    var a;
+    var b;
+    var key;
+
+    for (i = 0; i < placed.length; i += 1) {
+      nearest = [];
+      for (j = 0; j < placed.length; j += 1) {
+        if (i === j) {
+          continue;
+        }
+        dx = placed[i].x - placed[j].x;
+        dy = (placed[i].y - placed[j].y) * 0.9;
+        d = dx * dx + dy * dy;
+        nearest.push({ j: j, d: d });
+      }
+      nearest.sort(function (p, q) {
+        return p.d - q.d;
+      });
+      for (j = 0; j < 2 && j < nearest.length; j += 1) {
+        a = placed[i].lang.id;
+        b = placed[nearest[j].j].lang.id;
+        key = a < b ? a + ":" + b : b + ":" + a;
+        if (!pairs[key]) {
+          pairs[key] = true;
+          links.push({ a: a, b: b, i: i, j: nearest[j].j });
+        }
+      }
+    }
+    return links;
+  }
+
+  function renderSky() {
+    var placed = placeOrbs();
+    var links = linksFor(placed);
+    var i;
+    var p;
+    var lang;
+    var r;
+    var html;
+    var sx;
+    var sy;
+    var sr;
+
+    html = '<div class="sky-field">';
+    html += '<svg class="sky-svg" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">';
+    for (i = 0; i < 32; i += 1) {
+      sx = (i * 37 + 11) % 100;
+      sy = (i * 53 + 19) % 100;
+      sr = 0.16 + (i % 4) * 0.07;
+      html += '<circle class="speck" cx="' + sx + '" cy="' + sy + '" r="' + sr + '" />';
+    }
+    for (i = 0; i < links.length; i += 1) {
+      html +=
+        '<line class="sky-link" data-a="' +
+        links[i].a +
+        '" data-b="' +
+        links[i].b +
+        '" x1="' +
+        placed[links[i].i].x +
+        '" y1="' +
+        placed[links[i].i].y +
+        '" x2="' +
+        placed[links[i].j].x +
+        '" y2="' +
+        placed[links[i].j].y +
+        '" />';
+    }
+    html += "</svg>";
+
+    for (i = 0; i < placed.length; i += 1) {
+      p = placed[i];
+      lang = p.lang;
+      r = 0.58 + (lang.index / 100) * 0.82;
+      html +=
+        '<button type="button" class="star ' +
+        eraClass(lang.year) +
+        '" id="star-' +
+        lang.id +
+        '" data-id="' +
+        lang.id +
+        '" aria-pressed="false" aria-label="' +
+        esc(lang.name) +
+        ", " +
+        lang.year +
+        '" style="left:' +
+        p.x +
+        "%;top:" +
+        p.y +
+        "%;--star-r:" +
+        r +
+        '">';
+      html += '<span class="star-halo" aria-hidden="true"></span>';
+      html += '<span class="star-core" aria-hidden="true"></span>';
+      html += '<span class="star-name">' + esc(lang.name) + "</span>";
+      html += "</button>";
+    }
+    html += "</div>";
+    skyEl.innerHTML = html;
+  }
+
+  function paintSky(id) {
+    var stars = skyEl.querySelectorAll(".star");
+    var lines = skyEl.querySelectorAll(".sky-link");
+    var i;
+    var on;
+    for (i = 0; i < stars.length; i += 1) {
+      on = stars[i].getAttribute("data-id") === id;
+      stars[i].setAttribute("aria-pressed", on ? "true" : "false");
+      stars[i].classList.toggle("is-on", on);
+    }
+    for (i = 0; i < lines.length; i += 1) {
+      lines[i].classList.toggle(
+        "is-on",
+        lines[i].getAttribute("data-a") === id || lines[i].getAttribute("data-b") === id
+      );
+    }
   }
 
   function renderList() {
@@ -331,6 +510,9 @@
       dockBody.appendChild(p);
     }
     dockNow.textContent = "now — " + lang.now;
+    if (railLive) {
+      railLive.textContent = lang.name;
+    }
   }
 
   function setYearChrome(y, lang) {
@@ -378,6 +560,7 @@
 
     renderDock(lang);
     setYearChrome(year, lang);
+    paintSky(lang.id);
 
     if (opts && opts.focus) {
       var el = document.getElementById("lang-" + lang.id);
@@ -413,6 +596,7 @@
       select(lang.id, { keepYear: true });
     } else {
       setYearChrome(y, lang);
+      paintSky(lang.id);
     }
   }
 
@@ -422,6 +606,14 @@
       return;
     }
     select(btn.getAttribute("data-id"), { focus: true });
+  });
+
+  skyEl.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".star") : null;
+    if (!btn) {
+      return;
+    }
+    select(btn.getAttribute("data-id"));
   });
 
   yearInput.addEventListener("input", function () {
@@ -462,12 +654,21 @@
     }
   });
 
+  window.addEventListener("resize", function () {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(function () {
+      renderSky();
+      paintSky(selectedId);
+    }, 90);
+  });
+
   function boot() {
     var hash = (window.location.hash || "").replace(/^#/, "").toLowerCase();
     var start = LANGS[0].id;
     var i;
     renderList();
     renderMarks();
+    renderSky();
     for (i = 0; i < LANGS.length; i += 1) {
       if (LANGS[i].id === hash) {
         start = LANGS[i].id;
