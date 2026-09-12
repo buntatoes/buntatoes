@@ -57,9 +57,42 @@ body {
     radial-gradient(ellipse 50% 40% at 50% 0%, rgba(155, 176, 212, 0.08), transparent 55%);
 }
 
+.whisper {
+  position: fixed;
+  left: 50%;
+  top: 38%;
+  z-index: 4;
+  margin: 0;
+  max-width: 90vw;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 8vw, 6.2rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-align: center;
+  color: var(--moon-soft);
+  text-shadow:
+    0 0 36px rgba(155, 176, 212, 0.55),
+    0 0 72px rgba(196, 165, 184, 0.28);
+  mix-blend-mode: screen;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.whisper.is-on {
+  opacity: 0.94;
+}
+
+.whisper.is-out {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
 main {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   min-height: 100vh;
   min-height: 100dvh;
   display: flex;
@@ -89,6 +122,19 @@ main {
   line-height: 1.45;
   text-transform: lowercase;
   color: var(--rose);
+}
+
+.hint {
+  margin: 1.05rem 0 0;
+  max-width: 28em;
+  font-family: var(--serif);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: lowercase;
+  color: var(--water);
+  opacity: 0.78;
 }
 
 nav {
