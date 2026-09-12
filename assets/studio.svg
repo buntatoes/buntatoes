@@ -1,105 +1,113 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="380" viewBox="0 0 1100 380" role="img" aria-labelledby="studio-title studio-desc" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, monospace">
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="380" viewBox="0 0 1100 380" role="img" aria-labelledby="studio-title studio-desc" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Monaco, Consolas, Liberation Mono, monospace">
   <title id="studio-title">Buntos studio: ChorusDraft review queue and AdAegis blocker popup</title>
-  <desc id="studio-desc">A dark local-first Linux desktop. Hover a window to focus it and dim the other. Hovering ChorusDraft lights the Approve control. Hovering AdAegis brightens the blocked count and pause actions.</desc>
+  <desc id="studio-desc">Void desktop with two instrument windows. Hover a window to isolate it. ChorusDraft lights Approve. AdAegis brightens the blocked count and pause actions.</desc>
   <defs>
-    <linearGradient id="cd-mark" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7a63d6"/>
-      <stop offset="0.55" stop-color="#6851c9"/>
-      <stop offset="1" stop-color="#5c46bc"/>
-    </linearGradient>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M20 0H0V20" fill="none" stroke="#161b22" stroke-width="1"/>
+    <pattern id="scan" width="1100" height="4" patternUnits="userSpaceOnUse">
+      <rect width="1100" height="1" fill="#2a2d36" opacity="0.28"/>
     </pattern>
     <clipPath id="clip-cd">
-      <rect x="28" y="42" width="512" height="300" rx="8"/>
+      <rect x="28" y="42" width="512" height="300"/>
     </clipPath>
     <clipPath id="clip-aa">
-      <rect x="560" y="42" width="512" height="300" rx="8"/>
+      <rect x="560" y="42" width="512" height="300"/>
     </clipPath>
     <style>
       <![CDATA[
         .desktop { pointer-events: none; }
-        .window { pointer-events: all; cursor: default; transition: opacity 0.28s ease; }
-        .frame { transition: stroke 0.28s ease; }
-        .desktop:hover .window { opacity: 0.46; }
+        .window { pointer-events: all; cursor: default; transition: opacity 0.22s ease; }
+        .frame, .tick, .rail, .focus-tag { transition: stroke 0.22s ease, opacity 0.22s ease, fill 0.22s ease; }
+        .desktop:hover .window { opacity: 0.34; }
         .desktop:hover .window:hover { opacity: 1; }
         .win-cd:hover .frame,
-        .win-cd:focus-within .frame { stroke: #6851c9; }
+        .win-cd:focus-within .frame { stroke: #6e4a7a; }
         .win-aa:hover .frame,
-        .win-aa:focus-within .frame { stroke: #3d6b5c; }
-        .accent { transition: opacity 0.28s ease; }
-        .win-cd:hover .accent,
-        .win-cd:focus-within .accent { opacity: 1; }
-        .win-aa:hover .accent,
-        .win-aa:focus-within .accent { opacity: 1; }
-        .approve-bg { transition: fill 0.25s ease, stroke 0.25s ease; }
-        .approve-label { transition: fill 0.25s ease; }
-        .approve-glow { transition: opacity 0.25s ease; }
+        .win-aa:focus-within .frame { stroke: #6ea37a; }
+        .win-cd:hover .tick,
+        .win-cd:focus-within .tick { stroke: #6e4a7a; }
+        .win-aa:hover .tick,
+        .win-aa:focus-within .tick { stroke: #6ea37a; }
+        .win-cd:hover .rail,
+        .win-cd:focus-within .rail { opacity: 1; }
+        .win-aa:hover .rail,
+        .win-aa:focus-within .rail { opacity: 1; }
+        .win-cd:hover .focus-tag,
+        .win-cd:focus-within .focus-tag { opacity: 1; fill: #6e4a7a; }
+        .win-aa:hover .focus-tag,
+        .win-aa:focus-within .focus-tag { opacity: 1; fill: #6ea37a; }
+        .approve-bg { transition: fill 0.2s ease, stroke 0.2s ease; }
+        .approve-label { transition: fill 0.2s ease; }
+        .approve-glow { transition: opacity 0.2s ease; }
         .win-cd:hover .approve-bg,
-        .win-cd:focus-within .approve-bg { fill: #7a63d6 !important; stroke: #9b8aea !important; }
+        .win-cd:focus-within .approve-bg { fill: #7a2433 !important; stroke: #7a2433 !important; }
         .win-cd:hover .approve-label,
-        .win-cd:focus-within .approve-label { fill: #ffffff !important; }
+        .win-cd:focus-within .approve-label { fill: #c9b8a6 !important; }
         .win-cd:hover .approve-glow,
-        .win-cd:focus-within .approve-glow { opacity: 0.32 !important; }
-        .approve:hover .approve-bg { fill: #8b76e0 !important; }
-        .count, .status, .pause-bg, .pause-label, .popup { transition: fill 0.22s ease, stroke 0.22s ease; }
+        .win-cd:focus-within .approve-glow { opacity: 0.22 !important; }
+        .approve:hover .approve-bg { fill: #6e4a7a !important; stroke: #6e4a7a !important; }
+        .count, .status, .pause-bg, .pause-label, .popup { transition: fill 0.2s ease, stroke 0.2s ease; }
         .win-aa:hover .count,
-        .win-aa:focus-within .count { fill: #d3dde6 !important; }
+        .win-aa:focus-within .count { fill: #c9b8a6 !important; }
         .win-aa:hover .status,
-        .win-aa:focus-within .status { fill: #8fbfa3; }
+        .win-aa:focus-within .status { fill: #6ea37a !important; }
         .win-aa:hover .popup,
-        .win-aa:focus-within .popup { stroke: #4d6278; }
+        .win-aa:focus-within .popup { stroke: #6ea37a !important; }
         .win-aa:hover .pause-bg,
-        .win-aa:focus-within .pause-bg { stroke: #5b738c; }
-        .pause:hover .pause-bg { fill: #243447; stroke: #7d93a8; }
-        .pause:hover .pause-label { fill: #f9fafb; }
-        .eq { transform-box: fill-box; transform-origin: center bottom; transition: transform 0.28s ease; }
+        .win-aa:focus-within .pause-bg { stroke: #6ea37a !important; }
+        .pause:hover .pause-bg { fill: #7a2433 !important; stroke: #7a2433 !important; }
+        .pause:hover .pause-label { fill: #c9b8a6 !important; }
+        .eq { transform-box: fill-box; transform-origin: center bottom; transition: transform 0.22s ease; }
         .win-cd:hover .eq1 { transform: scaleY(1.18); }
         .win-cd:hover .eq2 { transform: scaleY(0.86); }
         .win-cd:hover .eq3 { transform: scaleY(1.12); }
         .pending-dot { animation: pulse 2.6s ease-in-out infinite; }
         .live-dot { animation: pulse 2.8s ease-in-out infinite; }
         @keyframes pulse {
-          0%, 100% { opacity: 0.4; }
+          0%, 100% { opacity: 0.35; }
           50% { opacity: 1; }
         }
       ]]>
     </style>
   </defs>
 
-  <rect width="1100" height="380" fill="#0d1117"/>
-  <rect width="1100" height="380" fill="url(#grid)"/>
+  <rect width="1100" height="380" fill="#050508"/>
+  <rect width="1100" height="380" fill="url(#scan)" pointer-events="none"/>
 
-  <rect width="1100" height="28" fill="#010409"/>
-  <rect x="0" y="27" width="1100" height="1" fill="#21262d"/>
-  <rect x="10" y="6" width="70" height="16" rx="2" fill="#5c46bc"/>
-  <text x="45" y="17.5" text-anchor="middle" fill="#ffffff" font-size="10">studio</text>
-  <text x="92" y="17.5" fill="#e6edf3" font-size="10">1:review*</text>
-  <text x="168" y="17.5" fill="#6e7681" font-size="10">2:popup</text>
-  <text x="1088" y="17.5" text-anchor="end" fill="#6e7681" font-size="10">buntos@linux  local</text>
+  <rect width="1100" height="28" fill="#0c0e12"/>
+  <rect x="0" y="27" width="1100" height="1" fill="#2a2d36"/>
+  <rect x="10" y="7" width="70" height="14" fill="#7a2433"/>
+  <text x="45" y="17.5" text-anchor="middle" fill="#c9b8a6" font-size="10">studio</text>
+  <text x="92" y="17.5" fill="#c9b8a6" font-size="10">01:review*</text>
+  <text x="176" y="17.5" fill="#6e4a7a" font-size="10">02:popup</text>
+  <text x="320" y="17.5" fill="#2a2d36" font-size="10">hover a pane</text>
+  <text x="1088" y="17.5" text-anchor="end" fill="#6ea37a" font-size="10">buntos@linux  local</text>
 
-  <rect y="352" width="1100" height="28" fill="#010409"/>
-  <rect y="352" width="1100" height="1" fill="#21262d"/>
-  <text x="14" y="370" fill="#8b949e" font-size="10">0:zsh</text>
-  <text x="68" y="370" fill="#7a63d6" font-size="10">review is the default</text>
-  <text x="1088" y="370" text-anchor="end" fill="#6e7681" font-size="10">chorusdraft 0.53.2  /  adaegis 0.4.2</text>
+  <rect y="352" width="1100" height="28" fill="#0c0e12"/>
+  <rect y="352" width="1100" height="1" fill="#2a2d36"/>
+  <text x="14" y="370" fill="#c9b8a6" font-size="10" opacity="0.55">0:zsh</text>
+  <text x="68" y="370" fill="#6e4a7a" font-size="10">review is the default</text>
+  <text x="1088" y="370" text-anchor="end" fill="#c9b8a6" font-size="10" opacity="0.55">chorusdraft 0.53.2  /  adaegis 0.4.2</text>
 
   <g class="desktop">
     <g class="window win-cd" tabindex="0">
       <title>ChorusDraft review</title>
-      <rect class="frame" x="28" y="42" width="512" height="300" rx="8" fill="#161b22" stroke="#30363d"/>
+      <rect class="frame" x="28" y="42" width="512" height="300" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M28 54V42h12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M528 42h12v12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M540 330v12h-12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M40 342H28v-12" fill="none" stroke="#2a2d36" stroke-width="1"/>
       <g clip-path="url(#clip-cd)">
-        <rect x="28" y="42" width="512" height="32" fill="#010409"/>
-        <circle cx="46" cy="58" r="3.2" fill="#6e7681"/>
-        <circle cx="58" cy="58" r="3.2" fill="#484f58"/>
-        <circle cx="70" cy="58" r="3.2" fill="#3d444d"/>
-        <text x="86" y="62" fill="#8b949e" font-size="11">chorusdraft - review</text>
-        <text x="520" y="62" text-anchor="end" fill="#484f58" font-size="10">pane 0</text>
-        <rect class="accent" x="29" y="74" width="2" height="268" fill="#6851c9" opacity="0.4"/>
+        <rect x="28" y="42" width="512" height="28" fill="#050508"/>
+        <rect x="28" y="69" width="512" height="1" fill="#2a2d36"/>
+        <rect x="40" y="53" width="6" height="6" fill="#6e4a7a"/>
+        <rect x="50" y="53" width="6" height="6" fill="#2a2d36"/>
+        <rect x="60" y="53" width="6" height="6" fill="#2a2d36"/>
+        <text x="76" y="60" fill="#c9b8a6" font-size="11">chorusdraft / review</text>
+        <text class="focus-tag" x="520" y="60" text-anchor="end" fill="#6e4a7a" font-size="10" opacity="0">FOCUS</text>
+        <rect class="rail" x="28" y="70" width="2" height="272" fill="#6e4a7a" opacity="0.45"/>
 
         <g transform="translate(48 84)">
-          <rect width="30" height="30" rx="8" fill="url(#cd-mark)"/>
-          <g transform="translate(4.4 4.4) scale(0.6625)" fill="none" stroke="#ffffff" stroke-linejoin="round">
+          <rect width="30" height="30" fill="#6e4a7a"/>
+          <g transform="translate(4.4 4.4) scale(0.6625)" fill="none" stroke="#c9b8a6" stroke-linejoin="round">
             <path d="M7 12c0-4 4-7 9-7s9 3 9 7v6c0 4-4 7-9 7h-3l-6 3V12Z" stroke-width="2.4"/>
             <g stroke-width="2" stroke-linecap="round">
               <path class="eq eq1" d="M12 13v5"/>
@@ -108,86 +116,95 @@
             </g>
           </g>
         </g>
-        <text x="90" y="97" fill="#e6edf3" font-size="13">Review queue</text>
-        <text x="90" y="113" fill="#6e7681" font-size="10">bluesky / original / local</text>
+        <text x="90" y="97" fill="#c9b8a6" font-size="13">Review queue</text>
+        <text x="90" y="113" fill="#c9b8a6" font-size="10" opacity="0.5">bluesky / original / local</text>
         <g transform="translate(428 88)">
-          <rect width="92" height="22" rx="11" fill="#211a36" stroke="#5c46bc"/>
-          <circle class="pending-dot" cx="14" cy="11" r="2.2" fill="#7a63d6"/>
-          <text x="54" y="15" text-anchor="middle" fill="#b8a9e8" font-size="10">pending</text>
+          <rect width="92" height="22" fill="#050508" stroke="#6e4a7a"/>
+          <circle class="pending-dot" cx="14" cy="11" r="2.2" fill="#6e4a7a"/>
+          <text x="54" y="15" text-anchor="middle" fill="#6e4a7a" font-size="10">pending</text>
         </g>
 
-        <rect x="48" y="128" width="472" height="148" rx="6" fill="#0d1117" stroke="#21262d"/>
-        <rect x="48" y="128" width="3" height="148" fill="#5c46bc"/>
-        <text x="64" y="150" fill="#6e7681" font-size="10">DRAFT / 97 chars</text>
-        <text x="64" y="176" fill="#e6edf3" font-size="13">The changelog was longer than the post.</text>
-        <text x="64" y="196" fill="#e6edf3" font-size="13">I stopped at: it still boots.</text>
-        <text x="64" y="224" fill="#8b949e" font-size="11">Queued. You have the last say.</text>
-        <text x="64" y="256" fill="#484f58" font-size="10" xml:space="preserve">y publish    d reject    e edit</text>
+        <rect x="48" y="128" width="472" height="148" fill="#050508" stroke="#2a2d36"/>
+        <rect x="48" y="128" width="2" height="148" fill="#6e4a7a"/>
+        <text x="64" y="150" fill="#6e4a7a" font-size="10">DRAFT / 97 chars</text>
+        <text x="64" y="176" fill="#c9b8a6" font-size="13">The changelog was longer than the post.</text>
+        <text x="64" y="196" fill="#c9b8a6" font-size="13">I stopped at: it still boots.</text>
+        <text x="64" y="224" fill="#c9b8a6" font-size="11" opacity="0.62">Queued. You have the last say.</text>
+        <text x="64" y="256" fill="#2a2d36" font-size="10" xml:space="preserve">y publish    d reject    e edit</text>
 
         <g transform="translate(48 292)">
-          <rect width="92" height="28" rx="5" fill="#0d1117" stroke="#30363d"/>
-          <text x="46" y="18" text-anchor="middle" fill="#8b949e" font-size="11">Reject</text>
+          <rect width="92" height="28" fill="#050508" stroke="#2a2d36"/>
+          <text x="46" y="18" text-anchor="middle" fill="#c9b8a6" font-size="11" opacity="0.7">Reject</text>
         </g>
         <g class="approve" transform="translate(152 292)">
-          <rect class="approve-glow" x="-6" y="-6" width="124" height="40" rx="10" fill="#7a63d6" opacity="0"/>
-          <rect class="approve-bg" width="112" height="28" rx="5" fill="#0d1117" stroke="#5c46bc" stroke-width="1"/>
-          <text class="approve-label" x="56" y="18" text-anchor="middle" fill="#b8a9e8" font-size="11">Approve</text>
+          <rect class="approve-glow" x="-6" y="-6" width="124" height="40" fill="#7a2433" opacity="0"/>
+          <rect class="approve-bg" width="112" height="28" fill="#050508" stroke="#7a2433" stroke-width="1"/>
+          <text class="approve-label" x="56" y="18" text-anchor="middle" fill="#7a2433" font-size="11">Approve</text>
         </g>
       </g>
     </g>
 
     <g class="window win-aa" tabindex="0">
       <title>AdAegis popup</title>
-      <rect class="frame" x="560" y="42" width="512" height="300" rx="8" fill="#0d1117" stroke="#30363d"/>
+      <rect class="frame" x="560" y="42" width="512" height="300" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M560 54V42h12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M1060 42h12v12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M1072 330v12h-12" fill="none" stroke="#2a2d36" stroke-width="1"/>
+      <path class="tick" d="M572 342H560v-12" fill="none" stroke="#2a2d36" stroke-width="1"/>
       <g clip-path="url(#clip-aa)">
-        <rect x="560" y="42" width="512" height="32" fill="#010409"/>
-        <circle cx="578" cy="58" r="3.2" fill="#6e7681"/>
-        <circle cx="590" cy="58" r="3.2" fill="#484f58"/>
-        <circle cx="602" cy="58" r="3.2" fill="#3d444d"/>
-        <text x="618" y="62" fill="#8b949e" font-size="11">chromium - adaegis</text>
-        <text x="1052" y="62" text-anchor="end" fill="#484f58" font-size="10">pane 1</text>
-        <rect class="accent" x="1069" y="74" width="2" height="268" fill="#3d6b5c" opacity="0.4"/>
+        <rect x="560" y="42" width="512" height="28" fill="#050508"/>
+        <rect x="560" y="69" width="512" height="1" fill="#2a2d36"/>
+        <rect x="572" y="53" width="6" height="6" fill="#6ea37a"/>
+        <rect x="582" y="53" width="6" height="6" fill="#2a2d36"/>
+        <rect x="592" y="53" width="6" height="6" fill="#2a2d36"/>
+        <text x="608" y="60" fill="#c9b8a6" font-size="11">chromium / adaegis</text>
+        <text class="focus-tag" x="1052" y="60" text-anchor="end" fill="#6ea37a" font-size="10" opacity="0">FOCUS</text>
+        <rect class="rail" x="1070" y="70" width="2" height="272" fill="#6ea37a" opacity="0.45"/>
 
-        <rect x="576" y="84" width="480" height="26" rx="6" fill="#161b22" stroke="#21262d"/>
-        <rect x="586.5" y="93.5" width="7" height="6" rx="1.1" fill="none" stroke="#3d6b5c" stroke-width="1.15"/>
-        <path d="M588 93.5v-1.7a2.1 2.1 0 0 1 4.2 0v1.7" fill="none" stroke="#3d6b5c" stroke-width="1.15" stroke-linecap="round"/>
-        <text x="602" y="101" fill="#6e7681" font-size="10">https://news.local/feed</text>
+        <rect x="576" y="84" width="480" height="26" fill="#050508" stroke="#2a2d36"/>
+        <rect x="586.5" y="93.5" width="7" height="6" fill="none" stroke="#6ea37a" stroke-width="1.15"/>
+        <path d="M588 93.5v-1.7a2.1 2.1 0 0 1 4.2 0v1.7" fill="none" stroke="#6ea37a" stroke-width="1.15" stroke-linecap="round"/>
+        <text x="602" y="101" fill="#c9b8a6" font-size="10" opacity="0.55">https://news.local/feed</text>
         <g transform="translate(1034 88)">
-          <path d="M9 2.2l7.2 2.6c0 6.2-2.7 11.4-7.2 13.4C4.5 16.2 1.8 11 1.8 4.8Z" fill="#0b1622" stroke="#3d8f73" stroke-width="1.2"/>
+          <path d="M9 2.2l7.2 2.6c0 6.2-2.7 11.4-7.2 13.4C4.5 16.2 1.8 11 1.8 4.8Z" fill="#050508" stroke="#6ea37a" stroke-width="1.2"/>
         </g>
 
-        <rect x="576" y="122" width="200" height="10" rx="2" fill="#161b22"/>
-        <rect x="576" y="140" width="176" height="8" rx="2" fill="#161b22"/>
-        <rect x="576" y="154" width="188" height="8" rx="2" fill="#161b22"/>
-        <rect x="576" y="178" width="200" height="72" rx="4" fill="none" stroke="#21262d" stroke-dasharray="3 3"/>
-        <text x="676" y="218" text-anchor="middle" fill="#3d444d" font-size="10">ad slot / blocked</text>
-        <rect x="576" y="264" width="154" height="8" rx="2" fill="#161b22"/>
-        <rect x="576" y="280" width="120" height="8" rx="2" fill="#161b22"/>
-        <rect x="576" y="296" width="168" height="8" rx="2" fill="#161b22"/>
+        <rect x="576" y="122" width="200" height="10" fill="#050508" stroke="#2a2d36"/>
+        <rect x="576" y="140" width="176" height="8" fill="#050508" stroke="#2a2d36"/>
+        <rect x="576" y="154" width="188" height="8" fill="#050508" stroke="#2a2d36"/>
+        <rect x="576" y="178" width="200" height="72" fill="none" stroke="#2a2d36" stroke-dasharray="3 3"/>
+        <text x="676" y="218" text-anchor="middle" fill="#7a2433" font-size="10">ad slot / blocked</text>
+        <rect x="576" y="264" width="154" height="8" fill="#050508" stroke="#2a2d36"/>
+        <rect x="576" y="280" width="120" height="8" fill="#050508" stroke="#2a2d36"/>
+        <rect x="576" y="296" width="168" height="8" fill="#050508" stroke="#2a2d36"/>
 
         <g transform="translate(792 118)">
-          <rect class="popup" width="248" height="206" rx="8" fill="#101828" stroke="#344054" stroke-width="1"/>
+          <rect class="popup" width="248" height="206" fill="#050508" stroke="#2a2d36" stroke-width="1"/>
+          <path class="tick" d="M0 10V0h10" fill="none" stroke="#2a2d36" stroke-width="1"/>
+          <path class="tick" d="M238 0h10v10" fill="none" stroke="#2a2d36" stroke-width="1"/>
+          <path class="tick" d="M248 196v10h-10" fill="none" stroke="#2a2d36" stroke-width="1"/>
+          <path class="tick" d="M10 206H0v-10" fill="none" stroke="#2a2d36" stroke-width="1"/>
           <g transform="translate(16 14)">
-            <path d="M14 1.8l11.2 4.1c0 9.6-4.2 17.8-11.2 21C6 23.7 1.8 15.5 1.8 5.9Z" fill="#0b1622" stroke="#3d8f73" stroke-width="1.4"/>
-            <path d="M8.6 20.2 14 7.2l5.4 13" fill="none" stroke="#f9fafb" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M10.2 15.6h7.6" stroke="#3d8f73" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M14 1.8l11.2 4.1c0 9.6-4.2 17.8-11.2 21C6 23.7 1.8 15.5 1.8 5.9Z" fill="#050508" stroke="#6ea37a" stroke-width="1.4"/>
+            <path d="M8.6 20.2 14 7.2l5.4 13" fill="none" stroke="#c9b8a6" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M10.2 15.6h7.6" stroke="#6ea37a" stroke-width="1.8" stroke-linecap="round"/>
           </g>
-          <text x="52" y="32" fill="#f9fafb" font-size="14">AdAegis</text>
-          <text x="232" y="32" text-anchor="end" fill="#8b9aa8" font-size="10">0.4.2</text>
-          <circle class="live-dot" cx="52" cy="48" r="2.1" fill="#3d8f73"/>
-          <text class="status" x="62" y="52" fill="#6aa37f" font-size="11">Protection on</text>
-          <text class="count" x="16" y="92" fill="#8b9aa8" font-size="28">41</text>
-          <text x="16" y="110" fill="#8b9aa8" font-size="10">blocked this tab</text>
-          <text x="16" y="132" fill="#667085" font-size="10">network rules / local lists</text>
+          <text x="52" y="32" fill="#c9b8a6" font-size="14">AdAegis</text>
+          <text x="232" y="32" text-anchor="end" fill="#c9b8a6" font-size="10" opacity="0.5">0.4.2</text>
+          <circle class="live-dot" cx="52" cy="48" r="2.1" fill="#6ea37a"/>
+          <text class="status" x="62" y="52" fill="#6ea37a" font-size="11">Protection on</text>
+          <text class="count" x="16" y="92" fill="#7a2433" font-size="28">41</text>
+          <text x="16" y="110" fill="#c9b8a6" font-size="10" opacity="0.55">blocked this tab</text>
+          <text x="16" y="132" fill="#c9b8a6" font-size="10" opacity="0.4">network rules / local lists</text>
           <g class="pause" transform="translate(16 148)">
-            <rect class="pause-bg" width="104" height="28" rx="5" fill="#1d2939" stroke="#3d4f63" stroke-width="1"/>
-            <text class="pause-label" x="52" y="18" text-anchor="middle" fill="#b5c0d0" font-size="10">Pause 10 min</text>
+            <rect class="pause-bg" width="104" height="28" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
+            <text class="pause-label" x="52" y="18" text-anchor="middle" fill="#c9b8a6" font-size="10">Pause 10 min</text>
           </g>
           <g class="pause" transform="translate(128 148)">
-            <rect class="pause-bg" width="104" height="28" rx="5" fill="#1d2939" stroke="#3d4f63" stroke-width="1"/>
-            <text class="pause-label" x="52" y="18" text-anchor="middle" fill="#b5c0d0" font-size="10">Pause 1 hour</text>
+            <rect class="pause-bg" width="104" height="28" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
+            <text class="pause-label" x="52" y="18" text-anchor="middle" fill="#c9b8a6" font-size="10">Pause 1 hour</text>
           </g>
-          <text x="16" y="196" fill="#667085" font-size="9">Local settings. No telemetry.</text>
+          <text x="16" y="196" fill="#c9b8a6" font-size="9" opacity="0.4">Local settings. No telemetry.</text>
         </g>
       </g>
     </g>
