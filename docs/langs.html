@@ -3,47 +3,35 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>languages // buntos</title>
+  <title>languages · buntos</title>
   <meta name="description" content="Most-used programming languages, ranked, with a brief history of each." />
   <link rel="stylesheet" href="./langs.css" />
 </head>
 <body>
-  <div class="scan" aria-hidden="true"></div>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="frame" aria-hidden="true">
-    <span class="tick tick-tl"></span>
-    <span class="tick tick-tr"></span>
-    <span class="tick tick-bl"></span>
-    <span class="tick tick-br"></span>
+  <div class="mist" aria-hidden="true">
+    <span class="orb orb-a"></span>
+    <span class="orb orb-b"></span>
+    <span class="orb orb-c"></span>
   </div>
 
   <header class="rail">
-    <a href="./">buntos@void</a>
-    <span class="rail-sep" aria-hidden="true">//</span>
+    <a href="./">Buntos</a>
     <span class="rail-mark">languages</span>
     <span class="rail-spacer"></span>
-    <span class="rail-keys">j/k · arrows · scrub</span>
-    <span class="rail-live">index</span>
+    <span class="rail-keys">j / k · arrows · scrub</span>
+    <span class="rail-live">drift</span>
   </header>
 
   <main class="layout">
     <section class="panel chart" aria-labelledby="chart-title">
-      <span class="tick tick-tl" aria-hidden="true"></span>
-      <span class="tick tick-tr" aria-hidden="true"></span>
-      <span class="tick tick-bl" aria-hidden="true"></span>
-      <span class="tick tick-br" aria-hidden="true"></span>
-      <p class="kicker">usage · 2025–2026 blend</p>
+      <p class="kicker">usage, a 2025–2026 blend</p>
       <h1 id="chart-title">languages</h1>
-      <p class="lede">Select a language. History docks to the right (below, on a narrow viewport). Timeline scrub selects by birth year.</p>
+      <p class="lede">choose a language. its history gathers to the right — or below, if the window is narrow. the timeline finds a language by the year it appeared.</p>
       <ol id="rank" class="rank" role="listbox" aria-label="Languages by blended usage rank" aria-activedescendant=""></ol>
     </section>
 
     <aside class="panel dock" aria-live="polite">
-      <span class="tick tick-tl" aria-hidden="true"></span>
-      <span class="tick tick-tr" aria-hidden="true"></span>
-      <span class="tick tick-bl" aria-hidden="true"></span>
-      <span class="tick tick-br" aria-hidden="true"></span>
-      <p class="kicker">dossier</p>
+      <p class="kicker">a brief history</p>
       <p id="dock-name" class="dock-name">—</p>
       <p id="dock-meta" class="dock-meta"></p>
       <div id="dock-body" class="dock-body"></div>
@@ -52,10 +40,6 @@
   </main>
 
   <section class="panel time" aria-labelledby="time-title">
-    <span class="tick tick-tl" aria-hidden="true"></span>
-    <span class="tick tick-tr" aria-hidden="true"></span>
-    <span class="tick tick-bl" aria-hidden="true"></span>
-    <span class="tick tick-br" aria-hidden="true"></span>
     <div class="time-head">
       <p class="kicker" id="time-title">appeared</p>
       <p id="year-readout" class="year-readout">1950</p>
@@ -78,10 +62,10 @@
     </div>
   </section>
 
-  <p class="footnote">Ranks are a 2025–2026 blend of GitHub Octoverse and TIOBE/PYPL; they shift by index.</p>
+  <p class="footnote">ranks are a 2025–2026 blend of GitHub Octoverse and TIOBE/PYPL; they shift by index.</p>
 
   <noscript>
-    <p class="footnote">JavaScript is required to browse the index.</p>
+    <p class="footnote">javascript is needed to wander the list.</p>
   </noscript>
 
   <script src="./langs.js"></script>
