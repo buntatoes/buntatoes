@@ -281,5 +281,5 @@
   </g>
 
   <text x="64" y="48" fill="#e8e4f0" font-family="Georgia, 'Iowan Old Style', serif" font-size="20" opacity="0.9">languages, appearing</text>
-  <text x="64" y="72" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', serif" font-size="13" opacity="0.7">a sky arranged by birth year \u00b7 open a name below</text>
+  <text x="64" y="72" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', serif" font-size="13" opacity="0.7">a sky arranged by birth year · open a name below</text>
 </svg>
