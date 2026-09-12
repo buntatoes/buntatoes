@@ -4,11 +4,51 @@
 
 Local tools. Human review. Linux.
 
-[the field](https://buntatoes.github.io/buntatoes/) · [languages](https://buntatoes.github.io/buntatoes/langs.html)
+[the field](https://buntatoes.github.io/buntatoes/) · [languages](https://buntatoes.github.io/buntatoes/langs.html) · [ChorusDraft](https://github.com/buntatoes/chorusdraft) · [AdAegis](https://github.com/buntatoes/adaegis)
 
 <a href="https://buntatoes.github.io/buntatoes/langs.html">
   <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/languages.svg" width="1100" alt="Programming languages placed in a night sky by the year they appeared" />
 </a>
+
+<p>
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#ruby" title="1995"><strong>Ruby</strong></a>
+  &emsp;&emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#elixir" title="2011 — ChorusDraft is Elixir"><em>Elixir</em></a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#python" title="1991">Python</a>
+  &emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#javascript" title="1995">JavaScript</a>
+</p>
+
+<p>
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#c" title="1972">C</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#sql" title="1974">SQL</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#cpp" title="1985">C++</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#java" title="1995">Java</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#php" title="1995">PHP</a>
+</p>
+
+<p>
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#csharp" title="2000">C#</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#go" title="2009">Go</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#rust" title="2010">Rust</a>
+  &emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#kotlin" title="2011">Kotlin</a>
+</p>
+
+<p>
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#typescript" title="2012">TypeScript</a>
+  &emsp;&emsp;&emsp;&emsp;
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#swift" title="2014">Swift</a>
+</p>
+
+<p><em>ChorusDraft is Elixir.</em></p>
 
 </div>
 
@@ -129,10 +169,4 @@ Chris Lattner et al., Apple. Successor to Objective-C on Apple platforms. iOS an
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/tty.svg" width="1100" alt="a quiet shell" />
-</p>
-
-<p align="center">
-  <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
-  ·
-  <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
 </p>
