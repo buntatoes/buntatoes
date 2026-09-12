@@ -4,9 +4,9 @@
 
 Local tools. Human review. Linux.
 
-<img src="assets/studio.svg" alt="ChorusDraft on the left, AdAegis on the right" width="100%" />
+![ChorusDraft on the left, AdAegis on the right](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg)
 
-<img src="assets/tty.svg" alt="buntos@linux tty" width="100%" />
+![buntos@linux tty](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/tty.svg)
 
 [ChorusDraft](https://github.com/buntatoes/chorusdraft) · [AdAegis](https://github.com/buntatoes/adaegis)
 
