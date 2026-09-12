@@ -1,114 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="220" viewBox="0 0 1100 220" role="img" aria-labelledby="t d">
-  <title id="t">Vespers</title>
-  <desc id="d">Technical vespers status bar. Slow oxblood and violet ember under BUNTOS.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="96" viewBox="0 0 1100 96" role="img" aria-labelledby="t d">
+  <title id="t">Carrier strip</title>
+  <desc id="d">Black-and-white goth signal bar. SIG cells, LOCK. Hover to lock the carrier.</desc>
   <defs>
-    <clipPath id="frame">
-      <rect x="0.5" y="0.5" width="1099" height="219" rx="10"/>
-    </clipPath>
-    <linearGradient id="void" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0c0e12"/>
-      <stop offset="1" stop-color="#050508"/>
-    </linearGradient>
-    <linearGradient id="ember" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#7a2433"/>
-      <stop offset="0.45" stop-color="#6e4a7a"/>
-      <stop offset="1" stop-color="#050508" stop-opacity="0"/>
-    </linearGradient>
-    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#7a2433" stop-opacity="0"/>
-      <stop offset="0.18" stop-color="#7a2433"/>
-      <stop offset="0.5" stop-color="#6e4a7a"/>
-      <stop offset="0.82" stop-color="#7a2433"/>
-      <stop offset="1" stop-color="#7a2433" stop-opacity="0"/>
-    </linearGradient>
-    <pattern id="scan" width="1100" height="4" patternUnits="userSpaceOnUse">
-      <rect width="1100" height="1" fill="#c9b8a6" opacity="0.035"/>
-    </pattern>
-    <pattern id="slats" width="940" height="7" patternUnits="userSpaceOnUse">
-      <rect width="940" height="4" fill="#050508" fill-opacity="0.72"/>
-    </pattern>
-    <filter id="soft" x="-30%" y="-80%" width="160%" height="260%">
-      <feGaussianBlur stdDeviation="16"/>
-    </filter>
+    <style>
+      <![CDATA[
+        .ui {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 11px;
+        }
+        .lbl {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 10px;
+          letter-spacing: 3.2px;
+        }
+        .cell-off { fill: #000000; stroke: #2e2e2e; }
+        .cell-dim { fill: #8a8a8a; stroke: #8a8a8a; }
+        .cell-on { fill: #e8e8e8; stroke: #e8e8e8; }
+        .rule { stroke: #e8e8e8; opacity: 0.55; }
+        .rail { stroke: #8a8a8a; opacity: 0.7; }
+        .mark { stroke: #8a8a8a; opacity: 0.55; }
+        .pip { fill: #ffffff; opacity: 0.85; }
+        .lock { fill: #8a8a8a; }
+        .sig { fill: #e8e8e8; }
+        .index { stroke: #8a8a8a; }
+        .bracket { stroke: #e8e8e8; }
+        .frame { stroke: #2e2e2e; }
+        svg:hover .cell-off,
+        .stage:hover .cell-off { fill: #8a8a8a; stroke: #8a8a8a; }
+        svg:hover .cell-dim,
+        .stage:hover .cell-dim { fill: #e8e8e8; stroke: #e8e8e8; }
+        svg:hover .cell-on,
+        .stage:hover .cell-on { fill: #ffffff; stroke: #ffffff; }
+        svg:hover .rule,
+        .stage:hover .rule { opacity: 1; }
+        svg:hover .rail,
+        .stage:hover .rail { opacity: 1; stroke: #e8e8e8; }
+        svg:hover .mark,
+        .stage:hover .mark { opacity: 1; stroke: #e8e8e8; }
+        svg:hover .pip,
+        .stage:hover .pip { opacity: 1; }
+        svg:hover .lock,
+        .stage:hover .lock { fill: #ffffff; }
+        svg:hover .index,
+        .stage:hover .index { stroke: #ffffff; }
+        svg:hover .frame,
+        .stage:hover .frame { stroke: #8a8a8a; }
+        svg:hover .bracket,
+        .stage:hover .bracket { stroke: #ffffff; }
+        @media (prefers-reduced-motion: no-preference) {
+          .cell-on { animation: breathe 2.8s ease-in-out infinite; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .cell-on { animation: none; }
+          .pip-run { display: none; }
+        }
+        @keyframes breathe {
+          0%, 100% { opacity: 0.55; }
+          50% { opacity: 1; }
+        }
+      ]]>
+    </style>
   </defs>
 
-  <g clip-path="url(#frame)">
-    <rect width="1100" height="220" fill="url(#void)"/>
-    <rect width="1100" height="220" fill="url(#scan)"/>
+  <g class="stage">
+    <rect width="1100" height="96" fill="#000000"/>
+    <rect class="frame" x="0.5" y="0.5" width="1099" height="95" fill="#0a0a0a" stroke="#2e2e2e" stroke-width="1"/>
+    <rect class="frame" x="4.5" y="4.5" width="1091" height="87" fill="none" stroke="#2e2e2e" stroke-width="1"/>
 
-    <ellipse cx="550" cy="104" rx="280" ry="42" fill="#6e4a7a" opacity="0.2" filter="url(#soft)">
-      <animate attributeName="opacity" values="0.1;0.28;0.14;0.24;0.1" dur="7.4s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="550" cy="168" rx="340" ry="40" fill="#7a2433" opacity="0.32" filter="url(#soft)">
-      <animate attributeName="opacity" values="0.18;0.4;0.22;0.34;0.18" dur="6.2s" repeatCount="indefinite"/>
-    </ellipse>
+    <path class="bracket" d="M8 18V8H18" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+    <path class="bracket" d="M1082 8H1092V18" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+    <path class="bracket" d="M1092 78V88H1082" fill="none" stroke="#e8e8e8" stroke-width="1"/>
+    <path class="bracket" d="M18 88H8V78" fill="none" stroke="#e8e8e8" stroke-width="1"/>
 
-    <rect x="80" y="148" width="940" height="34" fill="url(#ember)" opacity="0.55"/>
-    <rect x="110" y="164" width="880" height="7" rx="1" fill="url(#band)">
-      <animate attributeName="opacity" values="0.4;1;0.55;0.85;0.4" dur="5.4s" repeatCount="indefinite"/>
+    <line class="rule" x1="20" y1="16.5" x2="1080" y2="16.5" stroke="#e8e8e8" stroke-width="1"/>
+    <rect class="pip pip-run" x="20" y="15" width="12" height="3" fill="#ffffff">
+      <animate attributeName="x" values="20;1068;20" dur="4.2s" repeatCount="indefinite"/>
     </rect>
-    <g fill="#7a2433">
-      <rect x="210" y="160" width="86" height="10" rx="1" opacity="0.55">
-        <animate attributeName="opacity" values="0.25;0.8;0.35;0.7;0.25" dur="4.6s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="330" y="158" width="70" height="12" rx="1" fill="#6e4a7a" opacity="0.5">
-        <animate attributeName="opacity" values="0.2;0.75;0.3;0.6;0.2" dur="5.8s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="430" y="156" width="110" height="14" rx="1" opacity="0.7">
-        <animate attributeName="opacity" values="0.35;0.95;0.45;0.8;0.35" dur="4.2s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="560" y="158" width="92" height="12" rx="1" fill="#6e4a7a" opacity="0.55">
-        <animate attributeName="opacity" values="0.22;0.82;0.32;0.68;0.22" dur="6.4s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="680" y="160" width="78" height="10" rx="1" opacity="0.5">
-        <animate attributeName="opacity" values="0.2;0.72;0.28;0.58;0.2" dur="5.1s" repeatCount="indefinite"/>
-      </rect>
-      <rect x="790" y="161" width="64" height="9" rx="1" fill="#6e4a7a" opacity="0.4">
-        <animate attributeName="opacity" values="0.15;0.65;0.25;0.5;0.15" dur="7.1s" repeatCount="indefinite"/>
-      </rect>
+
+    <text class="lbl sig" x="20" y="48" fill="#e8e8e8">SIG</text>
+    <g transform="translate(64 34)" stroke-width="1">
+      <rect class="cell-on" x="0" y="10" width="12" height="6" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="16" y="8" width="12" height="8" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="32" y="6" width="12" height="10" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="48" y="5" width="12" height="11" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="64" y="4" width="12" height="12" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="80" y="3" width="12" height="13" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="96" y="2" width="12" height="14" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-on" x="112" y="1" width="12" height="15" fill="#e8e8e8" stroke="#e8e8e8"/>
+      <rect class="cell-dim" x="128" y="0" width="12" height="16" fill="#8a8a8a" stroke="#8a8a8a"/>
+      <rect class="cell-dim" x="144" y="0" width="12" height="16" fill="#8a8a8a" stroke="#8a8a8a"/>
+      <rect class="cell-off" x="160" y="0" width="12" height="16" fill="#000000" stroke="#2e2e2e"/>
+      <rect class="cell-off" x="176" y="0" width="12" height="16" fill="#000000" stroke="#2e2e2e"/>
     </g>
-    <rect x="80" y="148" width="940" height="34" fill="url(#slats)"/>
-  </g>
 
-  <rect x="0.5" y="0.5" width="1099" height="219" rx="10" fill="none" stroke="#2a2d36"/>
+    <g class="index" fill="none" stroke="#8a8a8a" stroke-width="1">
+      <circle cx="550" cy="44" r="7"/>
+      <path d="M550 37v14M543 44h14"/>
+    </g>
 
-  <g fill="none" stroke="#7a2433" stroke-width="1.15" opacity="0.75">
-    <path d="M18 32 V16 H34"/>
-    <path d="M1082 32 V16 H1066"/>
-    <path d="M18 188 V204 H34"/>
-    <path d="M1082 188 V204 H1066"/>
-  </g>
+    <text class="ui lock" x="1080" y="48" text-anchor="end" fill="#8a8a8a">LOCK</text>
 
-  <circle cx="42" cy="28" r="3.2" fill="#7a2433">
-    <animate attributeName="opacity" values="0.4;1;0.5;0.88;0.4" dur="3.8s" repeatCount="indefinite"/>
-  </circle>
-  <text x="56" y="32" fill="#c9b8a6" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, DejaVu Sans Mono, monospace" font-size="11" letter-spacing="0.42em">VESPERS</text>
-  <text x="1044" y="32" text-anchor="end" fill="#6ea37a" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, DejaVu Sans Mono, monospace" font-size="11" letter-spacing="0.42em" opacity="0.85">LOCAL</text>
-
-  <text x="550" y="108" text-anchor="middle" fill="#c9b8a6" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, DejaVu Sans Mono, monospace" font-size="22" font-variant="small-caps" letter-spacing="0.62em">BUNTOS</text>
-  <rect x="428" y="122" width="244" height="1" fill="#7a2433">
-    <animate attributeName="opacity" values="0.3;0.95;0.42;0.8;0.3" dur="4.4s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="520" y="122" width="56" height="1" fill="#6e4a7a">
-    <animate attributeName="opacity" values="0.25;0.9;0.35;0.7;0.25" dur="5.1s" repeatCount="indefinite"/>
-    <animate attributeName="x" values="460;620;500;580;460" dur="8.6s" repeatCount="indefinite"/>
-  </rect>
-
-  <g font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, DejaVu Sans Mono, monospace" font-size="9" fill="#c9b8a6" fill-opacity="0.42">
-    <rect x="90" y="196" width="1" height="7" fill="#2a2d36"/>
-    <rect x="270" y="196" width="1" height="7" fill="#2a2d36"/>
-    <rect x="450" y="196" width="1" height="7" fill="#2a2d36"/>
-    <rect x="550" y="194" width="1.5" height="9" fill="#6ea37a" opacity="0.8"/>
-    <rect x="650" y="196" width="1" height="7" fill="#2a2d36"/>
-    <rect x="830" y="196" width="1" height="7" fill="#2a2d36"/>
-    <rect x="1010" y="196" width="1" height="7" fill="#2a2d36"/>
-    <text x="90" y="214" text-anchor="middle">18</text>
-    <text x="270" y="214" text-anchor="middle">19</text>
-    <text x="450" y="214" text-anchor="middle">20</text>
-    <text x="550" y="214" text-anchor="middle" fill="#6ea37a" fill-opacity="0.85">21</text>
-    <text x="650" y="214" text-anchor="middle">22</text>
-    <text x="830" y="214" text-anchor="middle">23</text>
-    <text x="1010" y="214" text-anchor="middle">00</text>
+    <line class="rail" x1="20" y1="72.5" x2="1080" y2="72.5" stroke="#8a8a8a" stroke-width="1"/>
+    <g class="mark" fill="none" stroke="#8a8a8a" stroke-width="1">
+      <path d="M20 68v9"/>
+      <path d="M84 70v5"/>
+      <path d="M148 70v5"/>
+      <path d="M212 70v5"/>
+      <path d="M276 68v9"/>
+      <path d="M340 70v5"/>
+      <path d="M404 70v5"/>
+      <path d="M468 70v5"/>
+      <path d="M532 68v9"/>
+      <path d="M596 70v5"/>
+      <path d="M660 70v5"/>
+      <path d="M724 70v5"/>
+      <path d="M788 68v9"/>
+      <path d="M852 70v5"/>
+      <path d="M916 70v5"/>
+      <path d="M980 70v5"/>
+      <path d="M1080 68v9"/>
+    </g>
   </g>
 </svg>
