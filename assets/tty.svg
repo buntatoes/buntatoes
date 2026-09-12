@@ -1,55 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="160" viewBox="0 0 1100 160" role="img" aria-labelledby="title desc">
-  <title id="title">buntos@linux</title>
-  <desc id="desc">Quiet tty: hover ./chorusdraft bluesky review or load unpacked adaegis/ for a short comment.</desc>
-  <style>
-    .ui {
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
-      font-size: 11px;
-    }
-    .mono {
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
-      font-size: 13.5px;
-    }
-    .wash { fill: #7a63d6; fill-opacity: 0; }
-    .hint { fill: #6e7681; opacity: 0; }
-    .row { cursor: default; }
-    .row:hover .wash { fill-opacity: 0.07; }
-    .row:hover .hint { opacity: 1; }
-    .row:hover .cmd { fill: #e6edf3; }
-    .caret { fill: #7a63d6; }
-    @media (prefers-reduced-motion: no-preference) {
-      .caret { animation: blink 1.15s steps(1, end) infinite; }
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-  </style>
+  <title id="title">tty / buntos@linux</title>
+  <desc id="desc">Goth-tech tty. Hover a command for the local note. Phosphor caret on the vespers prompt.</desc>
+  <defs>
+    <style>
+      <![CDATA[
+        .ui {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 11px;
+        }
+        .mono {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 13.5px;
+        }
+        .wash { fill: #7a2433; fill-opacity: 0; }
+        .hint { fill: #6ea37a; opacity: 0; }
+        .cmd { fill: #c9b8a6; fill-opacity: 0.72; }
+        .edge { stroke: #2a2d36; }
+        .row { cursor: default; }
+        .row:hover .wash { fill-opacity: 0.14; }
+        .row:hover .hint { opacity: 1; }
+        .row:hover .cmd { fill-opacity: 1; }
+        .row:hover .edge { stroke: #6ea37a; }
+        .caret { fill: #6ea37a; }
+        svg:hover .chrome { fill: #c9b8a6; }
+        @media (prefers-reduced-motion: no-preference) {
+          .caret { animation: blink 1.15s steps(1, end) infinite; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .caret { animation: none; }
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+      ]]>
+    </style>
+  </defs>
 
-  <rect x="0.5" y="0.5" width="1099" height="159" rx="10" fill="#0d1117" stroke="#21262d"/>
-  <rect x="0.5" y="0.5" width="1099" height="1.5" rx="10" fill="#7a63d6" opacity="0.42"/>
-  <rect x="0.5" y="0.5" width="1099" height="32" rx="10" fill="#161b22"/>
-  <rect x="0.5" y="22" width="1099" height="10.5" fill="#161b22"/>
-  <line x1="0.5" y1="32.5" x2="1099.5" y2="32.5" stroke="#21262d"/>
+  <rect width="1100" height="160" fill="#050508"/>
+  <rect x="0.5" y="0.5" width="1099" height="159" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
 
-  <circle cx="18" cy="16.5" r="4" fill="#3d444d"/>
-  <circle cx="34" cy="16.5" r="4" fill="#3d444d"/>
-  <circle cx="50" cy="16.5" r="4" fill="#7a63d6" opacity="0.7"/>
-  <text class="ui" x="68" y="20.5" fill="#8b949e">tty - buntos@linux</text>
+  <path d="M1 16V1H16" fill="none" stroke="#6ea37a" stroke-width="1"/>
+  <path d="M1084 1H1099V16" fill="none" stroke="#6ea37a" stroke-width="1"/>
+  <path d="M1099 144V159H1084" fill="none" stroke="#6ea37a" stroke-width="1"/>
+  <path d="M16 159H1V144" fill="none" stroke="#6ea37a" stroke-width="1"/>
+
+  <rect x="1" y="1" width="1098" height="30" fill="#050508"/>
+  <line x1="1" y1="31.5" x2="1099" y2="31.5" stroke="#2a2d36" stroke-width="1"/>
+  <line x1="16" y1="32.5" x2="1084" y2="32.5" stroke="#6ea37a" stroke-width="1" opacity="0.45"/>
+
+  <rect x="16" y="13" width="6" height="6" fill="#7a2433"/>
+  <rect x="28" y="13" width="6" height="6" fill="#6e4a7a"/>
+  <rect x="40" y="13" width="6" height="6" fill="#6ea37a"/>
+  <text class="ui chrome" x="56" y="19" fill="#c9b8a6">tty / buntos@linux / vespers</text>
+  <text class="ui" x="1084" y="19" text-anchor="end" fill="#6e4a7a">local</text>
 
   <g class="row">
-    <rect class="wash" x="8" y="40" width="1084" height="28" rx="4"/>
+    <rect class="wash" x="8" y="40" width="1084" height="28"/>
+    <path class="edge" d="M8 44v20" fill="none" stroke="#2a2d36" stroke-width="1"/>
     <text class="mono" x="22" y="59">
-      <tspan fill="#7a63d6">buntos</tspan><tspan fill="#8b949e">@linux</tspan><tspan fill="#484f58">:</tspan><tspan fill="#7a63d6">~</tspan><tspan fill="#8b949e">$ </tspan><tspan class="cmd" fill="#c9d1d9">./chorusdraft bluesky review</tspan><tspan class="hint">  # review is the default</tspan>
+      <tspan fill="#6ea37a">buntos</tspan><tspan fill="#c9b8a6">@linux</tspan><tspan fill="#6e4a7a">:</tspan><tspan fill="#7a2433">~</tspan><tspan fill="#c9b8a6">$ </tspan><tspan class="cmd">./chorusdraft bluesky review</tspan><tspan class="hint">  # review stays local</tspan>
     </text>
   </g>
 
   <g class="row">
-    <rect class="wash" x="8" y="70" width="1084" height="28" rx="4"/>
+    <rect class="wash" x="8" y="70" width="1084" height="28"/>
+    <path class="edge" d="M8 74v20" fill="none" stroke="#2a2d36" stroke-width="1"/>
     <text class="mono" x="22" y="89">
-      <tspan fill="#7a63d6">buntos</tspan><tspan fill="#8b949e">@linux</tspan><tspan fill="#484f58">:</tspan><tspan fill="#7a63d6">~</tspan><tspan fill="#8b949e">$ </tspan><tspan class="cmd" fill="#c9d1d9">load unpacked adaegis/</tspan><tspan class="hint">  # no store, no telemetry</tspan>
+      <tspan fill="#6ea37a">buntos</tspan><tspan fill="#c9b8a6">@linux</tspan><tspan fill="#6e4a7a">:</tspan><tspan fill="#7a2433">~</tspan><tspan fill="#c9b8a6">$ </tspan><tspan class="cmd">load unpacked adaegis/</tspan><tspan class="hint">  # no store, no telemetry</tspan>
     </text>
   </g>
 
   <text class="mono" x="22" y="119">
-    <tspan fill="#7a63d6">buntos</tspan><tspan fill="#8b949e">@linux</tspan><tspan fill="#484f58">:</tspan><tspan fill="#7a63d6">~</tspan><tspan fill="#8b949e">$ </tspan><tspan class="caret">_</tspan>
+    <tspan fill="#6ea37a">buntos</tspan><tspan fill="#c9b8a6">@linux</tspan><tspan fill="#6e4a7a">:</tspan><tspan fill="#7a2433">~</tspan><tspan fill="#c9b8a6">$ </tspan><tspan class="caret">_</tspan>
   </text>
 </svg>
