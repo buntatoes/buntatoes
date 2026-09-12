@@ -1,10 +1,8 @@
 :root {
   color-scheme: dark;
-  --night: #090b16;
   --fog: #0c1124;
   --mist: #141a33;
   --ink: #e8e4f0;
-  --veil: #dfe6f5;
   --rose: #c4a5b8;
   --water: #7aa3b8;
   --bloom: #9bb0d4;
@@ -24,7 +22,7 @@
 html,
 body {
   min-height: 100%;
-  background: var(--night);
+  background: var(--fog);
   color: var(--ink);
   font-family: var(--sans);
 }
@@ -37,7 +35,7 @@ body {
     radial-gradient(ellipse 70% 55% at 8% -8%, rgba(155, 176, 212, 0.22), transparent 58%),
     radial-gradient(ellipse 55% 48% at 96% 6%, rgba(196, 165, 184, 0.16), transparent 52%),
     radial-gradient(ellipse 80% 40% at 50% 108%, rgba(122, 163, 184, 0.14), transparent 58%),
-    linear-gradient(180deg, var(--fog) 0%, var(--night) 42%, #0c1124 100%);
+    linear-gradient(180deg, var(--fog) 0%, #0c1124 42%, var(--mist) 100%);
 }
 
 .sr-only {
@@ -124,7 +122,7 @@ body {
   display: flex;
   align-items: baseline;
   gap: 1rem;
-  color: var(--veil);
+  color: var(--ink);
   font-size: 0.82rem;
   letter-spacing: 0.04em;
   text-transform: lowercase;
@@ -154,20 +152,188 @@ body {
 .rail-spacer { flex: 1; }
 
 .rail-keys {
-  color: rgba(223, 230, 245, 0.55);
+  color: rgba(232, 228, 240, 0.55);
   font-size: 0.75rem;
 }
 
 .rail-live {
   color: var(--rose);
-  font-size: 0.75rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
 }
 
 .layout,
 .time,
-.footnote {
+.footnote,
+.sky-wrap {
   position: relative;
   z-index: 2;
+}
+
+.sky-wrap {
+  margin-bottom: 1.4rem;
+}
+
+.sky-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0.35rem 0.7rem;
+}
+
+.sky-hint {
+  color: rgba(232, 228, 240, 0.45);
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.sky {
+  position: relative;
+  height: clamp(15.5rem, 36vw, 23rem);
+  border-radius: 1.6rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 60% at 18% 28%, rgba(155, 176, 212, 0.16), transparent 58%),
+    radial-gradient(ellipse 55% 50% at 82% 72%, rgba(196, 165, 184, 0.14), transparent 52%),
+    radial-gradient(ellipse 90% 40% at 50% 100%, rgba(122, 163, 184, 0.1), transparent 60%),
+    linear-gradient(180deg, rgba(20, 26, 51, 0.62), rgba(12, 17, 36, 0.38));
+  box-shadow: 0 24px 60px rgba(12, 17, 36, 0.35);
+}
+
+.sky-field {
+  position: absolute;
+  inset: 0;
+  animation: field-drift 48s ease-in-out infinite;
+}
+
+@keyframes field-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0.55%, -1.15%); }
+}
+
+.sky-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.speck {
+  fill: rgba(232, 228, 240, 0.28);
+}
+
+.sky-link {
+  stroke: rgba(155, 176, 212, 0.28);
+  stroke-width: 0.22;
+}
+
+.sky-link.is-on {
+  stroke: rgba(196, 165, 184, 0.62);
+  stroke-width: 0.34;
+}
+
+.star {
+  position: absolute;
+  width: calc(var(--star-r) * 2.35rem);
+  height: calc(var(--star-r) * 2.35rem);
+  transform: translate(-50%, -50%);
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.star:focus-visible {
+  outline: none;
+}
+
+.star-halo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--star-r) * 2.15rem);
+  height: calc(var(--star-r) * 2.15rem);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 176, 212, 0.38), transparent 68%);
+  opacity: 0.72;
+  filter: blur(5px);
+  animation: halo-breathe 9s ease-in-out infinite;
+}
+
+.star.era-early .star-halo {
+  background: radial-gradient(circle, rgba(122, 163, 184, 0.42), transparent 68%);
+}
+
+.star.era-late .star-halo {
+  background: radial-gradient(circle, rgba(196, 165, 184, 0.4), transparent 68%);
+}
+
+@keyframes halo-breathe {
+  0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.12); }
+}
+
+.star-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--star-r) * 0.78rem);
+  height: calc(var(--star-r) * 0.78rem);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #e8e4f0, var(--bloom) 48%, var(--water) 82%);
+  box-shadow: 0 0 14px rgba(155, 176, 212, 0.55);
+}
+
+.star.era-early .star-core {
+  background: radial-gradient(circle at 35% 30%, #e8e4f0, var(--water) 55%, #7aa3b8 88%);
+}
+
+.star.era-late .star-core {
+  background: radial-gradient(circle at 35% 30%, #e8e4f0, var(--rose) 52%, var(--bloom) 88%);
+}
+
+.star-name {
+  position: absolute;
+  left: 50%;
+  top: calc(100% - 0.05rem);
+  transform: translateX(-50%);
+  color: rgba(232, 228, 240, 0.52);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 1px 10px rgba(12, 17, 36, 0.95);
+}
+
+.star:hover .star-name,
+.star:focus-visible .star-name,
+.star.is-on .star-name {
+  color: var(--ink);
+}
+
+.star.is-on {
+  z-index: 2;
+}
+
+.star.is-on .star-core {
+  box-shadow: 0 0 22px rgba(196, 165, 184, 0.85);
+}
+
+.star:hover .star-halo,
+.star:focus-visible .star-halo,
+.star.is-on .star-halo {
+  opacity: 1;
 }
 
 .layout {
@@ -180,7 +346,7 @@ body {
   background: rgba(20, 26, 51, 0.42);
   border-radius: 1.6rem;
   padding: 1.45rem 1.5rem 1.35rem;
-  box-shadow: 0 24px 60px rgba(9, 11, 22, 0.35);
+  box-shadow: 0 24px 60px rgba(12, 17, 36, 0.35);
   backdrop-filter: blur(18px);
 }
 
@@ -205,7 +371,7 @@ h1 {
 
 .lede {
   margin: 0.7rem 0 1.15rem;
-  color: rgba(223, 230, 245, 0.72);
+  color: rgba(232, 228, 240, 0.72);
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 38rem;
@@ -248,7 +414,7 @@ h1 {
 }
 
 .n {
-  color: rgba(223, 230, 245, 0.45);
+  color: rgba(232, 228, 240, 0.45);
   font-size: 0.78rem;
 }
 
@@ -264,13 +430,13 @@ h1 {
 }
 
 .row[aria-selected="true"] .lang {
-  color: var(--veil);
+  color: var(--ink);
 }
 
 .track {
   height: 7px;
   border-radius: 999px;
-  background: rgba(9, 11, 22, 0.45);
+  background: rgba(12, 17, 36, 0.45);
   overflow: hidden;
 }
 
@@ -326,7 +492,7 @@ h1 {
 }
 
 .dock-body p {
-  color: var(--veil);
+  color: var(--ink);
   font-size: 0.98rem;
   line-height: 1.65;
 }
@@ -409,12 +575,12 @@ h1 {
 .mark-lab {
   position: absolute;
   top: -0.15rem;
-  color: var(--veil);
+  color: var(--ink);
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.78rem;
   white-space: nowrap;
-  text-shadow: 0 0 12px rgba(9, 11, 22, 0.8);
+  text-shadow: 0 0 12px rgba(12, 17, 36, 0.8);
 }
 
 .time-track input[type="range"] {
@@ -481,7 +647,7 @@ h1 {
   position: relative;
   height: 1.1rem;
   margin-top: 0.4rem;
-  color: rgba(223, 230, 245, 0.42);
+  color: rgba(232, 228, 240, 0.42);
   font-size: 0.7rem;
   letter-spacing: 0.04em;
 }
@@ -498,13 +664,15 @@ h1 {
 
 .footnote {
   margin: 1.1rem 0.35rem 0.5rem;
-  color: rgba(223, 230, 245, 0.45);
+  color: rgba(232, 228, 240, 0.45);
   font-size: 0.78rem;
   line-height: 1.5;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orb {
+  .orb,
+  .sky-field,
+  .star-halo {
     animation: none;
   }
 
@@ -530,6 +698,10 @@ h1 {
 
   .dock {
     min-height: 0;
+  }
+
+  .sky {
+    height: clamp(14rem, 52vw, 20rem);
   }
 }
 
@@ -561,5 +733,19 @@ h1 {
 
   .time-decades span:nth-child(even) {
     display: none;
+  }
+
+  .sky-hint {
+    display: none;
+  }
+
+  .star-name {
+    opacity: 0;
+  }
+
+  .star.is-on .star-name,
+  .star:hover .star-name,
+  .star:focus-visible .star-name {
+    opacity: 1;
   }
 }
