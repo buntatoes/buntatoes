@@ -23,59 +23,63 @@
 
   function spawn(n, burst) {
     const baseX = state.pointer.active ? state.pointer.x : state.w * 0.5;
-    const baseY = state.pointer.active ? state.pointer.y : state.h * 0.72;
+    const baseY = state.pointer.active ? state.pointer.y : state.h * 0.74;
     for (let i = 0; i < n; i += 1) {
-      const blue = Math.random() < (burst ? 0.22 : 0.08);
+      const kind = Math.random();
+      const violet = kind < 0.28;
+      const ash = kind > 0.82;
       state.particles.push({
-        x: baseX + (Math.random() - 0.5) * (burst ? 90 : 46),
-        y: baseY + (Math.random() - 0.5) * 18,
-        vx: (Math.random() - 0.5) * (burst ? 4.2 : 1.1),
-        vy: -Math.random() * (burst ? 7 : 3.4) - 1.2,
+        x: baseX + (Math.random() - 0.5) * (burst ? 80 : 40),
+        y: baseY + (Math.random() - 0.5) * 16,
+        vx: (Math.random() - 0.5) * (burst ? 2.6 : 0.7),
+        vy: -Math.random() * (burst ? 4.4 : 2.2) - 0.6,
         life: 1,
-        decay: 0.012 + Math.random() * 0.02,
-        r: (burst ? 10 : 5) + Math.random() * (burst ? 16 : 8),
-        blue,
+        decay: 0.008 + Math.random() * 0.014,
+        r: (burst ? 8 : 4) + Math.random() * (burst ? 12 : 6),
+        violet,
+        ash,
       });
     }
   }
 
   function spark(n) {
     const x = state.pointer.active ? state.pointer.x : state.w * 0.5;
-    const y = state.pointer.active ? state.pointer.y : state.h * 0.7;
+    const y = state.pointer.active ? state.pointer.y : state.h * 0.72;
     for (let i = 0; i < n; i += 1) {
-      const a = Math.random() * Math.PI * 2;
-      const s = 2 + Math.random() * 6;
+      const a = -Math.PI / 2 + (Math.random() - 0.5) * 1.4;
+      const s = 1.2 + Math.random() * 3.4;
       state.sparks.push({
         x,
         y,
         vx: Math.cos(a) * s,
-        vy: Math.sin(a) * s - 2,
+        vy: Math.sin(a) * s,
         life: 1,
       });
     }
   }
 
   function frame() {
-    ctx.fillStyle = "rgba(7, 4, 3, 0.35)";
+    ctx.fillStyle = "rgba(7, 6, 10, 0.28)";
     ctx.fillRect(0, 0, state.w, state.h);
 
     const glow = ctx.createRadialGradient(
       state.w * 0.5,
-      state.h * 0.78,
-      20,
+      state.h * 0.82,
+      10,
       state.w * 0.5,
-      state.h * 0.9,
-      state.w * 0.55
+      state.h,
+      state.w * 0.5
     );
-    glow.addColorStop(0, "rgba(255, 90, 20, 0.16)");
-    glow.addColorStop(1, "rgba(7, 4, 3, 0)");
+    glow.addColorStop(0, "rgba(122, 36, 51, 0.18)");
+    glow.addColorStop(0.45, "rgba(40, 24, 48, 0.08)");
+    glow.addColorStop(1, "rgba(7, 6, 10, 0)");
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, state.w, state.h);
 
-    if (!reduced) spawn(state.pointer.active ? 7 : 4, false);
+    if (!reduced) spawn(state.pointer.active ? 5 : 3, false);
     if (state.burst > 0) {
-      spawn(18, true);
-      spark(10);
+      spawn(14, true);
+      spark(7);
       state.burst -= 1;
     }
 
@@ -83,8 +87,8 @@
       const p = state.particles[i];
       p.x += p.vx;
       p.y += p.vy;
-      p.vy -= 0.03;
-      p.vx *= 0.99;
+      p.vy -= 0.015;
+      p.vx *= 0.992;
       p.life -= p.decay;
       if (p.life <= 0) {
         state.particles.splice(i, 1);
@@ -92,26 +96,30 @@
       }
       const alpha = Math.max(p.life, 0);
       ctx.beginPath();
-      ctx.fillStyle = p.blue
-        ? `rgba(126, 203, 255, ${alpha * 0.85})`
-        : `rgba(255, ${90 + Math.floor(120 * alpha)}, 24, ${alpha})`;
+      if (p.ash) {
+        ctx.fillStyle = `rgba(180, 172, 184, ${alpha * 0.45})`;
+      } else if (p.violet) {
+        ctx.fillStyle = `rgba(110, 74, 122, ${alpha * 0.8})`;
+      } else {
+        ctx.fillStyle = `rgba(154, ${36 + Math.floor(40 * alpha)}, 58, ${alpha * 0.9})`;
+      }
       ctx.arc(p.x, p.y, p.r * alpha, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.fillStyle = "#ffd27a";
+    ctx.fillStyle = "#e4d6c5";
     for (let i = state.sparks.length - 1; i >= 0; i -= 1) {
       const s = state.sparks[i];
       s.x += s.vx;
       s.y += s.vy;
-      s.vy += 0.08;
-      s.life -= 0.03;
+      s.vy += 0.04;
+      s.life -= 0.025;
       if (s.life <= 0) {
         state.sparks.splice(i, 1);
         continue;
       }
-      ctx.globalAlpha = s.life;
-      ctx.fillRect(s.x, s.y, 2, 2);
+      ctx.globalAlpha = s.life * 0.7;
+      ctx.fillRect(s.x, s.y, 1.5, 1.5);
     }
     ctx.globalAlpha = 1;
 
@@ -126,18 +134,18 @@
     state.pointer.active = true;
   });
   window.addEventListener("pointerdown", () => {
-    state.burst = 8;
+    state.burst = 6;
   });
   window.addEventListener("keydown", (event) => {
     if (event.code === "Space") {
       event.preventDefault();
-      state.burst = 10;
+      state.burst = 8;
     }
   });
 
   resize();
-  ctx.fillStyle = "#070403";
+  ctx.fillStyle = "#07060a";
   ctx.fillRect(0, 0, state.w, state.h);
-  if (reduced) spawn(40, true);
+  if (reduced) spawn(36, true);
   requestAnimationFrame(frame);
 })();
