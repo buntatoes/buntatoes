@@ -8,6 +8,11 @@
   const copy = document.getElementById("copy");
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  const VOID = "#000000";
+  const HAIR = "#2e2e2e";
+  const DIM = "#8a8a8a";
+  const WHITE = "#ffffff";
+
   const NODES = [
     {
       n: "01",
@@ -75,9 +80,9 @@
   }
 
   function drawGrid() {
-    ctx.fillStyle = "#050508";
+    ctx.fillStyle = VOID;
     ctx.fillRect(0, 0, cssW, cssH);
-    ctx.strokeStyle = "#2a2d36";
+    ctx.strokeStyle = HAIR;
     ctx.lineWidth = 1;
     ctx.beginPath();
     for (let i = 0; i <= 8; i += 1) {
@@ -91,7 +96,7 @@
       ctx.lineTo(cssW, y);
     }
     ctx.stroke();
-    ctx.strokeStyle = "rgba(122, 36, 51, 0.45)";
+    ctx.strokeStyle = DIM;
     ctx.beginPath();
     ctx.moveTo(0, cssH / 2 + 0.5);
     ctx.lineTo(cssW, cssH / 2 + 0.5);
@@ -106,11 +111,11 @@
       if (i === 0) ctx.moveTo(x, y);
       else ctx.lineTo(x, y);
     }
-    ctx.strokeStyle = "#6ea37a";
-    ctx.lineWidth = 1.4;
+    ctx.strokeStyle = WHITE;
+    ctx.lineWidth = pointer.on ? 1.6 : 1.2;
     ctx.stroke();
     const y = cssH / 2 - samples[samples.length - 1] * (cssH * 0.42);
-    ctx.fillStyle = "#c9b8a6";
+    ctx.fillStyle = WHITE;
     ctx.fillRect(cssW - 3, y - 3, 6, 6);
   }
 
