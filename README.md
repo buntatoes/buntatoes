@@ -76,6 +76,13 @@ Rasmus Lerdorf. Cheap hosting and MySQL made it the default way to put a databas
 </details>
 
 <details>
+<summary>Ruby — 1995</summary>
+
+Yukihiro Matsumoto. Meant to feel natural to write. Rails (2004) made it the web stack of the late 2000s; GitHub began as a Rails app. Still Rails, scripting, and tools that never left.
+
+</details>
+
+<details>
 <summary>Rust — 2010</summary>
 
 Graydon Hoare, Mozilla; 1.0 in 2015. Memory safety without a garbage collector. Systems software, CLIs, growing kernel use.
@@ -86,6 +93,13 @@ Graydon Hoare, Mozilla; 1.0 in 2015. Memory safety without a garbage collector. 
 <summary>Kotlin — 2011</summary>
 
 JetBrains. Google made it the preferred Android language. Java interop let teams move incrementally.
+
+</details>
+
+<details>
+<summary>Elixir — 2011</summary>
+
+José Valim. Ruby-like syntax on the Erlang VM; actors and supervision from BEAM. Phoenix for long-lived connections. ChorusDraft is Elixir.
 
 </details>
 
