@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 460" width="1100" height="460" role="img" aria-labelledby="title desc">
+  <title id="title">Languages drifting through years</title>
+  <desc id="desc">An abstract sky of programming languages, placed by the year they appeared. Open a name on the profile, or enter the field.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141a33"/>
+      <stop offset="55%" stop-color="#0c1124"/>
+      <stop offset="100%" stop-color="#090b16"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f3f1ea" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#c9d4ee" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7aa3b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="blush" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4a5b8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#c4a5b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="water" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7aa3b8" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#7aa3b8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1100" height="460" fill="url(#sky)"/>
+
+  <ellipse cx="860" cy="70" rx="180" ry="120" fill="url(#moon)">
+    <animate attributeName="cx" values="860;840;860" dur="18s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="220" cy="300" rx="260" ry="140" fill="url(#blush)">
+    <animate attributeName="cy" values="300;280;300" dur="22s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="640" cy="360" rx="300" ry="110" fill="url(#water)">
+    <animate attributeName="cx" values="640;670;640" dur="26s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <line x1="64" y1="400" x2="1036" y2="400" stroke="#dfe6f5" stroke-opacity="0.18" stroke-width="1"/>
+  <g fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', serif" font-size="11" opacity="0.55">
+    <text x="64" y="424">1972</text>
+    <text x="280" y="424">1985</text>
+    <text x="500" y="424">1995</text>
+    <text x="720" y="424">2009</text>
+    <text x="980" y="424">2014</text>
+  </g>
+
+  <g font-family="Georgia, 'Iowan Old Style', serif" fill="#e8e4f0">
+    <g transform="translate(90,210)">
+      <circle r="7" fill="#dfe6f5" opacity="0.9">
+        <animate attributeName="r" values="6;9;6" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <text x="14" y="-10" font-size="16">C</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1972</text>
+    </g>
+    <g transform="translate(150,300)">
+      <circle r="6" fill="#c9d4ee" opacity="0.85"/>
+      <text x="14" y="-10" font-size="16">SQL</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1974</text>
+    </g>
+    <g transform="translate(320,160)">
+      <circle r="7" fill="#c4a5b8" opacity="0.8"/>
+      <text x="14" y="-10" font-size="16">C++</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1985</text>
+    </g>
+    <g transform="translate(430,250)">
+      <circle r="8" fill="#dfe6f5" opacity="0.95">
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="5.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="14" y="-10" font-size="18">Python</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1991</text>
+    </g>
+    <g transform="translate(530,120)">
+      <circle r="6" fill="#7aa3b8" opacity="0.9"/>
+      <text x="14" y="-10" font-size="16">Java</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1995</text>
+    </g>
+    <g transform="translate(560,200)">
+      <circle r="7" fill="#c9d4ee" opacity="0.9"/>
+      <text x="14" y="-10" font-size="16">JavaScript</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1995</text>
+    </g>
+    <g transform="translate(590,310)">
+      <circle r="6" fill="#c4a5b8" opacity="0.85"/>
+      <text x="14" y="-10" font-size="16">PHP</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1995</text>
+    </g>
+    <g transform="translate(700,150)">
+      <circle r="6" fill="#dfe6f5" opacity="0.85"/>
+      <text x="14" y="-10" font-size="16">C#</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2000</text>
+    </g>
+    <g transform="translate(790,240)">
+      <circle r="6" fill="#7aa3b8" opacity="0.85"/>
+      <text x="14" y="-10" font-size="16">Go</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2009</text>
+    </g>
+    <g transform="translate(830,110)">
+      <circle r="7" fill="#c4a5b8" opacity="0.9"/>
+      <text x="14" y="-10" font-size="16">Rust</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2010</text>
+    </g>
+    <g transform="translate(870,300)">
+      <circle r="6" fill="#c9d4ee" opacity="0.85"/>
+      <text x="14" y="-10" font-size="16">Kotlin</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2011</text>
+    </g>
+    <g transform="translate(920,180)">
+      <circle r="7" fill="#dfe6f5" opacity="0.9"/>
+      <text x="14" y="-10" font-size="16">TypeScript</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2012</text>
+    </g>
+    <g transform="translate(980,260)">
+      <circle r="6" fill="#7aa3b8" opacity="0.9"/>
+      <text x="14" y="-10" font-size="16">Swift</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2014</text>
+    </g>
+  </g>
+
+  <text x="64" y="48" fill="#e8e4f0" font-family="Georgia, 'Iowan Old Style', serif" font-size="20" opacity="0.9">languages, appearing</text>
+  <text x="64" y="72" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', serif" font-size="13" opacity="0.7">a sky arranged by birth year · open a name below</text>
+</svg>
