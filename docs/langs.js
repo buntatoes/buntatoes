@@ -199,6 +199,36 @@
         "It is open source and runs on Linux, but the center of gravity remains Apple's platforms."
       ],
       now: "iOS, macOS, and related Apple UI work."
+    },
+    {
+      id: "ruby",
+      name: "Ruby",
+      rank: 14,
+      index: 22,
+      year: 1995,
+      originators: "Yukihiro Matsumoto",
+      org: "independent, Japan",
+      history: [
+        "Matz released Ruby in 1995 as a language meant to feel natural to write.",
+        "Ruby on Rails (2004) made it the web stack of the late 2000s; GitHub itself began as a Rails app.",
+        "The language stayed small and object-oriented; the ecosystem followed Rails."
+      ],
+      now: "Rails services, scripting, and a long tail of tools that never left."
+    },
+    {
+      id: "elixir",
+      name: "Elixir",
+      rank: 15,
+      index: 16,
+      year: 2011,
+      originators: "José Valim",
+      org: "Plataformatec",
+      history: [
+        "Announced in 2011 (1.0 in 2014) with Ruby-like syntax on the Erlang VM.",
+        "Actors, supervision trees, and hot code loading come from BEAM; the syntax was meant to be approachable.",
+        "Phoenix made it a web language for long-lived connections. ChorusDraft is Elixir."
+      ],
+      now: "Concurrent services, Phoenix apps, and local tools that should not fall over."
     }
   ];
 
@@ -263,12 +293,12 @@
     for (i = 0; i < LANGS.length; i += 1) {
       lang = LANGS[i];
       html +=
-        '<li>' +
-        '<button type="button" class="row" role="option" id="lang-' + lang.id + '" data-id="' + lang.id + '" aria-selected="false">' +
-        '<span class="n">' + pad(lang.rank) + "</span>" +
-        '<span class="lang">' + lang.name + "</span>" +
-        '<span class="track" aria-hidden="true"><span class="fill" style="width:' + lang.index + '%"></span></span>' +
-        '<span class="idx">' + lang.index + "</span>" +
+        "<li>" +
+        "<button type=\"button\" class=\"row\" role=\"option\" id=\"lang-" + lang.id + "\" data-id=\"" + lang.id + "\" aria-selected=\"false\">" +
+        "<span class=\"n\">" + pad(lang.rank) + "</span>" +
+        "<span class=\"lang\">" + lang.name + "</span>" +
+        "<span class=\"track\" aria-hidden=\"true\"><span class=\"fill\" style=\"width:" + lang.index + '%"></span></span>' +
+        "<span class=\"idx\">" + lang.index + "</span>" +
         "</button></li>";
     }
     rankEl.innerHTML = html;
@@ -287,7 +317,7 @@
       bump = used[key] || 0;
       used[key] = bump + 1;
       html +=
-        '<span class="mark" data-id="' + lang.id + '" style="left:' + yearPct(lang.year) + "%;top:" + (0.15 + bump * 0.22) + 'rem"></span>';
+        '<span class=\"mark\" data-id=\"' + lang.id + '\" style=\"left:' + yearPct(lang.year) + "%;top:" + (0.15 + bump * 0.22) + 'rem\"></span>';
     }
     timeMarks.innerHTML = html;
   }
@@ -304,7 +334,7 @@
       p.textContent = lang.history[i];
       dockBody.appendChild(p);
     }
-    dockNow.textContent = "now // " + lang.now;
+    dockNow.textContent = "now  ·  " + lang.now;
   }
 
   function setYearChrome(y, lang) {
