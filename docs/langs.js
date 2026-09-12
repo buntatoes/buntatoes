@@ -245,10 +245,6 @@
   var selectedId = LANGS[0].id;
   var year = LANGS[0].year;
 
-  function pad(n) {
-    return n < 10 ? "0" + n : String(n);
-  }
-
   function yearPct(y) {
     return ((y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN)) * 100;
   }
@@ -294,11 +290,11 @@
       lang = LANGS[i];
       html +=
         "<li>" +
-        "<button type=\"button\" class=\"row\" role=\"option\" id=\"lang-" + lang.id + "\" data-id=\"" + lang.id + "\" aria-selected=\"false\">" +
-        "<span class=\"n\">" + pad(lang.rank) + "</span>" +
-        "<span class=\"lang\">" + lang.name + "</span>" +
-        "<span class=\"track\" aria-hidden=\"true\"><span class=\"fill\" style=\"width:" + lang.index + '%"></span></span>' +
-        "<span class=\"idx\">" + lang.index + "</span>" +
+        '<button type="button" class="row" role="option" id="lang-' + lang.id + '" data-id="' + lang.id + '" aria-selected="false">' +
+        '<span class="n">' + lang.rank + "</span>" +
+        '<span class="lang">' + lang.name + "</span>" +
+        '<span class="track" aria-hidden="true"><span class="fill" style="width:' + lang.index + '%"></span></span>' +
+        '<span class="idx">' + lang.index + "</span>" +
         "</button></li>";
     }
     rankEl.innerHTML = html;
@@ -317,7 +313,7 @@
       bump = used[key] || 0;
       used[key] = bump + 1;
       html +=
-        '<span class=\"mark\" data-id=\"' + lang.id + '\" style=\"left:' + yearPct(lang.year) + "%;top:" + (0.15 + bump * 0.22) + 'rem\"></span>';
+        '<span class="mark" data-id="' + lang.id + '" style="left:' + yearPct(lang.year) + "%;top:" + (0.35 + bump * 0.22) + 'rem"></span>';
     }
     timeMarks.innerHTML = html;
   }
@@ -327,14 +323,14 @@
     var p;
     dockName.textContent = lang.name;
     dockMeta.textContent =
-      lang.year + "  ·  " + lang.originators + "  ·  " + lang.org + "  ·  rank " + pad(lang.rank);
+      lang.year + "  ·  " + lang.originators + "  ·  " + lang.org + "  ·  rank " + lang.rank;
     dockBody.textContent = "";
     for (i = 0; i < lang.history.length; i += 1) {
       p = document.createElement("p");
       p.textContent = lang.history[i];
       dockBody.appendChild(p);
     }
-    dockNow.textContent = "now  ·  " + lang.now;
+    dockNow.textContent = "now — " + lang.now;
   }
 
   function setYearChrome(y, lang) {
@@ -354,7 +350,7 @@
       var lab = document.createElement("span");
       lab.className = "mark-lab";
       lab.textContent = lang.name;
-      lab.style.left = "calc(" + yearPct(lang.year) + "% + 6px)";
+      lab.style.left = "calc(" + yearPct(lang.year) + "% + 8px)";
       on.parentNode.appendChild(lab);
     }
   }
