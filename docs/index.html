@@ -3,43 +3,53 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Buntos</title>
-  <meta name="description" content="Local tools. Human review. Linux." />
-  <link rel="stylesheet" href="board.css" />
+  <title>Buntos — goth-tech</title>
+  <meta name="description" content="Buntos. Goth-tech. Local tools. Human review. Linux." />
+  <meta name="theme-color" content="#050508" />
+  <meta property="og:title" content="Buntos — goth-tech" />
+  <meta property="og:description" content="Local tools. Human review. Linux." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Buntos — goth-tech" />
+  <meta name="twitter:description" content="Local tools. Human review. Linux." />
+  <link rel="stylesheet" href="./furnace.css?v=goth1" />
 </head>
 <body>
+  <canvas id="crt" aria-label="Phosphor field. Move the pointer to stoke it. Click or press space for a burst."></canvas>
   <div class="scan" aria-hidden="true"></div>
-  <header class="hud frame">
-    <p class="mark">buntos<span class="dim">@</span>void</p>
-    <p id="clock" class="clock">--:--:--</p>
-    <nav>
-      <a href="langs.html">languages</a>
-      <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
-      <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
-      <a href="https://github.com/buntatoes">github</a>
-    </nav>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="frame" aria-hidden="true">
+    <span class="tick tick-tl"></span>
+    <span class="tick tick-tr"></span>
+    <span class="tick tick-bl"></span>
+    <span class="tick tick-br"></span>
+  </div>
+  <header class="rail">
+    <span class="rail-mark">BUNTOS</span>
+    <span class="rail-sep" aria-hidden="true">/</span>
+    <span>GOTH-TECH</span>
+    <span class="rail-sep" aria-hidden="true">/</span>
+    <span>LOCAL</span>
+    <span class="rail-spacer"></span>
+    <span class="rail-live" aria-hidden="true">CRT.OK</span>
   </header>
-  <main>
-    <section>
+  <main class="ui">
+    <section class="panel">
+      <span class="tick tick-tl" aria-hidden="true"></span>
+      <span class="tick tick-tr" aria-hidden="true"></span>
+      <span class="tick tick-bl" aria-hidden="true"></span>
+      <span class="tick tick-br" aria-hidden="true"></span>
+      <p class="kicker">SYS // VOID</p>
       <h1>Buntos</h1>
-      <p class="lede">Local tools. Human review. Linux.</p>
-      <ul class="nodes" id="nodes"></ul>
-      <article class="frame dossier">
-        <p class="kicker" id="kicker">01 // local tools</p>
-        <p id="copy">Pointer on the scope. Keys 1 2 3 dock a node.</p>
-      </article>
-    </section>
-    <section>
-      <div class="frame scope-frame">
-        <div class="scope-meta">
-          <span>scope</span>
-          <span id="scope-readout">idle sine</span>
-        </div>
-        <canvas id="scope" width="720" height="280" aria-label="Oscilloscope. Pointer changes frequency and amplitude."></canvas>
-      </div>
-      <p class="hint">This is not a furnace. Pointer on the grid drives a phosphor trace. Keys 1 2 3, j/k, or click a node.</p>
+      <p class="tag">Local tools. Human review. Linux.</p>
+      <p class="hint">Pointer stokes the field. Click or space for a burst.</p>
+      <nav class="links" aria-label="Projects">
+        <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
+        <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
+        <a href="https://github.com/buntatoes">GitHub</a>
+      </nav>
     </section>
   </main>
-  <script src="board.js"></script>
+  <script src="./furnace.js?v=goth1"></script>
 </body>
 </html>
