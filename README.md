@@ -1,19 +1,31 @@
 <div align="center">
 
-# Buntos
+<!-- void #050508 · panel #0c0e12 · hairline #2a2d36 · oxblood #7a2433 · phosphor #6ea37a · bone #c9b8a6 · violet #6e4a7a -->
 
-Local tools. Human review. Linux.
+<h1><code>BUNTOS</code></h1>
 
-[Enter](https://buntatoes.github.io/buntatoes/) — phosphor on void.
+<code>local tools. human review. linux.</code>
 
-![Vespers](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/adolla.svg)
+<p><a href="https://buntatoes.github.io/buntatoes/"><code>[ Enter ]</code></a></p>
 
-![ChorusDraft on the left, AdAegis on the right](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/adolla.svg" width="1100" alt="oxblood bar" />
+</p>
 
-![buntos@linux tty](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/tty.svg)
+<p align="center">
+  <a href="https://buntatoes.github.io/buntatoes/">
+    <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg" width="1100" alt="ChorusDraft on the left, AdAegis on the right" />
+  </a>
+</p>
 
-[ChorusDraft](https://github.com/buntatoes/chorusdraft) — review-first Bluesky and Mastodon drafts. Latest: [![latest](https://img.shields.io/github/v/release/buntatoes/chorusdraft?label=latest&style=flat-square&color=6ea37a&labelColor=050508)](https://github.com/buntatoes/chorusdraft/releases/latest)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/tty.svg" width="1100" alt="buntos@linux tty" />
+</p>
 
-[AdAegis](https://github.com/buntatoes/adaegis) — small Chromium ad blocker. Latest: [![latest](https://img.shields.io/github/v/release/buntatoes/adaegis?label=latest&style=flat-square&color=7a2433&labelColor=050508)](https://github.com/buntatoes/adaegis/releases/latest)
+<p>
+  <a href="https://github.com/buntatoes/chorusdraft"><code>ChorusDraft</code></a>
+  ·
+  <a href="https://github.com/buntatoes/adaegis"><code>AdAegis</code></a>
+</p>
 
 </div>
