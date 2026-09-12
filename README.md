@@ -6,6 +6,8 @@ Local tools. Human review. Linux.
 
 <img src="assets/studio.svg" alt="ChorusDraft on the left, AdAegis on the right" width="100%" />
 
+<img src="assets/tty.svg" alt="buntos@linux tty" width="100%" />
+
 [ChorusDraft](https://github.com/buntatoes/chorusdraft) · [AdAegis](https://github.com/buntatoes/adaegis)
 
 [ChorusDraft](https://github.com/buntatoes/chorusdraft) — review-first Bluesky and Mastodon drafts. Latest: [![latest](https://img.shields.io/github/v/release/buntatoes/chorusdraft?label=latest)](https://github.com/buntatoes/chorusdraft/releases/latest)
