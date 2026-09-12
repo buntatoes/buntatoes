@@ -4,9 +4,9 @@
 
 Local tools. Human review. Linux.
 
-[Ignite the furnace](https://buntatoes.github.io/buntatoes/) — move, click, burst. Original Fire Force–inspired tribute.
+[Enter](https://buntatoes.github.io/buntatoes/) — move through the dark, click for a flare.
 
-![Adolla tribute flames](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/adolla.svg)
+![Vespers](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/adolla.svg)
 
 ![ChorusDraft on the left, AdAegis on the right](https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg)
 
