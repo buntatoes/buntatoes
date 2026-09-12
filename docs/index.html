@@ -4,26 +4,45 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buntos</title>
-  <meta name="description" content="Buntos. Local tools. Human review. Linux." />
-  <meta name="theme-color" content="#0c1124" />
-  <meta property="og:title" content="Buntos" />
-  <meta property="og:description" content="Local tools. Human review. Linux." />
-  <meta property="og:type" content="website" />
-  <link rel="stylesheet" href="./field.css" />
+  <meta name="description" content="Local tools. Human review. Linux." />
+  <meta name="theme-color" content="#050508" />
+  <link rel="stylesheet" href="./furnace.css" />
 </head>
 <body>
-  <canvas id="field" aria-hidden="true"></canvas>
-  <div class="veil" aria-hidden="true"></div>
-  <main>
-    <h1 class="name">buntos</h1>
-    <p class="quiet">local tools. human review. linux.</p>
-    <nav aria-label="Places">
-      <a href="./langs.html">languages</a>
-      <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
-      <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
-      <a href="https://github.com/buntatoes">GitHub</a>
-    </nav>
-  </main>
-  <script src="./field.js"></script>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="chassis">
+    <header class="hud">
+      <p class="hex">0xBUNT // REVIEW</p>
+      <p class="sys">NODE.LOCAL · LNX · NO NET</p>
+    </header>
+    <div class="viewport">
+      <div class="tech-frame" aria-hidden="true">
+        <span class="bracket tl"></span>
+        <span class="bracket tr"></span>
+        <span class="bracket bl"></span>
+        <span class="bracket br"></span>
+      </div>
+      <canvas id="field" aria-label="Smoky particle field. Move the pointer to stoke it. Click or press space for a flare."></canvas>
+      <section class="panel">
+        <p class="kicker">BUNTOS / LOCAL</p>
+        <h1>Buntos</h1>
+        <p class="tag">Local tools. Human review. Linux.</p>
+        <p class="hint">Pointer stokes the ash. Click or space for a flare.</p>
+        <nav class="links">
+          <a href="./langs.html">Languages</a>
+          <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
+          <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
+          <a href="https://github.com/buntatoes">GitHub</a>
+        </nav>
+      </section>
+    </div>
+    <footer class="telemetry">
+      <span>PTR STOKE</span>
+      <span>CLK FLARE</span>
+      <span>SPC FLARE</span>
+      <span id="count" class="phos">ASH 0000</span>
+    </footer>
+  </div>
+  <script src="./furnace.js"></script>
 </body>
 </html>
