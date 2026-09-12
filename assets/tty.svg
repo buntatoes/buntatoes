@@ -1,69 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="160" viewBox="0 0 1100 160" role="img" aria-labelledby="title desc">
-  <title id="title">buntos@linux</title>
-  <desc id="desc">Quiet tty: hover ./chorusdraft bluesky review or load unpacked adaegis/ for a short comment.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="200" viewBox="0 0 1100 200" role="img" aria-labelledby="title desc">
+  <title id="title">tty, a moonlight memory of linux</title>
+  <desc id="desc">Abstract dreamlike memory of a terminal: fog, moonlight, whispered chorusdraft and adaegis. Idle SMIL drift. Not a CRT.</desc>
   <defs>
-    <clipPath id="panel">
-      <rect x="0.5" y="0.5" width="1099" height="159" rx="10"/>
-    </clipPath>
-    <pattern id="scan-head" width="1100" height="3" patternUnits="userSpaceOnUse">
-      <rect width="1100" height="1" fill="#6ea37a" opacity="0.12"/>
-      <rect y="2" width="1100" height="1" fill="#7a2433" opacity="0.08"/>
-    </pattern>
-    <pattern id="scan-body" width="1100" height="5" patternUnits="userSpaceOnUse">
-      <rect width="1100" height="1" fill="#c9b8a6" opacity="0.03"/>
-    </pattern>
+    <linearGradient id="night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141a33"/>
+      <stop offset="100%" stop-color="#0c1124"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e8e4f0" stop-opacity="0.5"/>
+      <stop offset="38%" stop-color="#9bb0d4" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#7aa3b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fog-rose" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4a5b8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#c4a5b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fog-teal" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7aa3b8" stop-opacity="0.34"/>
+      <stop offset="100%" stop-color="#7aa3b8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fog-pale" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#9bb0d4" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#9bb0d4" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <style>
-    .ui {
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
-      font-size: 10.5px;
-      letter-spacing: 0.18em;
-    }
-    .mono {
-      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
-      font-size: 13.5px;
-    }
-    .wash { fill: #6e4a7a; fill-opacity: 0; }
-    .hint { fill: #7a2433; fill-opacity: 0; opacity: 0; }
-    .cmd { fill: #c9b8a6; fill-opacity: 0.92; }
-    .row { cursor: default; }
-    .row:hover .wash { fill-opacity: 0.18; }
-    .row:hover .hint { fill-opacity: 1; opacity: 1; }
-    .row:hover .cmd { fill-opacity: 1; }
-    .caret { fill: #6ea37a; }
-    @media (prefers-reduced-motion: no-preference) {
-      .caret { animation: blink 1.15s steps(1, end) infinite; }
-    }
-    @keyframes blink { 50% { opacity: 0; } }
-  </style>
 
-  <g clip-path="url(#panel)">
-    <rect width="1100" height="160" fill="#050508"/>
-    <rect width="1100" height="160" fill="url(#scan-body)"/>
-    <rect width="1100" height="32" fill="#0c0e12"/>
-    <rect width="1100" height="32" fill="url(#scan-head)"/>
-    <rect width="3" height="32" fill="#7a2433"/>
-    <line x1="0" y1="32.5" x2="1100" y2="32.5" stroke="#2a2d36"/>
+  <rect width="1100" height="200" fill="url(#night)"/>
+
+  <ellipse cx="926" cy="44" rx="170" ry="108" fill="url(#moon)">
+    <animate attributeName="cx" values="926;904;926" dur="28s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.72;1;0.72" dur="14s" repeatCount="indefinite"/>
+  </ellipse>
+  <circle cx="948" cy="38" r="16" fill="#e8e4f0" opacity="0.2">
+    <animate attributeName="opacity" values="0.12;0.28;0.12" dur="9s" repeatCount="indefinite"/>
+  </circle>
+
+  <ellipse cx="210" cy="168" rx="300" ry="92" fill="url(#fog-rose)">
+    <animate attributeName="cx" values="210;268;210" dur="24s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0.95;0.5" dur="18s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="700" cy="158" rx="340" ry="86" fill="url(#fog-teal)">
+    <animate attributeName="cx" values="700;656;700" dur="26s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="158;138;158" dur="20s" repeatCount="indefinite"/>
+  </ellipse>
+  <ellipse cx="500" cy="36" rx="240" ry="72" fill="url(#fog-pale)">
+    <animate attributeName="opacity" values="0.3;0.8;0.3" dur="16s" repeatCount="indefinite"/>
+    <animate attributeName="cx" values="500;530;500" dur="22s" repeatCount="indefinite"/>
+  </ellipse>
+
+  <g fill="#9bb0d4" opacity="0.35">
+    <circle cx="180" cy="28" r="1.4">
+      <animate attributeName="opacity" values="0.15;0.55;0.15" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="412" cy="22" r="1.1">
+      <animate attributeName="opacity" values="0.1;0.5;0.1" dur="9s" begin="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="640" cy="18" r="1.3">
+      <animate attributeName="opacity" values="0.12;0.48;0.12" dur="8s" begin="2.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="780" cy="34" r="1.2">
+      <animate attributeName="opacity" values="0.1;0.45;0.1" dur="11s" begin="0.6s" repeatCount="indefinite"/>
+    </circle>
   </g>
 
-  <rect x="0.5" y="0.5" width="1099" height="159" rx="10" fill="none" stroke="#2a2d36"/>
+  <text x="56" y="42" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', Times, serif" font-size="13" opacity="0.62">tty, remembered</text>
+  <text x="1044" y="42" text-anchor="end" fill="#7aa3b8" font-family="Georgia, 'Iowan Old Style', Times, serif" font-size="13" opacity="0.48">linux</text>
 
-  <circle cx="20" cy="16.5" r="3.6" fill="#7a2433"/>
-  <circle cx="35" cy="16.5" r="3.6" fill="#6e4a7a"/>
-  <circle cx="50" cy="16.5" r="3.6" fill="#6ea37a" opacity="0.75"/>
-  <text class="ui" x="68" y="20.5" fill="#c9b8a6">TTY  &#183;  BUNTOS@LINUX</text>
-  <text class="ui" x="1078" y="20.5" text-anchor="end" fill="#6ea37a" opacity="0.72">LOCAL</text>
+  <text font-family="Georgia, 'Iowan Old Style', Times, serif" x="58" y="86" opacity="0.16" fill="#e8e4f0" font-size="18">
+    buntos at linux ~
+    <animate attributeName="opacity" values="0.08;0.22;0.08" dur="13s" repeatCount="indefinite"/>
+  </text>
 
-  <g class="row">
-    <rect class="wash" x="8" y="40" width="1084" height="28" rx="4"/>
-    <text class="mono" x="22" y="59" xml:space="preserve"><tspan fill="#6ea37a">buntos</tspan><tspan fill="#6ea37a" fill-opacity="0.45">@linux</tspan><tspan fill="#c9b8a6" fill-opacity="0.28">:</tspan><tspan fill="#6ea37a">~</tspan><tspan fill="#c9b8a6" fill-opacity="0.55">$ </tspan><tspan class="cmd">./chorusdraft bluesky review</tspan><tspan class="hint">  # review is the default</tspan></text>
-  </g>
+  <text font-family="Georgia, 'Iowan Old Style', Times, serif" x="56" y="88" fill="#e8e4f0">
+    <tspan font-size="22">buntos</tspan>
+    <tspan font-size="16" fill="#c4a5b8">  at  </tspan>
+    <tspan font-size="22" fill="#9bb0d4">linux</tspan>
+    <tspan font-size="16" fill="#7aa3b8" opacity="0.55">  ~</tspan>
+  </text>
 
-  <g class="row">
-    <rect class="wash" x="8" y="70" width="1084" height="28" rx="4"/>
-    <text class="mono" x="22" y="89" xml:space="preserve"><tspan fill="#6ea37a">buntos</tspan><tspan fill="#6ea37a" fill-opacity="0.45">@linux</tspan><tspan fill="#c9b8a6" fill-opacity="0.28">:</tspan><tspan fill="#6ea37a">~</tspan><tspan fill="#c9b8a6" fill-opacity="0.55">$ </tspan><tspan class="cmd">load unpacked adaegis/</tspan><tspan class="hint">  # no store, no telemetry</tspan></text>
-  </g>
+  <text x="56" y="122" fill="#e8e4f0" font-family="Georgia, 'Iowan Old Style', Times, serif" font-style="italic" font-size="16" opacity="0.42">
+    chorusdraft · bluesky review
+    <animate attributeName="opacity" values="0.22;0.72;0.22" dur="10s" repeatCount="indefinite"/>
+  </text>
+  <text x="58" y="124" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', Times, serif" font-style="italic" font-size="16" opacity="0.12">
+    chorusdraft · bluesky review
+    <animate attributeName="x" values="58;64;58" dur="18s" repeatCount="indefinite"/>
+  </text>
 
-  <text class="mono" x="22" y="119" xml:space="preserve"><tspan fill="#6ea37a">buntos</tspan><tspan fill="#6ea37a" fill-opacity="0.45">@linux</tspan><tspan fill="#c9b8a6" fill-opacity="0.28">:</tspan><tspan fill="#6ea37a">~</tspan><tspan fill="#c9b8a6" fill-opacity="0.55">$ </tspan><tspan class="caret">_</tspan></text>
+  <text x="56" y="148" fill="#c4a5b8" font-family="Georgia, 'Iowan Old Style', Times, serif" font-style="italic" font-size="15" opacity="0.36">
+    adaegis, unpacked
+    <animate attributeName="opacity" values="0.16;0.58;0.16" dur="12s" begin="1.8s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="420" y="148" fill="#7aa3b8" font-family="Georgia, 'Iowan Old Style', Times, serif" font-size="12" opacity="0.28">
+    review stays local
+    <animate attributeName="opacity" values="0.12;0.4;0.12" dur="15s" begin="3s" repeatCount="indefinite"/>
+  </text>
+
+  <text x="56" y="180" fill="#7aa3b8" font-family="Georgia, 'Iowan Old Style', Times, serif" font-size="18" opacity="0.5">$</text>
+  <rect x="80" y="168" width="11" height="2.4" rx="1.2" fill="#e8e4f0" opacity="0.7">
+    <animate attributeName="opacity" values="0.18;0.88;0.18" dur="2.6s" repeatCount="indefinite"/>
+  </rect>
+
+  <text x="1044" y="180" text-anchor="end" fill="#9bb0d4" font-family="Georgia, 'Iowan Old Style', Times, serif" font-size="12" opacity="0.3">no store, no telemetry</text>
 </svg>
