@@ -68,6 +68,13 @@
       <text x="14" y="-10" font-size="18">Python</text>
       <text x="14" y="8" font-size="10" fill="#9bb0d4">1991</text>
     </g>
+    <g transform="translate(460,70)">
+      <circle r="7" fill="#c4a5b8" opacity="0.95">
+        <animate attributeName="opacity" values="0.65;1;0.65" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <text x="14" y="-10" font-size="16">Ruby</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">1995</text>
+    </g>
     <g transform="translate(530,120)">
       <circle r="6" fill="#7aa3b8" opacity="0.9"/>
       <text x="14" y="-10" font-size="16">Java</text>
@@ -97,6 +104,13 @@
       <circle r="7" fill="#c4a5b8" opacity="0.9"/>
       <text x="14" y="-10" font-size="16">Rust</text>
       <text x="14" y="8" font-size="10" fill="#9bb0d4">2010</text>
+    </g>
+    <g transform="translate(840,350)">
+      <circle r="8" fill="#dfe6f5" opacity="0.95">
+        <animate attributeName="r" values="6;9;6" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <text x="14" y="-10" font-size="18">Elixir</text>
+      <text x="14" y="8" font-size="10" fill="#9bb0d4">2011</text>
     </g>
     <g transform="translate(870,300)">
       <circle r="6" fill="#c9d4ee" opacity="0.85"/>
