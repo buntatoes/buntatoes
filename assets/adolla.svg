@@ -1,41 +1,108 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="220" viewBox="0 0 1100 220" role="img" aria-labelledby="t d">
-  <title id="t">Vespers</title>
-  <desc id="d">Dark ember bar in oxblood and violet.</desc>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="96" viewBox="0 0 1100 96" role="img" aria-labelledby="t d">
+  <title id="t">Vespers line</title>
+  <desc id="d">Goth-tech signal bar: SIG cells, vespers line, phosphor rule on void. Hover to lock the carrier.</desc>
   <defs>
-    <linearGradient id="void" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0c0a10"/>
-      <stop offset="1" stop-color="#07060a"/>
-    </linearGradient>
-    <linearGradient id="blood" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#2a0c14"/>
-      <stop offset="0.5" stop-color="#7a2433"/>
-      <stop offset="1" stop-color="#c45c6a"/>
-    </linearGradient>
-    <linearGradient id="violet" x1="0" y1="1" x2="0" y2="0">
-      <stop offset="0" stop-color="#1c1424"/>
-      <stop offset="1" stop-color="#8b6b9e"/>
-    </linearGradient>
+    <style>
+      <![CDATA[
+        .ui {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 11px;
+        }
+        .lbl {
+          font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+          font-size: 10px;
+          letter-spacing: 3.2px;
+        }
+        .cell-off { fill: #050508; stroke: #2a2d36; }
+        .cell-dim { fill: #7a2433; stroke: #7a2433; }
+        .cell-on { fill: #6ea37a; stroke: #6ea37a; }
+        .rule { stroke: #6ea37a; opacity: 0.55; }
+        .vespers { stroke: #7a2433; opacity: 0.7; }
+        .mark { stroke: #6e4a7a; opacity: 0.55; }
+        .pip { fill: #6ea37a; opacity: 0.85; }
+        .lock { fill: #6e4a7a; }
+        svg:hover .cell-off,
+        .stage:hover .cell-off { fill: #6e4a7a; stroke: #6e4a7a; }
+        svg:hover .cell-dim,
+        .stage:hover .cell-dim { fill: #6ea37a; stroke: #6ea37a; }
+        svg:hover .rule,
+        .stage:hover .rule { opacity: 1; }
+        svg:hover .vespers,
+        .stage:hover .vespers { opacity: 1; stroke-width: 2; }
+        svg:hover .mark,
+        .stage:hover .mark { opacity: 1; }
+        svg:hover .pip,
+        .stage:hover .pip { opacity: 1; }
+        svg:hover .lock,
+        .stage:hover .lock { fill: #6ea37a; }
+        @media (prefers-reduced-motion: no-preference) {
+          .cell-on { animation: breathe 2.8s ease-in-out infinite; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .cell-on { animation: none; }
+          .pip-run { display: none; }
+        }
+        @keyframes breathe {
+          0%, 100% { opacity: 0.55; }
+          50% { opacity: 1; }
+        }
+      ]]>
+    </style>
   </defs>
-  <rect width="1100" height="220" rx="12" fill="url(#void)"/>
-  <g fill="url(#blood)">
-    <ellipse cx="240" cy="214" rx="62" ry="96">
-      <animate attributeName="ry" values="88;108;94;102;88" dur="2.4s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="430" cy="216" rx="80" ry="130">
-      <animate attributeName="ry" values="118;142;124;136;118" dur="2.8s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="550" cy="218" rx="110" ry="155">
-      <animate attributeName="ry" values="140;168;148;160;140" dur="3.1s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="680" cy="216" rx="76" ry="128">
-      <animate attributeName="ry" values="114;138;120;132;114" dur="2.6s" repeatCount="indefinite"/>
-    </ellipse>
-    <ellipse cx="860" cy="214" rx="58" ry="92">
-      <animate attributeName="ry" values="84;104;90;98;84" dur="2.9s" repeatCount="indefinite"/>
-    </ellipse>
+
+  <g class="stage">
+    <rect width="1100" height="96" fill="#050508"/>
+    <rect x="0.5" y="0.5" width="1099" height="95" fill="#0c0e12" stroke="#2a2d36" stroke-width="1"/>
+
+    <path d="M1 14V1H14" fill="none" stroke="#6ea37a" stroke-width="1"/>
+    <path d="M1086 1H1099V14" fill="none" stroke="#6ea37a" stroke-width="1"/>
+    <path d="M1099 82V95H1086" fill="none" stroke="#6ea37a" stroke-width="1"/>
+    <path d="M14 95H1V82" fill="none" stroke="#6ea37a" stroke-width="1"/>
+
+    <line class="rule" x1="20" y1="16.5" x2="1080" y2="16.5" stroke-width="1"/>
+    <rect class="pip pip-run" x="20" y="15" width="12" height="3">
+      <animate attributeName="x" values="20;1068;20" dur="4.2s" repeatCount="indefinite"/>
+    </rect>
+
+    <text class="lbl" x="20" y="48" fill="#c9b8a6">SIG</text>
+    <g transform="translate(64 34)" stroke-width="1">
+      <rect class="cell-on" x="0" y="10" width="12" height="6"/>
+      <rect class="cell-on" x="16" y="8" width="12" height="8"/>
+      <rect class="cell-on" x="32" y="6" width="12" height="10"/>
+      <rect class="cell-on" x="48" y="5" width="12" height="11"/>
+      <rect class="cell-on" x="64" y="4" width="12" height="12"/>
+      <rect class="cell-on" x="80" y="3" width="12" height="13"/>
+      <rect class="cell-on" x="96" y="2" width="12" height="14"/>
+      <rect class="cell-on" x="112" y="1" width="12" height="15"/>
+      <rect class="cell-dim" x="128" y="0" width="12" height="16"/>
+      <rect class="cell-dim" x="144" y="0" width="12" height="16"/>
+      <rect class="cell-off" x="160" y="0" width="12" height="16"/>
+      <rect class="cell-off" x="176" y="0" width="12" height="16"/>
+    </g>
+
+    <text class="lbl" x="550" y="48" text-anchor="middle" fill="#c9b8a6">VESPERS</text>
+    <text class="ui lock" x="1080" y="48" text-anchor="end">LOCK</text>
+
+    <line class="vespers" x1="20" y1="72.5" x2="1080" y2="72.5" stroke-width="1"/>
+    <g class="mark" fill="none" stroke-width="1">
+      <path d="M20 68v9"/>
+      <path d="M84 70v5"/>
+      <path d="M148 70v5"/>
+      <path d="M212 70v5"/>
+      <path d="M276 68v9"/>
+      <path d="M340 70v5"/>
+      <path d="M404 70v5"/>
+      <path d="M468 70v5"/>
+      <path d="M532 68v9"/>
+      <path d="M596 70v5"/>
+      <path d="M660 70v5"/>
+      <path d="M724 70v5"/>
+      <path d="M788 68v9"/>
+      <path d="M852 70v5"/>
+      <path d="M916 70v5"/>
+      <path d="M980 70v5"/>
+      <path d="M1080 68v9"/>
+    </g>
   </g>
-  <ellipse cx="500" cy="216" rx="26" ry="78" fill="url(#violet)" opacity="0.75">
-    <animate attributeName="ry" values="70;88;76;82;70" dur="3.4s" repeatCount="indefinite"/>
-  </ellipse>
-  <text x="550" y="42" text-anchor="middle" fill="#e4d6c5" font-family="Georgia, serif" font-size="13" letter-spacing="8">BUNTOS</text>
 </svg>
