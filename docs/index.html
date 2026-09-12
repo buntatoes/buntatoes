@@ -4,16 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buntos</title>
-  <meta name="description" content="Local tools. Human review. Linux." />
-  <link rel="stylesheet" href="board.css" />
+  <meta name="description" content="Buntos. Local tools. Human review. Linux." />
+  <meta name="theme-color" content="#000000" />
+  <meta property="og:title" content="Buntos" />
+  <meta property="og:description" content="Local tools. Human review. Linux." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="./board.css?v=bw1" />
 </head>
 <body>
   <div class="scan" aria-hidden="true"></div>
   <header class="hud frame">
     <p class="mark">buntos<span class="dim">@</span>void</p>
     <p id="clock" class="clock">--:--:--</p>
-    <nav>
-      <a href="langs.html">languages</a>
+    <nav aria-label="Projects">
+      <a href="./langs.html">languages</a>
       <a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a>
       <a href="https://github.com/buntatoes/adaegis">AdAegis</a>
       <a href="https://github.com/buntatoes">github</a>
@@ -37,9 +41,9 @@
         </div>
         <canvas id="scope" width="720" height="280" aria-label="Oscilloscope. Pointer changes frequency and amplitude."></canvas>
       </div>
-      <p class="hint">Pointer on the grid drives a trace. Keys 1 2 3, j/k, or click a node.</p>
+      <p class="hint">Pointer on the grid drives frequency and amplitude. Keys 1 2 3, j/k, or click a node.</p>
     </section>
   </main>
-  <script src="board.js"></script>
+  <script src="./board.js?v=bw1"></script>
 </body>
 </html>
