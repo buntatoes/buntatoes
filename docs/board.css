@@ -1,11 +1,11 @@
 :root {
-  --void: #050508;
-  --panel: #0c0e12;
-  --hair: #2a2d36;
-  --oxblood: #7a2433;
-  --phosphor: #6ea37a;
-  --bone: #c9b8a6;
-  --violet: #6e4a7a;
+  --void: #000000;
+  --panel: #0a0a0a;
+  --inset: #1a1a1a;
+  --hair: #2e2e2e;
+  --dim: #8a8a8a;
+  --paper: #e8e8e8;
+  --white: #ffffff;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
@@ -15,16 +15,27 @@ html, body {
   margin: 0;
   min-height: 100%;
   background: var(--void);
-  color: var(--bone);
+  color: var(--paper);
   font: 14px/1.5 var(--mono);
+  color-scheme: dark;
+}
+
+::selection {
+  background: var(--white);
+  color: var(--void);
 }
 
 a {
-  color: var(--phosphor);
+  color: var(--paper);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
-a:hover { border-bottom-color: var(--phosphor); }
+a:hover,
+a:focus-visible {
+  color: var(--white);
+  border-bottom-color: var(--white);
+  outline: none;
+}
 
 .scan {
   pointer-events: none;
@@ -34,7 +45,7 @@ a:hover { border-bottom-color: var(--phosphor); }
   background: repeating-linear-gradient(
     to bottom,
     transparent 0 2px,
-    rgba(5, 5, 8, 0.28) 2px 3px
+    #1a1a1a 2px 3px
   );
 }
 
@@ -50,13 +61,24 @@ a:hover { border-bottom-color: var(--phosphor); }
   width: calc(100% - 32px);
 }
 
-.mark { margin: 0; color: var(--phosphor); letter-spacing: 0.08em; text-transform: lowercase; }
-.mark .dim { color: var(--hair); }
-.clock { margin: 0; color: var(--violet); }
+.mark {
+  margin: 0;
+  color: var(--paper);
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+}
+.mark .dim { color: var(--dim); }
+.clock { margin: 0; color: var(--dim); }
 
 nav { display: flex; flex-wrap: wrap; gap: 14px; }
-nav a { color: var(--bone); font-size: 12px; letter-spacing: 0.12em; text-transform: lowercase; }
-nav a:hover { color: var(--phosphor); }
+nav a {
+  color: var(--dim);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+}
+nav a:hover,
+nav a:focus-visible { color: var(--white); }
 
 main {
   display: grid;
@@ -77,10 +99,10 @@ h1 {
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--bone);
+  color: var(--paper);
 }
 
-.lede { margin: 0 0 24px; color: var(--hair); }
+.lede { margin: 0 0 24px; color: var(--dim); }
 
 .nodes {
   list-style: none;
@@ -96,7 +118,7 @@ h1 {
   width: 100%;
   padding: 10px 12px;
   background: var(--panel);
-  color: var(--bone);
+  color: var(--paper);
   border: 1px solid var(--hair);
   font: inherit;
   letter-spacing: 0.08em;
@@ -104,29 +126,43 @@ h1 {
   text-align: left;
   cursor: pointer;
 }
-.nodes button span { color: var(--oxblood); }
+.nodes button span { color: var(--dim); }
 .nodes button.on,
-.nodes button:hover {
-  border-color: var(--phosphor);
-  color: var(--phosphor);
+.nodes button:hover,
+.nodes button:focus-visible {
+  border-color: var(--white);
+  color: var(--white);
+  outline: none;
+}
+.nodes button.on span,
+.nodes button:hover span,
+.nodes button:focus-visible span {
+  color: var(--white);
 }
 
-.dossier { padding: 16px; min-height: 140px; }
+.dossier {
+  padding: 16px;
+  min-height: 140px;
+  background: var(--inset);
+}
 .kicker {
   margin: 0 0 8px;
-  color: var(--oxblood);
+  color: var(--dim);
   letter-spacing: 0.14em;
   text-transform: lowercase;
   font-size: 12px;
 }
-.dossier p:last-child { margin: 0; color: var(--bone); }
+.dossier p:last-child { margin: 0; color: var(--paper); }
 
-.scope-frame { padding: 10px 10px 6px; }
+.scope-frame {
+  padding: 10px 10px 6px;
+  background: var(--inset);
+}
 .scope-meta {
   display: flex;
   justify-content: space-between;
   padding: 0 6px 8px;
-  color: var(--violet);
+  color: var(--dim);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: lowercase;
@@ -136,10 +172,11 @@ h1 {
   width: 100%;
   height: 280px;
   background: var(--void);
+  border: 1px solid var(--hair);
 }
 .hint {
   margin: 12px 4px 0;
-  color: var(--hair);
+  color: var(--dim);
   font-size: 12px;
 }
 
@@ -147,22 +184,15 @@ h1 {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--hair);
-  box-shadow:
-    8px 0 0 -7px var(--phosphor),
-    0 8px 0 -7px var(--phosphor),
-    inset 8px 0 0 -7px var(--phosphor),
-    inset 0 8px 0 -7px var(--phosphor),
-    8px 0 0 -7px var(--phosphor) inset,
-    0 8px 0 -7px var(--phosphor);
   background-image:
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor)),
-    linear-gradient(var(--phosphor), var(--phosphor));
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white)),
+    linear-gradient(var(--white), var(--white));
   background-size: 8px 1px, 1px 8px, 8px 1px, 1px 8px, 8px 1px, 1px 8px, 8px 1px, 1px 8px;
   background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%;
   background-repeat: no-repeat;
