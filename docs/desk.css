@@ -1,18 +1,21 @@
 :root {
   color-scheme: dark;
-  --desk: #0e1016;
-  --rail: #141722;
+  --desk: #101218;
+  --rail: #161922;
   --well: #1c2030;
-  --hair: rgba(223, 230, 245, 0.09);
-  --ink: #e6e2ee;
-  --mute: #8b93a7;
-  --rose: #c4a5b8;
-  --water: #7aa3b8;
-  --bloom: #9bb0d4;
-  --moon: #dfe6f5;
-  --ui: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hair: rgba(232, 228, 240, 0.1);
+  --ink: #ece8f2;
+  --mute: #8d95a8;
+  --rose: #c9a8b8;
+  --bloom: #a8b8d8;
+  --moon: #f3f0f7;
+  --live: #5dbe8a;
+  --busy: #9b8cf0;
+  --wait: #d4a574;
+  --ui: "Segoe UI", system-ui, -apple-system, sans-serif;
   --display: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   --avatar: 48px;
+  --face: 72px;
   --radius: 18px;
 }
 
@@ -37,8 +40,8 @@ body {
   font-size: 15px;
   line-height: 1.45;
   background:
-    radial-gradient(ellipse 70% 50% at 78% -8%, rgba(155, 176, 212, 0.09), transparent 58%),
-    radial-gradient(ellipse 45% 40% at 100% 100%, rgba(122, 163, 184, 0.07), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 82% -6%, rgba(155, 176, 212, 0.08), transparent 55%),
+    radial-gradient(ellipse 40% 35% at 100% 100%, rgba(129, 181, 168, 0.06), transparent 48%),
     var(--desk);
 }
 
@@ -60,7 +63,7 @@ body {
 
 .desk {
   display: grid;
-  grid-template-columns: 16.75rem minmax(0, 1fr);
+  grid-template-columns: 17.25rem minmax(0, 1fr);
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -68,20 +71,20 @@ body {
 .rail {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
-  padding: 1.15rem 0.8rem 1rem;
+  gap: 0.85rem;
+  padding: 1.2rem 0.75rem 1rem;
   background: var(--rail);
   border-right: 1px solid var(--hair);
 }
 
 .brand {
-  padding: 0.35rem 0.65rem 0.15rem;
+  padding: 0.3rem 0.6rem 0.35rem;
 }
 
 .brand-name {
   margin: 0;
   font-family: var(--display);
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1;
@@ -89,17 +92,16 @@ body {
 }
 
 .brand-tag {
-  margin: 0.28rem 0 0;
+  margin: 0.4rem 0 0;
   font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  text-transform: lowercase;
+  letter-spacing: 0.04em;
   color: var(--mute);
 }
 
 .roster {
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0.2rem;
   margin: 0;
   padding: 0;
   border: 0;
@@ -116,18 +118,23 @@ body {
   align-items: center;
   gap: 0.75rem;
   margin: 0;
-  padding: 0.42rem 0.5rem;
-  border-radius: 14px;
+  padding: 0.46rem 0.5rem;
+  border: 0;
+  border-radius: 16px;
+  background: transparent;
   color: var(--mute);
+  font: inherit;
+  text-align: left;
   cursor: pointer;
+  width: 100%;
 }
 
 .option:hover {
-  background: rgba(155, 176, 212, 0.05);
+  background: rgba(155, 176, 212, 0.06);
 }
 
 .option.is-selected {
-  background: rgba(155, 176, 212, 0.1);
+  background: rgba(155, 176, 212, 0.12);
   color: var(--ink);
 }
 
@@ -135,7 +142,8 @@ body {
   color: var(--moon);
 }
 
-.avatar {
+.avatar,
+.work-face {
   position: relative;
   flex: 0 0 var(--avatar);
   width: var(--avatar);
@@ -146,80 +154,115 @@ body {
   box-shadow: inset 0 0 0 1px rgba(232, 228, 240, 0.08);
 }
 
+.work-face {
+  flex-basis: var(--face);
+  width: var(--face);
+  height: var(--face);
+}
+
 .option.is-selected .avatar {
   box-shadow:
-    0 0 0 2px var(--desk),
+    0 0 0 2px var(--rail),
     0 0 0 4px var(--bloom);
 }
 
 .avatar img,
-.avatar svg {
+.avatar svg,
+.work-face svg {
   display: block;
   width: 100%;
   height: 100%;
 }
 
-.avatar .bot-face {
+.avatar .bot-face,
+.work-face .bot-face {
   transform-box: fill-box;
   transform-origin: center;
 }
 
-.avatar .bot-eye {
+.avatar .bot-eye,
+.work-face .bot-eye {
   transform-box: fill-box;
   transform-origin: center;
   animation: bot-blink 4.8s ease-in-out infinite;
 }
 
-.avatar .bot-eye-r {
+.avatar .bot-eye-r,
+.work-face .bot-eye-r {
   animation-delay: 0.07s;
 }
 
-.avatar.is-idle .bot-face {
+.avatar.is-idle .bot-face,
+.work-face.is-idle .bot-face {
   animation: idle-breathe 4.8s ease-in-out infinite;
 }
 
-.avatar.is-working .bot-face {
+.avatar.is-working .bot-face,
+.work-face.is-working .bot-face {
   animation: kick 0.56s cubic-bezier(0.33, 1.35, 0.64, 1) infinite;
 }
 
-.avatar.is-waiting .bot-face {
+.avatar.is-waiting .bot-face,
+.work-face.is-waiting .bot-face {
   animation: wait-tilt 2.8s ease-in-out infinite;
 }
 
-.avatar.is-waiting .bot-eyes {
+.avatar.is-waiting .bot-eyes,
+.work-face.is-waiting .bot-eyes {
   transform-box: fill-box;
   transform-origin: center;
   animation: bot-look 2.8s ease-in-out infinite;
 }
 
-.avatar.is-working {
-  animation: kick 0.56s cubic-bezier(0.33, 1.35, 0.64, 1) infinite;
+.avatar::after,
+.work-face::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 2px var(--rail);
+  opacity: 0;
 }
 
-.avatar.is-waiting {
-  animation: wait-tilt 1.35s ease-in-out infinite;
+.work-face::after {
+  right: 4px;
+  bottom: 4px;
+  width: 11px;
+  height: 11px;
 }
 
-.avatar.is-idle {
-  animation: idle-breathe 4.8s ease-in-out infinite;
+.option.is-selected .avatar.is-idle::after,
+.work-face.is-idle::after {
+  opacity: 1;
+  background: var(--live);
 }
 
-.avatar:has(.bot-face).is-working,
-.avatar:has(.bot-face).is-waiting,
-.avatar:has(.bot-face).is-idle {
-  animation: none;
+.avatar.is-working::after,
+.work-face.is-working::after {
+  opacity: 1;
+  background: var(--busy);
+}
+
+.avatar.is-waiting::after,
+.work-face.is-waiting::after {
+  opacity: 1;
+  background: var(--wait);
 }
 
 .opt-copy {
   display: flex;
   min-width: 0;
   flex-direction: column;
-  gap: 0.08rem;
+  gap: 0.06rem;
 }
 
 .opt-name {
   font-size: 0.92rem;
-  font-weight: 550;
+  font-weight: 600;
   letter-spacing: 0.01em;
   color: var(--ink);
 }
@@ -227,6 +270,13 @@ body {
 .opt-title {
   font-size: 0.72rem;
   letter-spacing: 0.02em;
+  color: var(--mute);
+}
+
+.rail-hint {
+  margin: 0.15rem 0.6rem 0;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
   color: var(--mute);
 }
 
@@ -258,21 +308,25 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 0;
-  padding: 2.4rem 3rem 3rem;
-  max-width: 46rem;
+  padding: 2.2rem 3rem 3rem;
+  max-width: 48rem;
 }
 
 .work-head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
+}
+
+.work-id {
+  min-width: 0;
+  flex: 1;
 }
 
 .work-id h1 {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(2.1rem, 5vw, 3.15rem);
+  font-size: clamp(1.85rem, 4.2vw, 2.7rem);
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 0.95;
@@ -280,26 +334,32 @@ body {
 }
 
 .work-title {
-  margin: 0.45rem 0 0;
-  font-size: 0.92rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.9rem;
   letter-spacing: 0.04em;
   color: var(--rose);
 }
 
 .status-verb {
-  margin: 0;
+  margin: 0 0 auto;
   font-size: 0.68rem;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.04em;
   text-transform: lowercase;
   color: var(--mute);
+  max-width: 12rem;
+  text-align: right;
 }
 
 .status-verb[data-status="working"] {
-  color: var(--bloom);
+  color: var(--busy);
 }
 
 .status-verb[data-status="waiting"] {
-  color: var(--rose);
+  color: var(--wait);
+}
+
+.status-verb[data-status="idle"] {
+  color: var(--live);
 }
 
 .about {
@@ -353,7 +413,7 @@ body {
   padding: 1.15rem 1.2rem 1.25rem;
   min-height: 9rem;
   border-radius: var(--radius);
-  background: rgba(20, 23, 34, 0.55);
+  background: rgba(22, 25, 34, 0.7);
   box-shadow: inset 0 0 0 1px var(--hair);
 }
 
@@ -483,8 +543,8 @@ body {
 
   .rail {
     flex-direction: column;
-    gap: 0.45rem;
-    padding: 0.65rem 0.7rem 0.55rem;
+    gap: 0.4rem;
+    padding: 0.7rem 0.7rem 0.55rem;
     border-right: 0;
     border-bottom: 1px solid var(--hair);
   }
@@ -500,6 +560,12 @@ body {
     font-size: 1.15rem;
   }
 
+  .brand-tag,
+  .rail-hint,
+  .rail-foot {
+    display: none;
+  }
+
   .roster {
     flex-direction: row;
     gap: 0.35rem;
@@ -510,6 +576,7 @@ body {
 
   .option {
     flex: 0 0 auto;
+    width: auto;
     padding: 0.28rem;
   }
 
@@ -517,16 +584,19 @@ body {
     display: none;
   }
 
-  .rail-foot {
-    display: none;
-  }
-
   .workspace {
-    padding: 1.4rem 1.15rem 2.2rem;
+    padding: 1.35rem 1.15rem 2.2rem;
   }
 
   .work-head {
     align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .status-verb {
+    margin: 0;
+    text-align: left;
+    max-width: none;
   }
 }
 
