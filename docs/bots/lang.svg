@@ -1,15 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Lang" overflow="visible">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title-lang desc-lang">
+  <title id="title-lang">Lang</title>
+  <desc id="desc-lang">Night-indigo cloud bot with round curious eyes and one small star.</desc>
   <g class="bot-face">
+    <animateTransform attributeName="transform" type="translate" values="0 0; 0 -3.5; 0 0" dur="4s" repeatCount="indefinite"/>
     <g class="bot-body" fill="#6672A3">
-      <circle cx="46" cy="70" r="21"/>
-      <circle cx="64" cy="54" r="24"/>
-      <circle cx="84" cy="68" r="21"/>
-      <ellipse cx="64" cy="80" rx="36" ry="17"/>
+      <circle cx="46" cy="70" r="22"/>
+      <circle cx="64" cy="54" r="25"/>
+      <circle cx="84" cy="68" r="22"/>
+      <ellipse cx="64" cy="82" rx="36" ry="18"/>
     </g>
-    <path class="bot-accessory" d="M97 36 L99.1 42.6 L105.8 44.8 L99.1 47 L97 53.6 L94.9 47 L88.2 44.8 L94.9 42.6 Z" fill="#EBD392"/>
+    <path class="bot-accessory" d="M96 34 L98.2 40.5 L105 42.6 L98.2 44.7 L96 51.2 L93.8 44.7 L87 42.6 L93.8 40.5 Z" fill="#EBD392" aria-hidden="true"/>
     <g class="bot-eyes" fill="#1A1D26">
-      <ellipse class="bot-eye bot-eye-l" cx="53" cy="62" rx="6.8" ry="6.8"/>
-      <ellipse class="bot-eye bot-eye-r" cx="75" cy="62" rx="6.8" ry="6.8"/>
+      <ellipse class="bot-eye bot-eye-l" cx="52" cy="62" rx="7" ry="7">
+        <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse class="bot-eye bot-eye-r" cx="76" cy="62" rx="7" ry="7">
+        <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" begin="0.09s" repeatCount="indefinite"/>
+      </ellipse>
     </g>
   </g>
 </svg>

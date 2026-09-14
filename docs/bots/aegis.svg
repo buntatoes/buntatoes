@@ -1,13 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Aegis" overflow="visible">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title-aegis desc-aegis">
+  <title id="title-aegis">AdAegis</title>
+  <desc id="desc-aegis">Sage-teal rounded triangle bot with alert side-glance eyes and a tiny plus crest.</desc>
   <g class="bot-face">
-    <polygon class="bot-body" points="64,28 103,96 25,96" fill="#81B5A8" stroke="#81B5A8" stroke-width="14" stroke-linejoin="round"/>
-    <g class="bot-accessory" fill="#3D6F63">
-      <rect x="61.5" y="38" width="5" height="15" rx="1.6"/>
-      <rect x="56" y="43" width="16" height="5" rx="1.6"/>
+    <animateTransform attributeName="transform" type="translate" values="0 0; 0 -3.5; 0 0" dur="3.4s" repeatCount="indefinite"/>
+    <polygon class="bot-body" points="64,26 104,98 24,98" fill="#81B5A8" stroke="#81B5A8" stroke-width="16" stroke-linejoin="round"/>
+    <g class="bot-accessory" fill="#3D6F63" aria-hidden="true">
+      <rect x="61.5" y="38" width="5" height="16" rx="1.6"/>
+      <rect x="56" y="43.5" width="16" height="5" rx="1.6"/>
     </g>
     <g class="bot-eyes" fill="#1A1D26">
-      <ellipse class="bot-eye bot-eye-l" cx="63" cy="70" rx="5.2" ry="6.3"/>
-      <ellipse class="bot-eye bot-eye-r" cx="78.5" cy="70" rx="5.2" ry="6.3"/>
+      <ellipse class="bot-eye bot-eye-l" cx="66" cy="70" rx="5.3" ry="6.4">
+        <animate attributeName="ry" values="6.4;6.4;0.7;6.4;6.4" keyTimes="0;0.86;0.90;0.94;1" dur="4.4s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse class="bot-eye bot-eye-r" cx="82" cy="70" rx="5.3" ry="6.4">
+        <animate attributeName="ry" values="6.4;6.4;0.7;6.4;6.4" keyTimes="0;0.86;0.90;0.94;1" dur="4.4s" begin="0.06s" repeatCount="indefinite"/>
+      </ellipse>
     </g>
   </g>
 </svg>

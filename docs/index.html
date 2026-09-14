@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buntos</title>
-  <meta name="description" content="Buntos. Local tools. Human review. Linux. A desk of bots." />
-  <meta name="theme-color" content="#0e1016" />
+  <meta name="description" content="Buntos. Local tools. Human review. Linux. A desk of four little bots." />
+  <meta name="theme-color" content="#101218" />
   <meta property="og:title" content="Buntos" />
   <meta property="og:description" content="Local tools. Human review. Linux." />
   <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
     <aside class="rail">
       <header class="brand">
         <p class="brand-name">buntos</p>
-        <p class="brand-tag">desk</p>
+        <p class="brand-tag">local tools · human review · linux</p>
       </header>
 
       <div
@@ -30,6 +30,8 @@
         aria-activedescendant=""
       ></div>
 
+      <p class="rail-hint">click a face · 1–4 · j / k</p>
+
       <footer class="rail-foot">
         <a href="./langs.html">languages</a>
         <a href="https://github.com/buntatoes">GitHub</a>
@@ -38,6 +40,7 @@
 
     <main id="workspace" class="workspace">
       <header class="work-head">
+        <div class="work-face" id="work-face" aria-hidden="true"></div>
         <div class="work-id">
           <h1 id="bot-name">—</h1>
           <p id="bot-title" class="work-title"></p>
@@ -53,7 +56,7 @@
       <div id="chips" class="chips" role="group" aria-label="Prompts"></div>
 
       <section class="surface" aria-label="Transcript">
-        <p id="empty-hint" class="empty">Pick a prompt. The answer lands here.</p>
+        <p id="empty-hint" class="empty">Ask the bot. The answer lands here.</p>
         <div id="transcript" class="transcript" aria-live="polite" aria-relevant="additions"></div>
       </section>
     </main>
@@ -63,7 +66,7 @@
     <div class="noscript">
       <p>This desk needs JavaScript. Meanwhile:</p>
       <ul>
-        <li><a href="https://github.com/buntatoes/holdfast">Holdfast</a> — syscall gate</li>
+        <li><a href="https://github.com/buntatoes/holdfast">Holdfast</a> — Linux gate</li>
         <li><a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a> — social drafts</li>
         <li><a href="https://github.com/buntatoes/adaegis">AdAegis</a> — ad blocker</li>
         <li><a href="./langs.html">languages</a> — constellation</li>
