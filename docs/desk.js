@@ -1,11 +1,27 @@
 (function () {
+  var ALIASES = {
+    chorusdraft: "chorus",
+    adaegis: "aegis",
+    languages: "lang",
+    language: "lang",
+    sky: "lang",
+    field: "lang",
+    gate: "holdfast",
+    linux: "holdfast",
+    drafts: "chorus",
+    ads: "aegis"
+  };
+
   var FALLBACK = {
     desk: { name: "buntos", tag: "local tools. human review. linux." },
     bots: [
       {
         id: "holdfast",
         name: "Holdfast",
-        title: "syscall gate",
+        title: "Linux gate",
+        idleLine: "Queue empty. Listening.",
+        workingLine: "Intercepting a call.",
+        waitingLine: "Needs a human.",
         about:
           "Agents propose. You decide. A Linux gate under the coding-agent process. File, shell, and net wait for policy or a human. The default is fail-closed.",
         href: "https://github.com/buntatoes/holdfast",
@@ -34,8 +50,11 @@
       },
       {
         id: "chorus",
-        name: "Chorus",
-        title: "social drafts",
+        name: "ChorusDraft",
+        title: "Social drafts",
+        idleLine: "Review-first. Queue quiet.",
+        workingLine: "Drafting a post.",
+        waitingLine: "Waiting on review.",
         about:
           "Human-reviewed drafts for Bluesky and Mastodon. Models write. You ship. Voice is dry wit; serious topics stay sincere. ChorusDraft is Elixir.",
         href: "https://github.com/buntatoes/chorusdraft",
@@ -64,8 +83,11 @@
       },
       {
         id: "aegis",
-        name: "Aegis",
-        title: "ad blocker",
+        name: "AdAegis",
+        title: "Ad block",
+        idleLine: "Network block on.",
+        workingLine: "Checking a request.",
+        waitingLine: "Filter list is local.",
         about:
           "A small ad blocker for desktop Chrome and Chromium 120+. Network blocking is on. Page cleanup and YouTube filtering start off until you say so.",
         href: "https://github.com/buntatoes/adaegis",
@@ -95,7 +117,10 @@
       {
         id: "lang",
         name: "Lang",
-        title: "constellation",
+        title: "Language field",
+        idleLine: "Sky is up.",
+        workingLine: "Placing an orb.",
+        waitingLine: "Pick a year.",
         about:
           "A night field of languages this profile actually ships. Year drifts east. Rank hangs higher. Ruby and Elixir sit with the usual suspects.",
         href: "./langs.html",
@@ -146,6 +171,7 @@
   var transcriptEl = document.getElementById("transcript");
   var emptyEl = document.getElementById("empty-hint");
   var verbEl = document.getElementById("status-verb");
+  var workFaceEl = document.getElementById("work-face");
 
   function validRoster(data) {
     return data && Array.isArray(data.bots) && data.bots.length > 0 && data.bots.every(function (bot) {
@@ -158,7 +184,20 @@
     for (i = 0; i < bots.length; i++) {
       if (bots[i].id === id) return bots[i];
     }
-    return bots[0] || null;
+    return null;
+  }
+
+  function resolveId(raw) {
+    var key = String(raw || "").replace(/^#/, "").toLowerCase();
+    if (!key) return "";
+    if (ALIASES[key]) key = ALIASES[key];
+    var bot = findBot(key);
+    if (bot) return bot.id;
+    for (var i = 0; i < bots.length; i++) {
+      var aliases = bots[i].aliases || [];
+      if (aliases.indexOf(key) !== -1) return bots[i].id;
+    }
+    return "";
   }
 
   function indexOf(id) {
@@ -170,9 +209,7 @@
   }
 
   function hashId() {
-    var raw = (location.hash || "").replace(/^#/, "").toLowerCase();
-    if (!raw) return "";
-    return findBot(raw) && findBot(raw).id === raw ? raw : "";
+    return resolveId((location.hash || "").replace(/^#/, ""));
   }
 
   function setHash(id) {
@@ -208,26 +245,35 @@
     return "idle";
   }
 
+  function lineFor(bot, status) {
+    if (!bot) return verbFor(status);
+    if (status === "working") return bot.workingLine || "working";
+    if (status === "waiting") return bot.waitingLine || "waiting";
+    return bot.idleLine || "idle";
+  }
+
   function applyAvatarClass(el, status) {
+    if (!el) return;
     el.classList.remove("is-idle", "is-working", "is-waiting");
     el.classList.add("is-" + verbFor(status));
   }
 
   function setStatus(id, status) {
-    statusById[id] = verbFor(status);
+    var next = verbFor(status);
+    statusById[id] = next;
     var opt = document.getElementById("bot-" + id);
     var avatar = opt ? opt.querySelector(".avatar") : null;
     var bot = findBot(id);
-    if (avatar) applyAvatarClass(avatar, status);
+    if (avatar) applyAvatarClass(avatar, next);
+    if (id === selectedId) applyAvatarClass(workFaceEl, next);
     if (opt && bot) {
-      opt.setAttribute(
-        "aria-label",
-        bot.name + ", " + (bot.title || "") + ", " + verbFor(status)
-      );
+      var line = lineFor(bot, next);
+      opt.setAttribute("aria-label", bot.name + ", " + (bot.title || "") + ", " + line);
+      opt.title = line;
     }
     if (id === selectedId && verbEl) {
-      verbEl.textContent = verbFor(status);
-      verbEl.setAttribute("data-status", verbFor(status));
+      verbEl.textContent = lineFor(bot, next);
+      verbEl.setAttribute("data-status", next);
     }
   }
 
@@ -239,7 +285,38 @@
     }, delay(40, 780));
   }
 
-  function inlineAvatar(avatar, src) {
+  function stripMotion(svg) {
+    var doomed = svg.querySelectorAll("animate, animateTransform, animateMotion, style");
+    for (var i = 0; i < doomed.length; i++) {
+      if (doomed[i].parentNode) doomed[i].parentNode.removeChild(doomed[i]);
+    }
+  }
+
+  function mountSvg(host, svg, size) {
+    svg.setAttribute("width", String(size));
+    svg.setAttribute("height", String(size));
+    svg.setAttribute("aria-hidden", "true");
+    svg.removeAttribute("role");
+    svg.removeAttribute("aria-label");
+    stripMotion(svg);
+    host.textContent = "";
+    host.appendChild(document.importNode(svg, true));
+  }
+
+  function cloneFace(id) {
+    if (!workFaceEl) return;
+    var opt = document.getElementById("bot-" + id);
+    var svg = opt ? opt.querySelector("svg") : null;
+    workFaceEl.textContent = "";
+    if (!svg) return;
+    var copy = svg.cloneNode(true);
+    copy.setAttribute("width", "72");
+    copy.setAttribute("height", "72");
+    workFaceEl.appendChild(copy);
+    applyAvatarClass(workFaceEl, statusById[id] || "idle");
+  }
+
+  function inlineAvatar(avatar, src, id) {
     fetch(src)
       .then(function (res) {
         if (!res.ok) throw new Error("svg");
@@ -249,17 +326,9 @@
         var doc = new DOMParser().parseFromString(text, "image/svg+xml");
         var svg = doc.documentElement;
         if (!svg || svg.nodeName.toLowerCase() !== "svg") return;
-        svg.setAttribute("width", "48");
-        svg.setAttribute("height", "48");
-        svg.setAttribute("aria-hidden", "true");
-        svg.removeAttribute("role");
-        svg.removeAttribute("aria-label");
-        var style = svg.querySelector("style");
-        if (style && style.parentNode) style.parentNode.removeChild(style);
-        avatar.textContent = "";
-        avatar.appendChild(document.importNode(svg, true));
-        var opt = avatar.closest("[data-id]");
-        if (opt) applyAvatarClass(avatar, statusById[opt.dataset.id] || "idle");
+        mountSvg(avatar, svg, 48);
+        applyAvatarClass(avatar, statusById[id] || "idle");
+        if (id === selectedId) cloneFace(id);
       })
       .catch(function () {
         /* keep the img fallback */
@@ -267,12 +336,14 @@
   }
 
   function optionEl(bot) {
-    var option = document.createElement("div");
+    var option = document.createElement("button");
+    option.type = "button";
     option.className = "option";
     option.id = "bot-" + bot.id;
     option.setAttribute("role", "option");
     option.setAttribute("aria-selected", "false");
     option.dataset.id = bot.id;
+    option.title = lineFor(bot, "idle");
 
     var avatar = document.createElement("span");
     avatar.className = "avatar is-idle";
@@ -283,7 +354,7 @@
     img.width = 48;
     img.height = 48;
     avatar.appendChild(img);
-    inlineAvatar(avatar, img.src);
+    inlineAvatar(avatar, img.src, bot.id);
 
     var copy = document.createElement("span");
     copy.className = "opt-copy";
@@ -378,6 +449,7 @@
     }
     renderChips(bot);
     renderTranscript(bot.id);
+    cloneFace(bot.id);
     setStatus(bot.id, statusById[bot.id] || "idle");
   }
 
@@ -399,8 +471,7 @@
     markSelected(bot.id);
     paintWorkspace(bot);
     setHash(bot.id);
-    if (opts && opts.pulse && !same) pulseSelect(bot.id);
-    if (opts && opts.pulse && same && opts.forcePulse) pulseSelect(bot.id);
+    if (opts && opts.pulse && (!same || opts.forcePulse)) pulseSelect(bot.id);
   }
 
   function move(dir) {
@@ -450,7 +521,7 @@
         renderTranscript(bot.id);
         setStatus(bot.id, "idle");
       }, delay(40, 640));
-    }, delay(40, 260));
+    }, delay(40, 280));
   }
 
   function onRosterClick(event) {
@@ -469,6 +540,14 @@
     if (event.metaKey || event.ctrlKey || event.altKey || event.isComposing) return;
     if (fromField(event.target)) return;
     var k = event.key;
+    if (k === "1" || k === "2" || k === "3" || k === "4") {
+      var bot = bots[Number(k) - 1];
+      if (bot) {
+        event.preventDefault();
+        select(bot.id, { pulse: true, forcePulse: true });
+      }
+      return;
+    }
     if (k === "ArrowDown" || k === "ArrowRight" || k === "j" || k === "J") {
       event.preventDefault();
       move(1);
