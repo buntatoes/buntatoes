@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Aegis" overflow="visible">
+  <g class="bot-face">
+    <polygon class="bot-body" points="64,28 103,96 25,96" fill="#81B5A8" stroke="#81B5A8" stroke-width="14" stroke-linejoin="round"/>
+    <g class="bot-accessory" fill="#3D6F63">
+      <rect x="61.5" y="38" width="5" height="15" rx="1.6"/>
+      <rect x="56" y="43" width="16" height="5" rx="1.6"/>
+    </g>
+    <g class="bot-eyes" fill="#1A1D26">
+      <ellipse class="bot-eye bot-eye-l" cx="63" cy="70" rx="5.2" ry="6.3"/>
+      <ellipse class="bot-eye bot-eye-r" cx="78.5" cy="70" rx="5.2" ry="6.3"/>
+    </g>
+  </g>
+</svg>

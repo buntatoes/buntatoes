@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Lang" overflow="visible">
+  <g class="bot-face">
+    <g class="bot-body" fill="#6672A3">
+      <circle cx="46" cy="70" r="21"/>
+      <circle cx="64" cy="54" r="24"/>
+      <circle cx="84" cy="68" r="21"/>
+      <ellipse cx="64" cy="80" rx="36" ry="17"/>
+    </g>
+    <path class="bot-accessory" d="M97 36 L99.1 42.6 L105.8 44.8 L99.1 47 L97 53.6 L94.9 47 L88.2 44.8 L94.9 42.6 Z" fill="#EBD392"/>
+    <g class="bot-eyes" fill="#1A1D26">
+      <ellipse class="bot-eye bot-eye-l" cx="53" cy="62" rx="6.8" ry="6.8"/>
+      <ellipse class="bot-eye bot-eye-r" cx="75" cy="62" rx="6.8" ry="6.8"/>
+    </g>
+  </g>
+</svg>
