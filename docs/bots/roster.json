@@ -1,0 +1,116 @@
+{
+  "desk": {
+    "name": "buntos",
+    "tag": "local tools. human review. linux."
+  },
+  "bots": [
+    {
+      "id": "holdfast",
+      "name": "Holdfast",
+      "title": "syscall gate",
+      "about": "Agents propose. You decide. A Linux gate under the coding-agent process. File, shell, and net wait for policy or a human. The default is fail-closed.",
+      "href": "https://github.com/buntatoes/holdfast",
+      "hrefLabel": "Holdfast on GitHub",
+      "avatar": "./bots/holdfast.svg",
+      "prompts": [
+        {
+          "id": "who",
+          "label": "Who decides?",
+          "answer": "You. The model proposes open, exec, and connect. Policy or a human allows them. Missing daemon, timeout, unknown op: deny."
+        },
+        {
+          "id": "prompt",
+          "label": "Why not a prompt?",
+          "answer": "Prompts are not a security boundary. Holdfast does not read them. It intercepts the call."
+        },
+        {
+          "id": "where",
+          "label": "Where does it run?",
+          "answer": "Linux. A daemon, a preload, a desk for the pending queue. Fail-closed. It does not phone home."
+        }
+      ]
+    },
+    {
+      "id": "chorus",
+      "name": "Chorus",
+      "title": "social drafts",
+      "about": "Human-reviewed drafts for Bluesky and Mastodon. Models write. You ship. Voice is dry wit; serious topics stay sincere. ChorusDraft is Elixir.",
+      "href": "https://github.com/buntatoes/chorusdraft",
+      "hrefLabel": "ChorusDraft on GitHub",
+      "avatar": "./bots/chorus.svg",
+      "prompts": [
+        {
+          "id": "post",
+          "label": "What gets posted?",
+          "answer": "Nothing until you review it — unless you opted into automatic, which still screens. Older queue items and owner text stay review-only."
+        },
+        {
+          "id": "nets",
+          "label": "Which networks?",
+          "answer": "Bluesky and Mastodon. Local queues, split by service and account. It does not auto-like, favourite, boost, or repost."
+        },
+        {
+          "id": "guard",
+          "label": "What is Guard?",
+          "answer": "Publication screening. Official builds include it and sign it. The bot refuses to run if Guard is missing."
+        }
+      ]
+    },
+    {
+      "id": "aegis",
+      "name": "Aegis",
+      "title": "ad blocker",
+      "about": "A small ad blocker for desktop Chrome and Chromium 120+. Network blocking is on. Page cleanup and YouTube filtering start off until you say so.",
+      "href": "https://github.com/buntatoes/adaegis",
+      "hrefLabel": "AdAegis on GitHub",
+      "avatar": "./bots/aegis.svg",
+      "prompts": [
+        {
+          "id": "block",
+          "label": "What does it block?",
+          "answer": "Bundled network rules for common ad-tech domains, on by default. Optional page cleanup hides recognized ad containers."
+        },
+        {
+          "id": "home",
+          "label": "Does it phone home?",
+          "answer": "No account, no telemetry, no remote filter list, no auto-update. Settings stay on the machine in front of you."
+        },
+        {
+          "id": "install",
+          "label": "How do I install it?",
+          "answer": "Load unpacked from the GitHub zip. Not listed on the Chrome Web Store. Leave the folder where Chrome can keep finding it."
+        }
+      ]
+    },
+    {
+      "id": "lang",
+      "name": "Lang",
+      "title": "constellation",
+      "about": "A night field of languages this profile actually ships. Year drifts east. Rank hangs higher. Ruby and Elixir sit with the usual suspects.",
+      "href": "./langs.html",
+      "hrefLabel": "Open the language sky",
+      "avatar": "./bots/lang.svg",
+      "prompts": [
+        {
+          "id": "who",
+          "label": "Who lives here?",
+          "answer": "Python, JavaScript, TypeScript, Java, C, C++, C#, Go, PHP, Rust, Kotlin, SQL, Swift, Ruby, Elixir. Ranks mix public indexes with languages this profile ships."
+        },
+        {
+          "id": "elixir",
+          "label": "Where is Elixir?",
+          "answer": "2011. José Valim. Ruby-like syntax on the Erlang VM. Phoenix for long-lived connections. ChorusDraft is Elixir."
+        },
+        {
+          "id": "sky",
+          "label": "Open the sky",
+          "answer": "The constellation is next door. Click an orb or scrub the year. j / k still works there.",
+          "link": {
+            "href": "./langs.html",
+            "label": "languages"
+          }
+        }
+      ]
+    }
+  ]
+}
