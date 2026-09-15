@@ -10,13 +10,15 @@
       <ellipse cx="64" cy="82" rx="36" ry="18"/>
     </g>
     <path class="bot-accessory" d="M96 34 L98.2 40.5 L105 42.6 L98.2 44.7 L96 51.2 L93.8 44.7 L87 42.6 L93.8 40.5 Z" fill="#EBD392" aria-hidden="true"/>
-    <g class="bot-eyes" fill="#1A1D26">
-      <ellipse class="bot-eye bot-eye-l" cx="52" cy="62" rx="7" ry="7">
-        <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" repeatCount="indefinite"/>
-      </ellipse>
-      <ellipse class="bot-eye bot-eye-r" cx="76" cy="62" rx="7" ry="7">
-        <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" begin="0.09s" repeatCount="indefinite"/>
-      </ellipse>
+    <g class="bot-gaze">
+      <g class="bot-eyes" fill="#1A1D26">
+        <ellipse class="bot-eye bot-eye-l" cx="52" cy="62" rx="7" ry="7">
+          <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse class="bot-eye bot-eye-r" cx="76" cy="62" rx="7" ry="7">
+          <animate attributeName="ry" values="7;7;0.8;7;7" keyTimes="0;0.86;0.90;0.94;1" dur="5.2s" begin="0.09s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
     </g>
   </g>
 </svg>

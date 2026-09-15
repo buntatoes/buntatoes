@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title-desk desc-desk">
+  <title id="title-desk">buntos desk</title>
+  <desc id="desc-desk">Cream rounded grok-style bot with an antenna and two oval eyes.</desc>
+  <g class="bot-face">
+    <animateTransform attributeName="transform" type="translate" values="0 0; 0 -3; 0 0" dur="3.7s" repeatCount="indefinite"/>
+    <line class="bot-accessory" x1="64" y1="26" x2="64" y2="16" stroke="#E8D5A3" stroke-width="3.2" stroke-linecap="round"/>
+    <circle class="bot-accessory" cx="64" cy="13" r="4.2" fill="#E8D5A3"/>
+    <rect class="bot-body" x="30" y="28" width="68" height="74" rx="26" fill="#F3EEE4"/>
+    <g class="bot-gaze">
+      <g class="bot-eyes" fill="#1A1D26">
+        <ellipse class="bot-eye bot-eye-l" cx="50" cy="64" rx="7.2" ry="8.4">
+          <animate attributeName="ry" values="8.4;8.4;0.8;8.4;8.4" keyTimes="0;0.86;0.90;0.94;1" dur="4.6s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse class="bot-eye bot-eye-r" cx="78" cy="64" rx="7.2" ry="8.4">
+          <animate attributeName="ry" values="8.4;8.4;0.8;8.4;8.4" keyTimes="0;0.86;0.90;0.94;1" dur="4.6s" begin="0.08s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
+    </g>
+  </g>
+</svg>

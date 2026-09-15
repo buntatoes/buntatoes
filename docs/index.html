@@ -4,21 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buntos</title>
-  <meta name="description" content="Buntos. Local tools. Human review. Linux. A desk of four little bots." />
-  <meta name="theme-color" content="#101218" />
+  <meta name="description" content="Buntos. Local tools. Human review. Linux. A Grok-bot desk of four little faces." />
+  <meta name="theme-color" content="#07080c" />
   <meta property="og:title" content="Buntos" />
   <meta property="og:description" content="Local tools. Human review. Linux." />
   <meta property="og:type" content="website" />
+  <link rel="icon" href="./bots/desk.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="./desk.css" />
 </head>
 <body>
   <a class="skip" href="#workspace">Skip to workspace</a>
+  <div class="grain" aria-hidden="true"></div>
 
   <div class="desk">
     <aside class="rail">
       <header class="brand">
-        <p class="brand-name">buntos</p>
-        <p class="brand-tag">local tools · human review · linux</p>
+        <img class="brand-face" src="./bots/desk.svg" width="36" height="36" alt="" />
+        <div>
+          <p class="brand-name">buntos</p>
+          <p class="brand-tag">local tools · human review · linux</p>
+        </div>
       </header>
 
       <div
@@ -30,17 +35,19 @@
         aria-activedescendant=""
       ></div>
 
-      <p class="rail-hint">click a face · 1–4 · j / k</p>
+      <p class="rail-hint">click a face · poke the big one · type to ask</p>
+      <p class="rail-keys">1–4 · j / k · / ask · ? legend</p>
 
       <footer class="rail-foot">
         <a href="./langs.html">languages</a>
         <a href="https://github.com/buntatoes">GitHub</a>
+        <button type="button" class="text-btn" id="help-open">legend</button>
       </footer>
     </aside>
 
     <main id="workspace" class="workspace">
       <header class="work-head">
-        <div class="work-face" id="work-face" aria-hidden="true"></div>
+        <button type="button" class="work-face" id="work-face" title="Poke the bot" aria-label="Poke the selected bot"></button>
         <div class="work-id">
           <h1 id="bot-name">—</h1>
           <p id="bot-title" class="work-title"></p>
@@ -49,6 +56,7 @@
       </header>
 
       <p id="bot-about" class="about"></p>
+      <ul id="specs" class="specs" hidden></ul>
       <p class="visit-wrap">
         <a id="bot-visit" class="visit" href="#" hidden></a>
       </p>
@@ -56,10 +64,41 @@
       <div id="chips" class="chips" role="group" aria-label="Prompts"></div>
 
       <section class="surface" aria-label="Transcript">
-        <p id="empty-hint" class="empty">Ask the bot. The answer lands here.</p>
+        <p id="empty-hint" class="empty">Click a face, tap a chip, or type a question.</p>
         <div id="transcript" class="transcript" aria-live="polite" aria-relevant="additions"></div>
       </section>
+
+      <form id="ask-form" class="composer" action="#">
+        <label class="sr-only" for="ask">Ask the selected bot</label>
+        <input
+          id="ask"
+          name="ask"
+          type="text"
+          maxlength="240"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="Ask the bot…"
+        />
+        <button type="submit" class="send">Ask</button>
+      </form>
     </main>
+  </div>
+
+  <div id="help" class="help" hidden>
+    <div class="help-card" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <p class="kicker" id="help-title">legend</p>
+      <p class="help-lede">Four little bots. Simple shapes, eyes, motion. Not a chat persona — a desk.</p>
+      <ul>
+        <li><kbd>1</kbd>–<kbd>4</kbd> sit at a bot</li>
+        <li><kbd>j</kbd> / <kbd>k</kbd> or arrows walk the roster</li>
+        <li><kbd>/</kbd> focus the ask bar</li>
+        <li><kbd>Enter</kbd> send · <kbd>Esc</kbd> close</li>
+        <li>Click the big face to poke it</li>
+        <li>Eyes follow the pointer</li>
+      </ul>
+      <p class="help-foot">Holdfast gates Linux. ChorusDraft drafts. AdAegis blocks ads. Lang keeps the sky.</p>
+      <button type="button" class="send" id="help-close">Got it</button>
+    </div>
   </div>
 
   <noscript>

@@ -9,13 +9,15 @@
       <rect x="53.5" y="28.5" width="21" height="13.5" rx="3.2" fill="#556270"/>
       <circle cx="64" cy="35.2" r="2.1" fill="#8A97A8"/>
     </g>
-    <g class="bot-eyes" fill="#1A1D26">
-      <ellipse class="bot-eye bot-eye-l" cx="56.6" cy="66" rx="5.1" ry="6.5">
-        <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" repeatCount="indefinite"/>
-      </ellipse>
-      <ellipse class="bot-eye bot-eye-r" cx="71.4" cy="66" rx="5.1" ry="6.5">
-        <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" begin="0.07s" repeatCount="indefinite"/>
-      </ellipse>
+    <g class="bot-gaze">
+      <g class="bot-eyes" fill="#1A1D26">
+        <ellipse class="bot-eye bot-eye-l" cx="56.6" cy="66" rx="5.1" ry="6.5">
+          <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" repeatCount="indefinite"/>
+        </ellipse>
+        <ellipse class="bot-eye bot-eye-r" cx="71.4" cy="66" rx="5.1" ry="6.5">
+          <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" begin="0.07s" repeatCount="indefinite"/>
+        </ellipse>
+      </g>
     </g>
   </g>
 </svg>
