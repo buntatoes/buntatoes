@@ -12,8 +12,58 @@
     ads: "aegis"
   };
 
+  var STOP = {
+    a: 1,
+    an: 1,
+    and: 1,
+    at: 1,
+    can: 1,
+    do: 1,
+    does: 1,
+    for: 1,
+    how: 1,
+    i: 1,
+    in: 1,
+    is: 1,
+    it: 1,
+    me: 1,
+    my: 1,
+    of: 1,
+    on: 1,
+    or: 1,
+    the: 1,
+    this: 1,
+    to: 1,
+    what: 1,
+    when: 1,
+    where: 1,
+    why: 1,
+    with: 1,
+    you: 1,
+    your: 1
+  };
+
   var FALLBACK = {
-    desk: { name: "buntos", tag: "local tools. human review. linux." },
+    desk: {
+      name: "buntos",
+      tag: "local tools. human review. linux.",
+      prompts: [
+        {
+          id: "who",
+          label: "Who is Buntos?",
+          needles: "buntos you who bio about person human",
+          answer:
+            "Buntos. IT worker, Linux enthusiast, AI tinkerer. The bots on this desk are local tools. A model may draft. A human still ships."
+        },
+        {
+          id: "desk",
+          label: "What is this desk?",
+          needles: "desk profile site grok bot icons help how use",
+          answer:
+            "A Grok-bot desk: four little faces, not a chat persona. Click a face, tap a chip, or type. Eyes follow the pointer. 1–4 picks a bot. / asks. ? is the legend."
+        }
+      ]
+    },
     bots: [
       {
         id: "holdfast",
@@ -27,24 +77,28 @@
         href: "https://github.com/buntatoes/holdfast",
         hrefLabel: "Holdfast on GitHub",
         avatar: "./bots/holdfast.svg",
+        specs: ["Linux", "fail-closed", "no telemetry"],
+        fallback: "I gate calls. I do not guess. Try who decides, fail-closed, or what I intercept.",
+        quips: ["Still holding.", "Queue is empty. You can poke it again."],
         prompts: [
           {
             id: "who",
             label: "Who decides?",
+            needles: "who decide human allow deny policy",
             answer:
               "You. The model proposes open, exec, and connect. Policy or a human allows them. Missing daemon, timeout, unknown op: deny."
           },
           {
             id: "prompt",
             label: "Why not a prompt?",
-            answer:
-              "Prompts are not a security boundary. Holdfast does not read them. It intercepts the call."
+            needles: "prompt jailbreak security boundary",
+            answer: "Prompts are not a security boundary. Holdfast does not read them. It intercepts the call."
           },
           {
             id: "where",
             label: "Where does it run?",
-            answer:
-              "Linux. A daemon, a preload, a desk for the pending queue. Fail-closed. It does not phone home."
+            needles: "where run linux daemon preload install",
+            answer: "Linux. A daemon, a preload, a desk for the pending queue. Fail-closed. It does not phone home."
           }
         ]
       },
@@ -60,24 +114,29 @@
         href: "https://github.com/buntatoes/chorusdraft",
         hrefLabel: "ChorusDraft on GitHub",
         avatar: "./bots/chorus.svg",
+        specs: ["Elixir", "review-first", "Guard"],
+        fallback: "I draft. I do not publish on a whim. Ask what gets posted, Guard, or which networks.",
+        quips: ["Draft's still in the queue.", "I can write it. You still post it."],
         prompts: [
           {
             id: "post",
             label: "What gets posted?",
+            needles: "post publish ship",
             answer:
               "Nothing until you review it — unless you opted into automatic, which still screens. Older queue items and owner text stay review-only."
           },
           {
             id: "nets",
             label: "Which networks?",
+            needles: "bluesky mastodon network social",
             answer:
               "Bluesky and Mastodon. Local queues, split by service and account. It does not auto-like, favourite, boost, or repost."
           },
           {
             id: "guard",
             label: "What is Guard?",
-            answer:
-              "Publication screening. Official builds include it and sign it. The bot refuses to run if Guard is missing."
+            needles: "guard screen safety",
+            answer: "Publication screening. Official builds include it and sign it. The bot refuses to run if Guard is missing."
           }
         ]
       },
@@ -93,22 +152,27 @@
         href: "https://github.com/buntatoes/adaegis",
         hrefLabel: "AdAegis on GitHub",
         avatar: "./bots/aegis.svg",
+        specs: ["Chromium 120+", "local lists", "no account"],
+        fallback: "I block requests. I do not phone home. Ask what I block, YouTube, or how to install.",
+        quips: ["Still blocking.", "The list did not wander off the disk."],
         prompts: [
           {
             id: "block",
             label: "What does it block?",
+            needles: "block ads tracker request",
             answer:
               "Bundled network rules for common ad-tech domains, on by default. Optional page cleanup hides recognized ad containers."
           },
           {
             id: "home",
             label: "Does it phone home?",
-            answer:
-              "No account, no telemetry, no remote filter list, no auto-update. Settings stay on the machine in front of you."
+            needles: "telemetry phone home account remote",
+            answer: "No account, no telemetry, no remote filter list, no auto-update. Settings stay on the machine in front of you."
           },
           {
             id: "install",
             label: "How do I install it?",
+            needles: "install load unpacked zip chrome",
             answer:
               "Load unpacked from the GitHub zip. Not listed on the Chrome Web Store. Leave the folder where Chrome can keep finding it."
           }
@@ -126,24 +190,29 @@
         href: "./langs.html",
         hrefLabel: "Open the language sky",
         avatar: "./bots/lang.svg",
+        specs: ["15 languages", "year × rank", "j / k"],
+        fallback: "I keep the sky. Ask who lives here, Elixir, or open the constellation.",
+        quips: ["Orbs are still up.", "East is later. Higher is more used."],
         prompts: [
           {
             id: "who",
             label: "Who lives here?",
+            needles: "who languages list python rust elixir",
             answer:
               "Python, JavaScript, TypeScript, Java, C, C++, C#, Go, PHP, Rust, Kotlin, SQL, Swift, Ruby, Elixir. Ranks mix public indexes with languages this profile ships."
           },
           {
             id: "elixir",
             label: "Where is Elixir?",
+            needles: "elixir valim phoenix beam",
             answer:
               "2011. José Valim. Ruby-like syntax on the Erlang VM. Phoenix for long-lived connections. ChorusDraft is Elixir."
           },
           {
             id: "sky",
             label: "Open the sky",
-            answer:
-              "The constellation is next door. Click an orb or scrub the year. j / k still works there.",
+            needles: "sky constellation field langs",
+            answer: "The constellation is next door. Click an orb or scrub the year. j / k still works there.",
             link: { href: "./langs.html", label: "languages" }
           }
         ]
@@ -153,6 +222,7 @@
 
   var motion = window.matchMedia("(prefers-reduced-motion: reduce)");
   var reduce = motion.matches;
+  var deskMeta = FALLBACK.desk;
   var bots = [];
   var selectedId = "";
   var statusById = {};
@@ -160,18 +230,32 @@
   var statusTimer = 0;
   var waitTimer = 0;
   var workTimer = 0;
+  var typeTimer = 0;
+  var typeToken = 0;
+  var pokeTimer = 0;
   var syncingHash = false;
+  var pointerX = 0;
+  var pointerY = 0;
+  var hasPointer = false;
+  var gazeRaf = 0;
 
   var rosterEl = document.getElementById("roster");
   var nameEl = document.getElementById("bot-name");
   var titleEl = document.getElementById("bot-title");
   var aboutEl = document.getElementById("bot-about");
+  var specsEl = document.getElementById("specs");
   var visitEl = document.getElementById("bot-visit");
   var chipsEl = document.getElementById("chips");
   var transcriptEl = document.getElementById("transcript");
   var emptyEl = document.getElementById("empty-hint");
   var verbEl = document.getElementById("status-verb");
   var workFaceEl = document.getElementById("work-face");
+  var surfaceEl = document.querySelector(".surface");
+  var askForm = document.getElementById("ask-form");
+  var askEl = document.getElementById("ask");
+  var helpEl = document.getElementById("help");
+  var helpOpen = document.getElementById("help-open");
+  var helpClose = document.getElementById("help-close");
 
   function validRoster(data) {
     return data && Array.isArray(data.bots) && data.bots.length > 0 && data.bots.every(function (bot) {
@@ -234,9 +318,12 @@
     if (statusTimer) window.clearTimeout(statusTimer);
     if (waitTimer) window.clearTimeout(waitTimer);
     if (workTimer) window.clearTimeout(workTimer);
+    if (typeTimer) window.clearTimeout(typeTimer);
     statusTimer = 0;
     waitTimer = 0;
     workTimer = 0;
+    typeTimer = 0;
+    typeToken += 1;
   }
 
   function verbFor(status) {
@@ -310,8 +397,8 @@
     workFaceEl.textContent = "";
     if (!svg) return;
     var copy = svg.cloneNode(true);
-    copy.setAttribute("width", "72");
-    copy.setAttribute("height", "72");
+    copy.setAttribute("width", "88");
+    copy.setAttribute("height", "88");
     workFaceEl.appendChild(copy);
     applyAvatarClass(workFaceEl, statusById[id] || "idle");
   }
@@ -326,7 +413,7 @@
         var doc = new DOMParser().parseFromString(text, "image/svg+xml");
         var svg = doc.documentElement;
         if (!svg || svg.nodeName.toLowerCase() !== "svg") return;
-        mountSvg(avatar, svg, 48);
+        mountSvg(avatar, svg, 52);
         applyAvatarClass(avatar, statusById[id] || "idle");
         if (id === selectedId) cloneFace(id);
       })
@@ -351,8 +438,8 @@
     var img = document.createElement("img");
     img.src = bot.avatar || "./bots/" + bot.id + ".svg";
     img.alt = "";
-    img.width = 48;
-    img.height = 48;
+    img.width = 52;
+    img.height = 52;
     avatar.appendChild(img);
     inlineAvatar(avatar, img.src, bot.id);
 
@@ -403,15 +490,37 @@
     });
   }
 
-  function turnNode(entry) {
-    var wrap = document.createElement("article");
-    wrap.className = "turn" + (entry.kind === "you" ? " is-you" : "");
-    var who = document.createElement("p");
-    who.className = "turn-who";
-    who.textContent = entry.who;
-    var body = document.createElement("p");
-    body.className = "turn-body";
-    body.textContent = entry.text;
+  function renderSpecs(bot) {
+    specsEl.textContent = "";
+    var specs = bot.specs || [];
+    if (!specs.length) {
+      specsEl.hidden = true;
+      return;
+    }
+    specs.forEach(function (spec) {
+      var li = document.createElement("li");
+      li.textContent = spec;
+      specsEl.appendChild(li);
+    });
+    specsEl.hidden = false;
+  }
+
+  function miniFace() {
+    var wrap = document.createElement("span");
+    wrap.className = "turn-mini";
+    wrap.setAttribute("aria-hidden", "true");
+    var svg = workFaceEl ? workFaceEl.querySelector("svg") : null;
+    if (svg) {
+      var copy = svg.cloneNode(true);
+      copy.setAttribute("width", "28");
+      copy.setAttribute("height", "28");
+      wrap.appendChild(copy);
+    }
+    return wrap;
+  }
+
+  function fillBody(body, entry) {
+    body.textContent = entry.text || "";
     if (entry.link && safeHref(entry.link.href)) {
       body.appendChild(document.createTextNode(" "));
       var a = document.createElement("a");
@@ -419,9 +528,29 @@
       a.textContent = entry.link.label || entry.link.href;
       body.appendChild(a);
     }
-    wrap.appendChild(who);
-    wrap.appendChild(body);
+  }
+
+  function turnNode(entry) {
+    var wrap = document.createElement("article");
+    wrap.className = "turn" + (entry.kind === "you" ? " is-you" : "");
+    if (entry.kind !== "you") wrap.appendChild(miniFace());
+    var bubble = document.createElement("div");
+    bubble.className = "turn-bubble";
+    var who = document.createElement("p");
+    who.className = "turn-who";
+    who.textContent = entry.who;
+    var body = document.createElement("p");
+    body.className = "turn-body";
+    fillBody(body, entry);
+    bubble.appendChild(who);
+    bubble.appendChild(body);
+    wrap.appendChild(bubble);
     return wrap;
+  }
+
+  function scrollSurface() {
+    if (!surfaceEl) return;
+    surfaceEl.scrollTop = surfaceEl.scrollHeight;
   }
 
   function renderTranscript(id) {
@@ -431,12 +560,51 @@
       transcriptEl.appendChild(turnNode(entry));
     });
     if (emptyEl) emptyEl.classList.toggle("is-hidden", entries.length > 0);
+    scrollSurface();
+  }
+
+  function typeLast(entry, done) {
+    var my = ++typeToken;
+    var last = transcriptEl.lastElementChild;
+    var body = last ? last.querySelector(".turn-body") : null;
+    if (!body) {
+      if (done) done();
+      return;
+    }
+    var text = entry.text || "";
+    if (reduce || text.length < 4) {
+      fillBody(body, entry);
+      if (done) done();
+      return;
+    }
+    body.textContent = "";
+    var caret = document.createElement("span");
+    caret.className = "cursor";
+    caret.setAttribute("aria-hidden", "true");
+    body.appendChild(caret);
+    var i = 0;
+    function tick() {
+      if (my !== typeToken) return;
+      if (i >= text.length) {
+        fillBody(body, entry);
+        scrollSurface();
+        if (done) done();
+        return;
+      }
+      i += 1;
+      body.textContent = text.slice(0, i);
+      body.appendChild(caret);
+      scrollSurface();
+      typeTimer = window.setTimeout(tick, i < 4 ? 26 : 9 + Math.random() * 14);
+    }
+    tick();
   }
 
   function paintWorkspace(bot) {
     nameEl.textContent = bot.name;
     titleEl.textContent = bot.title || "";
     aboutEl.textContent = bot.about || "";
+    renderSpecs(bot);
     var href = safeHref(bot.href);
     if (href) {
       visitEl.hidden = false;
@@ -451,6 +619,16 @@
     renderTranscript(bot.id);
     cloneFace(bot.id);
     setStatus(bot.id, statusById[bot.id] || "idle");
+    if (askEl) {
+      askEl.placeholder = "Ask " + bot.name + "…";
+    }
+    if (emptyEl && !(logs[bot.id] && logs[bot.id].length)) {
+      emptyEl.textContent = "Ask " + bot.name + ". Chips, a typed question, or poke the face.";
+    }
+    if (workFaceEl) {
+      workFaceEl.setAttribute("aria-label", "Poke " + bot.name);
+      workFaceEl.title = "Poke " + bot.name;
+    }
   }
 
   function markSelected(id) {
@@ -490,38 +668,138 @@
     return null;
   }
 
-  function ask(promptId) {
-    var bot = findBot(selectedId);
-    if (!bot) return;
-    var prompt = findPrompt(bot, promptId);
-    if (!prompt) return;
+  function tokens(s) {
+    return String(s || "")
+      .toLowerCase()
+      .replace(/[^a-z0-9+#]+/g, " ")
+      .trim()
+      .split(/\s+/)
+      .filter(function (t) {
+        return t && t.length > 1 && !STOP[t];
+      });
+  }
 
+  function haystack(prompt) {
+    return ((prompt.label || "") + " " + (prompt.needles || "") + " " + (prompt.id || "")).toLowerCase();
+  }
+
+  function scorePrompt(query, prompt) {
+    var q = String(query || "").toLowerCase().trim();
+    if (!q) return 0;
+    var hay = haystack(prompt);
+    if (hay.indexOf(q) !== -1) return 120;
+    var ts = tokens(q);
+    if (!ts.length) return 0;
+    var hits = 0;
+    var i;
+    for (i = 0; i < ts.length; i++) {
+      if (hay.indexOf(ts[i]) !== -1) hits += 1;
+    }
+    return (hits / ts.length) * 80 + hits * 5;
+  }
+
+  function bestAnswer(bot, query) {
+    var scored = [];
+    var list = bot.prompts || [];
+    var deskPrompts = (deskMeta && deskMeta.prompts) || [];
+    var i;
+    var s;
+    for (i = 0; i < list.length; i++) {
+      s = scorePrompt(query, list[i]);
+      if (s > 0) scored.push({ prompt: list[i], score: s });
+    }
+    for (i = 0; i < deskPrompts.length; i++) {
+      s = scorePrompt(query, deskPrompts[i]);
+      if (s > 0) scored.push({ prompt: deskPrompts[i], score: s * 0.94 });
+    }
+    scored.sort(function (a, b) {
+      return b.score - a.score;
+    });
+    if (scored[0] && scored[0].score >= 28) return scored[0].prompt;
+    return {
+      id: "fallback",
+      label: query,
+      answer: bot.fallback || "I only know this desk."
+    };
+  }
+
+  function markChip(promptId) {
     chipsEl.querySelectorAll(".chip").forEach(function (chip) {
       chip.classList.toggle("is-on", chip.dataset.prompt === promptId);
     });
+  }
 
-    logs[bot.id].push({
-      kind: "you",
-      who: "you",
-      text: prompt.label
-    });
+  function speak(bot, prompt, opts) {
+    var skipYou = opts && opts.skipYou;
+    var youText = (opts && opts.youText) || prompt.label;
+    if (!skipYou) {
+      logs[bot.id].push({
+        kind: "you",
+        who: "you",
+        text: youText
+      });
+    }
     renderTranscript(bot.id);
+    markChip(prompt.id);
 
     clearTimers();
     setStatus(bot.id, "waiting");
     waitTimer = window.setTimeout(function () {
       setStatus(bot.id, "working");
       workTimer = window.setTimeout(function () {
-        logs[bot.id].push({
+        var reply = {
           kind: "bot",
           who: bot.name,
           text: prompt.answer || "",
           link: prompt.link || null
-        });
+        };
+        logs[bot.id].push(reply);
         renderTranscript(bot.id);
-        setStatus(bot.id, "idle");
-      }, delay(40, 640));
-    }, delay(40, 280));
+        typeLast(reply, function () {
+          setStatus(bot.id, "idle");
+        });
+      }, delay(40, 520));
+    }, delay(40, 240));
+  }
+
+  function ask(promptId) {
+    var bot = findBot(selectedId);
+    if (!bot) return;
+    var prompt = findPrompt(bot, promptId);
+    if (!prompt) return;
+    speak(bot, prompt);
+  }
+
+  function poke() {
+    var bot = findBot(selectedId);
+    if (!bot) return;
+    workFaceEl.classList.remove("is-poked");
+    void workFaceEl.offsetWidth;
+    workFaceEl.classList.add("is-poked");
+    if (pokeTimer) window.clearTimeout(pokeTimer);
+    pokeTimer = window.setTimeout(function () {
+      workFaceEl.classList.remove("is-poked");
+    }, 450);
+    var quips = bot.quips || [];
+    var line = quips.length ? quips[Math.floor(Math.random() * quips.length)] : bot.idleLine || "Still here.";
+    speak(bot, { id: "poke", label: "(poke)", answer: line }, { skipYou: true });
+  }
+
+  function onAskSubmit(event) {
+    event.preventDefault();
+    var q = (askEl.value || "").replace(/\s+/g, " ").trim();
+    if (!q) return;
+    askEl.value = "";
+    var bot = findBot(selectedId);
+    if (!bot) return;
+    var prompt = bestAnswer(bot, q);
+    speak(bot, prompt, { youText: q });
+  }
+
+  function setHelp(on) {
+    if (!helpEl) return;
+    helpEl.hidden = !on;
+    if (on && helpClose) helpClose.focus();
   }
 
   function onRosterClick(event) {
@@ -538,8 +816,34 @@
 
   function onDocumentKey(event) {
     if (event.metaKey || event.ctrlKey || event.altKey || event.isComposing) return;
-    if (fromField(event.target)) return;
     var k = event.key;
+    var helpOpenNow = helpEl && !helpEl.hidden;
+
+    if (k === "Escape") {
+      if (helpOpenNow) {
+        event.preventDefault();
+        setHelp(false);
+        return;
+      }
+      if (fromField(event.target) && askEl) {
+        askEl.blur();
+      }
+      return;
+    }
+
+    if (helpOpenNow) return;
+    if (fromField(event.target)) return;
+
+    if (k === "/" ) {
+      event.preventDefault();
+      if (askEl) askEl.focus();
+      return;
+    }
+    if (k === "?" ) {
+      event.preventDefault();
+      setHelp(true);
+      return;
+    }
     if (k === "1" || k === "2" || k === "3" || k === "4") {
       var bot = bots[Number(k) - 1];
       if (bot) {
@@ -585,7 +889,49 @@
     reduce = motion.matches;
   }
 
+  function applyGaze() {
+    gazeRaf = 0;
+    if (reduce) return;
+    var nodes = document.querySelectorAll(".bot-gaze");
+    var i;
+    var el;
+    var host;
+    var rect;
+    var dx;
+    var dy;
+    var tx;
+    var ty;
+    for (i = 0; i < nodes.length; i++) {
+      el = nodes[i];
+      host = el.closest(".avatar, .work-face, .turn-mini");
+      if (!host) continue;
+      if (!hasPointer) {
+        el.style.transform = "translate(0px, 0px)";
+        continue;
+      }
+      rect = host.getBoundingClientRect();
+      dx = (pointerX - (rect.left + rect.width / 2)) / Math.max(rect.width, 1);
+      dy = (pointerY - (rect.top + rect.height / 2)) / Math.max(rect.height, 1);
+      tx = Math.max(-1, Math.min(1, dx)) * 5.5;
+      ty = Math.max(-1, Math.min(1, dy)) * 4;
+      el.style.transform = "translate(" + tx + "px, " + ty + "px)";
+    }
+  }
+
+  function onPointer(event) {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    hasPointer = true;
+    if (!gazeRaf) gazeRaf = window.requestAnimationFrame(applyGaze);
+  }
+
+  function onPointerLeave() {
+    hasPointer = false;
+    if (!gazeRaf) gazeRaf = window.requestAnimationFrame(applyGaze);
+  }
+
   function start(data) {
+    deskMeta = data.desk || FALLBACK.desk;
     bots = data.bots.slice();
     renderRoster();
     var initial = hashId() || bots[0].id;
@@ -593,8 +939,19 @@
 
     rosterEl.addEventListener("click", onRosterClick);
     chipsEl.addEventListener("click", onChipsClick);
+    if (workFaceEl) workFaceEl.addEventListener("click", poke);
+    if (askForm) askForm.addEventListener("submit", onAskSubmit);
+    if (helpOpen) helpOpen.addEventListener("click", function () { setHelp(true); });
+    if (helpClose) helpClose.addEventListener("click", function () { setHelp(false); });
+    if (helpEl) {
+      helpEl.addEventListener("click", function (event) {
+        if (event.target === helpEl) setHelp(false);
+      });
+    }
     window.addEventListener("hashchange", onHash);
     window.addEventListener("keydown", onDocumentKey);
+    window.addEventListener("pointermove", onPointer, { passive: true });
+    document.addEventListener("pointerleave", onPointerLeave);
     if (motion.addEventListener) motion.addEventListener("change", onMotion);
     else if (motion.addListener) motion.addListener(onMotion);
   }
