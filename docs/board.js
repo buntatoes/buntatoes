@@ -17,7 +17,7 @@
     {
       n: "01",
       title: "local tools",
-      copy: "Software that runs on the machine in front of you. ChorusDraft drafts. AdAegis blocks. Nothing important lives only in someone else's tab.",
+      copy: "Software that runs on the machine in front of you. Holdfast gates. ChorusDraft drafts. AdAegis blocks. Nothing important lives only in someone else's tab.",
     },
     {
       n: "02",

@@ -18,7 +18,7 @@
         "It spread on readability, a large standard library, and later scientific and web stacks (NumPy, Django).",
         "CPython is still the reference implementation."
       ],
-      now: "Data science, automation, backends, and AI tooling."
+      now: "Data science, automation, backends, and AI tooling. Holdfast is Python."
     },
     {
       id: "javascript",
@@ -33,7 +33,7 @@
         "ECMA standardized it as ECMAScript; every browser then ran some dialect of it.",
         "Node.js (2009) moved the same language onto servers and tooling."
       ],
-      now: "Web clients, and a major share of backends and build tools."
+      now: "Web clients, backends, and AdAegis — a small local ad blocker."
     },
     {
       id: "typescript",
@@ -153,7 +153,7 @@
         "Ownership and borrowing give memory safety without a garbage collector.",
         "It spread from Firefox/Servo components into systems teams leaving C++ unsafety behind."
       ],
-      now: "Systems software, CLIs, WebAssembly, and growing kernel and cloud use."
+      now: "Systems software, CLIs, and a local Linux scanner on this desk."
     },
     {
       id: "kotlin",

@@ -4,7 +4,7 @@
 
 Local tools. Human review. Linux.
 
-[the field](https://buntatoes.github.io/buntatoes/) · [languages](https://buntatoes.github.io/buntatoes/langs.html) · [ChorusDraft](https://github.com/buntatoes/chorusdraft) · [AdAegis](https://github.com/buntatoes/adaegis)
+[the field](https://buntatoes.github.io/buntatoes/) · [languages](https://buntatoes.github.io/buntatoes/langs.html) · [Holdfast](https://github.com/buntatoes/holdfast) · [ChorusDraft](https://github.com/buntatoes/chorusdraft) · [AdAegis](https://github.com/buntatoes/adaegis)
 
 <a href="https://buntatoes.github.io/buntatoes/langs.html">
   <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/languages.svg" width="1100" alt="Programming languages placed in a night sky by the year they appeared" />
@@ -15,7 +15,7 @@ Local tools. Human review. Linux.
   &emsp;&emsp;&emsp;&emsp;
   <a href="https://buntatoes.github.io/buntatoes/langs.html#elixir" title="2011 — ChorusDraft is Elixir"><em>Elixir</em></a>
   &emsp;&emsp;&emsp;
-  <a href="https://buntatoes.github.io/buntatoes/langs.html#python" title="1991">Python</a>
+  <a href="https://buntatoes.github.io/buntatoes/langs.html#python" title="1991 — Holdfast is Python">Python</a>
   &emsp;&emsp;
   <a href="https://buntatoes.github.io/buntatoes/langs.html#javascript" title="1995">JavaScript</a>
 </p>
@@ -48,21 +48,21 @@ Local tools. Human review. Linux.
   <a href="https://buntatoes.github.io/buntatoes/langs.html#swift" title="2014">Swift</a>
 </p>
 
-<p><em>ChorusDraft is Elixir.</em></p>
+<p><em>Holdfast is Python. ChorusDraft is Elixir.</em></p>
 
 </div>
 
 <details>
 <summary>Python — 1991</summary>
 
-Guido van Rossum, CWI. Successor to ABC; it spread on readability, then science and the web. Still the reference is CPython. Used for data, automation, backends, AI tooling.
+Guido van Rossum, CWI. Successor to ABC; it spread on readability, then science and the web. Still the reference is CPython. Used for data, automation, backends, AI tooling. Holdfast is Python.
 
 </details>
 
 <details>
 <summary>JavaScript — 1995</summary>
 
-Brendan Eich, Netscape. Standardized as ECMAScript. Node.js (2009) took it onto servers. The language of the web client, and a large share of backends.
+Brendan Eich, Netscape. Standardized as ECMAScript. Node.js (2009) took it onto servers. The language of the web client, and a large share of backends. AdAegis is JavaScript.
 
 </details>
 
@@ -125,7 +125,7 @@ Yukihiro Matsumoto. Meant to feel natural to write. Rails (2004) made it the web
 <details>
 <summary>Rust — 2010</summary>
 
-Graydon Hoare, Mozilla; 1.0 in 2015. Memory safety without a garbage collector. Systems software, CLIs, growing kernel use.
+Graydon Hoare, Mozilla; 1.0 in 2015. Memory safety without a garbage collector. Systems software, CLIs, growing kernel use. RingZero is a local Linux scanner in Rust.
 
 </details>
 
@@ -157,13 +157,50 @@ Chris Lattner et al., Apple. Successor to Objective-C on Apple platforms. iOS an
 
 </details>
 
+<p align="center"><em>on this desk</em></p>
+
+<details>
+<summary><a href="https://github.com/buntatoes/holdfast">Holdfast</a> — Python · Linux</summary>
+
+Agents propose open, exec, and connect. Holdfast intercepts the call. Policy or a person allows it. Missing daemon, unknown op, timeout: deny. Prompts are not a security boundary. Linux only. No phone-home.
+
+</details>
+
+<details>
+<summary><a href="https://github.com/buntatoes/chorusdraft">ChorusDraft</a> — Elixir</summary>
+
+Human-reviewed drafts for Bluesky and Mastodon. Models write. You ship. Voice is dry wit; serious topics stay sincere. It does not auto-like, favourite, boost, or repost.
+
+</details>
+
+<details>
+<summary><a href="https://github.com/buntatoes/adaegis">AdAegis</a> — JavaScript</summary>
+
+A small unpacked extension for desktop Chrome and Chromium 120+. Bundled rules for common ad-tech domains. No account, no telemetry, no remote filter list. Lists stay on disk.
+
+</details>
+
+<details>
+<summary>SpecPulse — Python</summary>
+
+Living tracker for 3GPP / 6G specifications, change requests, and working-group movement. Each snapshot keeps provenance. Early seed; it stays on this machine.
+
+</details>
+
+<details>
+<summary>RingZero — Rust · Linux</summary>
+
+Experimental on-demand file scanner. Loopback only. Findings are a signal for review, not a verdict. It does not upload files or telemetry.
+
+</details>
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/adolla.svg" width="1100" alt="mist" />
 </p>
 
 <p align="center">
   <a href="https://buntatoes.github.io/buntatoes/">
-    <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg" width="1100" alt="ChorusDraft and AdAegis" />
+    <img src="https://raw.githubusercontent.com/buntatoes/buntatoes/main/assets/studio.svg" width="1100" alt="Holdfast, ChorusDraft, and AdAegis" />
   </a>
 </p>
 

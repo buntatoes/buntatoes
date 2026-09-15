@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="1100" height="400" viewBox="0 0 1100 400" role="img" aria-labelledby="studio-title studio-desc" font-family="Georgia, 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Times New Roman', serif">
-  <title id="studio-title">Buntos studio: ChorusDraft review and AdAegis quietly holding a page</title>
-  <desc id="studio-desc">Abstract dreamlike night studio. Two foggy rooms: ChorusDraft keeps a draft for you to approve; AdAegis holds back an ad. Hover a pane to rest the other. Idle art is complete without hover.</desc>
+  <title id="studio-title">Buntos studio: Holdfast, ChorusDraft review, and AdAegis quietly holding a page</title>
+  <desc id="studio-desc">Abstract dreamlike night studio. A lock between two foggy rooms: ChorusDraft keeps a draft for you to approve; AdAegis holds back an ad. Hover a pane to rest the other. Idle art is complete without hover.</desc>
   <defs>
     <linearGradient id="night" x1="0" y1="0" x2="0.18" y2="1">
       <stop offset="0%" stop-color="#0c1124"/>
@@ -105,7 +105,7 @@
   </g>
 
   <text x="48" y="34" fill="#e8e4f0" fill-opacity="0.72" font-size="15">studio</text>
-  <text x="108" y="34" fill="#9bb0d4" fill-opacity="0.7" font-size="13">two rooms in the same night</text>
+  <text x="108" y="34" fill="#9bb0d4" fill-opacity="0.7" font-size="13">rooms on the same night</text>
   <text x="1052" y="34" text-anchor="end" fill="#7aa3b8" fill-opacity="0.7" font-size="12">local, unhurried</text>
 
   <ellipse cx="550" cy="210" rx="46" ry="90" fill="#9bb0d4" fill-opacity="0.08"/>
@@ -203,6 +203,16 @@
     </g>
   </g>
 
-  <text x="48" y="384" fill="#9bb0d4" fill-opacity="0.55" font-size="11">chorusdraft 0.53.2</text>
+  <g tabindex="0">
+    <title>Holdfast</title>
+    <ellipse cx="550" cy="200" rx="34" ry="42" fill="#0c1124" fill-opacity="0.72"/>
+    <path d="M538 196v-11c0-6.6 5.4-12 12-12s12 5.4 12 12v11" fill="none" stroke="#dfe6f5" stroke-width="2.4" stroke-linecap="round"/>
+    <rect x="534" y="194" width="32" height="24" rx="6" fill="#9bb0d4" fill-opacity="0.9"/>
+    <circle cx="550" cy="204" r="2.2" fill="#0c1124"/>
+    <rect x="548.6" y="204" width="2.8" height="8" rx="1.4" fill="#0c1124"/>
+    <text x="550" y="236" text-anchor="middle" fill="#e8e4f0" fill-opacity="0.88" font-size="11">Holdfast</text>
+  </g>
+
+  <text x="48" y="384" fill="#9bb0d4" fill-opacity="0.55" font-size="11">holdfast · chorusdraft 0.53.2</text>
   <text x="1052" y="384" text-anchor="end" fill="#c4a5b8" fill-opacity="0.55" font-size="11">adaegis 0.4.2</text>
 </svg>
