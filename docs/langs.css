@@ -1,11 +1,11 @@
 :root {
   color-scheme: dark;
-  --fog: #07080c;
-  --mist: #101218;
-  --ink: #f4f1ea;
-  --rose: #d0a4b0;
+  --fog: #0c1124;
+  --mist: #141a33;
+  --ink: #e8e4f0;
+  --rose: #c4a5b8;
   --water: #7aa3b8;
-  --bloom: #e8d5a3;
+  --bloom: #9bb0d4;
   --serif: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, serif;
   --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
   --gutter: 2rem;
@@ -35,7 +35,7 @@ body {
     radial-gradient(ellipse 70% 55% at 8% -8%, rgba(155, 176, 212, 0.22), transparent 58%),
     radial-gradient(ellipse 55% 48% at 96% 6%, rgba(196, 165, 184, 0.16), transparent 52%),
     radial-gradient(ellipse 80% 40% at 50% 108%, rgba(122, 163, 184, 0.14), transparent 58%),
-    linear-gradient(180deg, var(--fog) 0%, #0b0d14 42%, var(--mist) 100%);
+    linear-gradient(180deg, var(--fog) 0%, #0c1124 42%, var(--mist) 100%);
 }
 
 .sr-only {
@@ -136,20 +136,6 @@ body {
   letter-spacing: 0.02em;
   text-decoration: none;
   text-transform: none;
-}
-
-.rail-home {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.rail-home img {
-  display: block;
-  width: 28px;
-  height: 28px;
-  border-radius: 9px;
-  background: rgba(20, 23, 34, 0.7);
 }
 
 .rail a:hover,
