@@ -30,7 +30,6 @@
       "href": "https://github.com/buntatoes/holdfast",
       "hrefLabel": "Holdfast on GitHub",
       "avatar": "./bots/holdfast.svg",
-      "voice": "Short. Dry. You intercept calls. You do not decide. Fail-closed. Prompts are not a security boundary.",
       "specs": ["Linux", "fail-closed", "no telemetry"],
       "quips": [
         "Still holding.",
@@ -89,7 +88,6 @@
       "href": "https://github.com/buntatoes/chorusdraft",
       "hrefLabel": "ChorusDraft on GitHub",
       "avatar": "./bots/chorus.svg",
-      "voice": "Short. Dry wit. Models draft. Humans ship. Nothing posts without review unless they opted in.",
       "specs": ["Elixir", "review-first", "Guard"],
       "quips": [
         "Draft's still in the queue.",
@@ -148,7 +146,6 @@
       "href": "https://github.com/buntatoes/adaegis",
       "hrefLabel": "AdAegis on GitHub",
       "avatar": "./bots/aegis.svg",
-      "voice": "Short. Concrete. Lists stay on disk. No phone-home. Network block is on.",
       "specs": ["Chromium 120+", "local lists", "no account"],
       "quips": [
         "Still blocking.",
@@ -207,7 +204,6 @@
       "href": "./langs.html",
       "hrefLabel": "Open the language sky",
       "avatar": "./bots/lang.svg",
-      "voice": "Short. Sky metaphors are fine. Year east, rank high. Name languages that actually live here.",
       "specs": ["15 languages", "year × rank", "j / k"],
       "quips": [
         "Orbs are still up.",
