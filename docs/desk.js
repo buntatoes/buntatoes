@@ -74,7 +74,6 @@
         waitingLine: "Needs a human.",
         about:
           "Agents propose. You decide. A Linux gate under the coding-agent process. File, shell, and net wait for policy or a human. The default is fail-closed.",
-        voice: "Short. Dry. You intercept calls. You do not decide. Fail-closed. Prompts are not a security boundary.",
         href: "https://github.com/buntatoes/holdfast",
         hrefLabel: "Holdfast on GitHub",
         avatar: "./bots/holdfast.svg",
@@ -112,7 +111,6 @@
         waitingLine: "Waiting on review.",
         about:
           "Human-reviewed drafts for Bluesky and Mastodon. Models write. You ship. Voice is dry wit; serious topics stay sincere. ChorusDraft is Elixir.",
-        voice: "Short. Dry wit. Models draft. Humans ship. Nothing posts without review unless they opted in.",
         href: "https://github.com/buntatoes/chorusdraft",
         hrefLabel: "ChorusDraft on GitHub",
         avatar: "./bots/chorus.svg",
@@ -151,7 +149,6 @@
         waitingLine: "Filter list is local.",
         about:
           "A small ad blocker for desktop Chrome and Chromium 120+. Network blocking is on. Page cleanup and YouTube filtering start off until you say so.",
-        voice: "Short. Concrete. Lists stay on disk. No phone-home. Network block is on.",
         href: "https://github.com/buntatoes/adaegis",
         hrefLabel: "AdAegis on GitHub",
         avatar: "./bots/aegis.svg",
@@ -190,7 +187,6 @@
         waitingLine: "Pick a year.",
         about:
           "A night field of languages this profile actually ships. Year drifts east. Rank hangs higher. Ruby and Elixir sit with the usual suspects.",
-        voice: "Short. Sky metaphors are fine. Year east, rank high. Name languages that actually live here.",
         href: "./langs.html",
         hrefLabel: "Open the language sky",
         avatar: "./bots/lang.svg",
@@ -260,25 +256,6 @@
   var helpEl = document.getElementById("help");
   var helpOpen = document.getElementById("help-open");
   var helpClose = document.getElementById("help-close");
-  var askSend = document.getElementById("ask-send");
-  var livePill = document.getElementById("live-pill");
-  var aiEl = document.getElementById("ai");
-  var aiOpen = document.getElementById("ai-open");
-  var aiClose = document.getElementById("ai-close");
-  var aiForm = document.getElementById("ai-form");
-  var aiLive = document.getElementById("ai-live");
-  var aiProvider = document.getElementById("ai-provider");
-  var aiModel = document.getElementById("ai-model");
-  var aiBase = document.getElementById("ai-base");
-  var aiKey = document.getElementById("ai-key");
-  var aiHint = document.getElementById("ai-hint");
-  var aiStatus = document.getElementById("ai-status");
-  var aiModelWrap = document.getElementById("ai-model-wrap");
-  var aiBaseWrap = document.getElementById("ai-base-wrap");
-  var aiKeyWrap = document.getElementById("ai-key-wrap");
-  var aiForget = document.getElementById("ai-forget");
-  var liveAbort = null;
-  var asking = false;
 
   function validRoster(data) {
     return data && Array.isArray(data.bots) && data.bots.length > 0 && data.bots.every(function (bot) {
@@ -555,7 +532,7 @@
 
   function turnNode(entry) {
     var wrap = document.createElement("article");
-    wrap.className = "turn" + (entry.kind === "you" ? " is-you" : "") + (entry.live ? " is-live" : "");
+    wrap.className = "turn" + (entry.kind === "you" ? " is-you" : "");
     if (entry.kind !== "you") wrap.appendChild(miniFace());
     var bubble = document.createElement("div");
     bubble.className = "turn-bubble";
@@ -646,9 +623,7 @@
       askEl.placeholder = "Ask " + bot.name + "…";
     }
     if (emptyEl && !(logs[bot.id] && logs[bot.id].length)) {
-      emptyEl.textContent = liveOn()
-        ? "Chips stay on desk facts. Typed questions go to the live model."
-        : "Ask " + bot.name + ". Chips, a typed question, or poke the face.";
+      emptyEl.textContent = "Ask " + bot.name + ". Chips, a typed question, or poke the face.";
     }
     if (workFaceEl) {
       workFaceEl.setAttribute("aria-label", "Poke " + bot.name);
@@ -669,7 +644,6 @@
   function select(id, opts) {
     var bot = findBot(id);
     if (!bot) return;
-    if (selectedId && selectedId !== bot.id) abortLive();
     var same = selectedId === bot.id;
     selectedId = bot.id;
     markSelected(bot.id);
@@ -755,263 +729,6 @@
     });
   }
 
-  function liveOn() {
-    return !!(window.DeskAI && DeskAI.load().live);
-  }
-
-  function paintLivePill() {
-    if (!livePill || !window.DeskAI) return;
-    var cfg = DeskAI.load();
-    livePill.textContent = DeskAI.labelFor(cfg);
-    livePill.setAttribute("data-live", cfg.live ? "on" : "off");
-    livePill.title = "Live reply settings";
-  }
-
-  function setAskBusy(on) {
-    asking = !!on;
-    if (askSend) askSend.disabled = asking;
-    if (askEl) askEl.readOnly = asking;
-  }
-
-  function lastBody(id) {
-    if (id !== selectedId) return null;
-    var last = transcriptEl.lastElementChild;
-    return last ? last.querySelector(".turn-body") : null;
-  }
-
-  function dropReply(id, reply) {
-    var list = logs[id];
-    var i;
-    if (!list) return;
-    i = list.indexOf(reply);
-    if (i === -1) return;
-    if (i > 0 && list[i - 1] && list[i - 1].kind === "you") {
-      list.splice(i - 1, 2);
-    } else {
-      list.splice(i, 1);
-    }
-    if (id === selectedId) renderTranscript(id);
-  }
-
-  function abortLive() {
-    if (liveAbort) {
-      liveAbort.abort();
-      liveAbort = null;
-    }
-    setAskBusy(false);
-  }
-
-  function fillProviderSelect() {
-    if (!aiProvider || !window.DeskAI) return;
-    aiProvider.textContent = "";
-    DeskAI.providers.forEach(function (spec) {
-      var opt = document.createElement("option");
-      opt.value = spec.id;
-      opt.textContent = spec.label;
-      aiProvider.appendChild(opt);
-    });
-  }
-
-  function toggleAiFields() {
-    if (!window.DeskAI || !aiProvider) return;
-    var spec = DeskAI.byId(aiProvider.value);
-    if (aiHint) aiHint.textContent = spec.hint || "";
-    if (aiModelWrap) aiModelWrap.hidden = spec.kind === "device";
-    if (aiBaseWrap) aiBaseWrap.hidden = spec.kind === "device";
-    if (aiKeyWrap) aiKeyWrap.hidden = spec.kind === "device" || spec.id === "ollama";
-  }
-
-  function syncAiForm() {
-    if (!window.DeskAI) return;
-    var cfg = DeskAI.load();
-    var spec = DeskAI.byId(cfg.provider);
-    if (aiLive) aiLive.checked = !!cfg.live;
-    if (aiProvider) aiProvider.value = spec.id;
-    if (aiModel) {
-      aiModel.value = cfg.model || spec.model || "";
-      aiModel.placeholder = spec.model || "model id";
-    }
-    if (aiBase) {
-      aiBase.value = cfg.base || spec.base || "";
-      aiBase.placeholder = spec.base || "https://host/v1";
-    }
-    if (aiKey) aiKey.value = cfg.key || "";
-    toggleAiFields();
-    if (aiStatus) {
-      var ready = DeskAI.canLive(cfg);
-      aiStatus.textContent = cfg.live
-        ? ready.ok
-          ? "Live is on. Typed questions leave this browser for " + spec.label + "."
-          : ready.reason
-        : "Live is off. The ask bar stays on reviewed desk facts.";
-    }
-    if (window.DeskAI.availabilityNote) {
-      DeskAI.availabilityNote().then(function (note) {
-        if (!aiStatus || !aiEl || aiEl.hidden) return;
-        if (aiProvider && DeskAI.byId(aiProvider.value).kind === "device") {
-          aiStatus.textContent = note;
-        }
-      });
-    }
-  }
-
-  function setHelp(on) {
-    if (!helpEl) return;
-    helpEl.hidden = !on;
-    if (on) {
-      setAi(false);
-      if (helpClose) helpClose.focus();
-    }
-  }
-
-  function setAi(on) {
-    if (!aiEl) return;
-    aiEl.hidden = !on;
-    if (on) {
-      setHelp(false);
-      syncAiForm();
-      if (aiLive) aiLive.focus();
-    }
-  }
-
-  function readAiForm() {
-    return {
-      live: !!(aiLive && aiLive.checked),
-      provider: aiProvider ? aiProvider.value : "grok",
-      model: aiModel ? aiModel.value : "",
-      base: aiBase ? aiBase.value : "",
-      key: aiKey ? aiKey.value : ""
-    };
-  }
-
-  function onAiSave(event) {
-    event.preventDefault();
-    if (!window.DeskAI) return;
-    DeskAI.save(readAiForm());
-    paintLivePill();
-    syncAiForm();
-    var bot = findBot(selectedId);
-    if (bot) paintWorkspace(bot);
-    if (aiStatus) {
-      var ready = DeskAI.canLive(DeskAI.load());
-      aiStatus.textContent = ready.ok || !DeskAI.load().live ? "Saved in this browser." : ready.reason;
-    }
-  }
-
-  function onAiForget() {
-    if (!window.DeskAI) return;
-    DeskAI.forgetKey();
-    if (aiKey) aiKey.value = "";
-    paintLivePill();
-    syncAiForm();
-    if (aiStatus) aiStatus.textContent = "Key forgotten on this machine.";
-  }
-
-  function onProviderPick() {
-    if (!window.DeskAI || !aiProvider) return;
-    var spec = DeskAI.byId(aiProvider.value);
-    if (aiModel) {
-      aiModel.value = spec.model || "";
-      aiModel.placeholder = spec.model || "model id";
-    }
-    if (aiBase) {
-      aiBase.value = spec.base || "";
-      aiBase.placeholder = spec.base || "https://host/v1";
-    }
-    toggleAiFields();
-  }
-
-  function streamInto(reply, botId, text) {
-    reply.text = text;
-    reply.livePending = false;
-    var body = lastBody(botId);
-    if (!body) return;
-    body.textContent = text;
-    var caret = document.createElement("span");
-    caret.className = "cursor";
-    caret.setAttribute("aria-hidden", "true");
-    body.appendChild(caret);
-    scrollSurface();
-  }
-
-  function askLive(bot, q) {
-    var history;
-    var reply;
-    var cfg = DeskAI.load();
-    abortLive();
-    logs[bot.id].push({
-      kind: "you",
-      who: "you",
-      text: q
-    });
-    reply = {
-      kind: "bot",
-      who: bot.name,
-      text: "",
-      live: true,
-      livePending: true
-    };
-    logs[bot.id].push(reply);
-    renderTranscript(bot.id);
-    markChip("");
-    liveAbort = new window.AbortController();
-    history = logs[bot.id].slice(0, -2);
-    clearTimers();
-    setAskBusy(true);
-    setStatus(bot.id, "waiting");
-    waitTimer = window.setTimeout(function () {
-      setStatus(bot.id, "working");
-    }, delay(40, 180));
-    DeskAI.complete({
-      cfg: cfg,
-      bot: bot,
-      desk: deskMeta,
-      history: history,
-      query: q,
-      signal: liveAbort.signal,
-      onDelta: function (full) {
-        streamInto(reply, bot.id, full);
-      }
-    })
-      .then(function (result) {
-        reply.text = result.text;
-        reply.livePending = false;
-        if (bot.id === selectedId) {
-          renderTranscript(bot.id);
-        }
-        setStatus(bot.id, "idle");
-        setAskBusy(false);
-        liveAbort = null;
-      })
-      .catch(function (err) {
-        var prompt;
-        var message = err && err.message ? err.message : "The model missed.";
-        setAskBusy(false);
-        liveAbort = null;
-        if (err && err.name === "AbortError") {
-          if (!reply.text) dropReply(bot.id, reply);
-          else reply.livePending = false;
-          setStatus(bot.id, "idle");
-          return;
-        }
-        prompt = bestAnswer(bot, q);
-        reply.live = false;
-        reply.livePending = false;
-        reply.text =
-          message +
-          (prompt && prompt.id !== "fallback" ? " Desk fact: " + prompt.answer : "");
-        reply.link = prompt && prompt.link ? prompt.link : null;
-        if (bot.id === selectedId) {
-          renderTranscript(bot.id);
-          typeLast(reply, function () {
-            setStatus(bot.id, "idle");
-          });
-        } else {
-          setStatus(bot.id, "idle");
-        }
-      });
-  }
-
   function speak(bot, prompt, opts) {
     var skipYou = opts && opts.skipYou;
     var youText = (opts && opts.youText) || prompt.label;
@@ -1050,13 +767,12 @@
     if (!bot) return;
     var prompt = findPrompt(bot, promptId);
     if (!prompt) return;
-    if (asking) abortLive();
     speak(bot, prompt);
   }
 
   function poke() {
     var bot = findBot(selectedId);
-    if (!bot || asking) return;
+    if (!bot) return;
     workFaceEl.classList.remove("is-poked");
     void workFaceEl.offsetWidth;
     workFaceEl.classList.add("is-poked");
@@ -1071,27 +787,19 @@
 
   function onAskSubmit(event) {
     event.preventDefault();
-    var q;
-    var bot;
-    var ready;
-    if (asking) return;
-    q = (askEl.value || "").replace(/\s+/g, " ").trim();
+    var q = (askEl.value || "").replace(/\s+/g, " ").trim();
     if (!q) return;
-    bot = findBot(selectedId);
-    if (!bot) return;
-    if (window.DeskAI && DeskAI.load().live) {
-      ready = DeskAI.canLive(DeskAI.load());
-      if (!ready.ok) {
-        setAi(true);
-        if (aiStatus) aiStatus.textContent = ready.reason;
-        return;
-      }
-      askEl.value = "";
-      askLive(bot, q);
-      return;
-    }
     askEl.value = "";
-    speak(bot, bestAnswer(bot, q), { youText: q });
+    var bot = findBot(selectedId);
+    if (!bot) return;
+    var prompt = bestAnswer(bot, q);
+    speak(bot, prompt, { youText: q });
+  }
+
+  function setHelp(on) {
+    if (!helpEl) return;
+    helpEl.hidden = !on;
+    if (on && helpClose) helpClose.focus();
   }
 
   function onRosterClick(event) {
@@ -1110,17 +818,11 @@
     if (event.metaKey || event.ctrlKey || event.altKey || event.isComposing) return;
     var k = event.key;
     var helpOpenNow = helpEl && !helpEl.hidden;
-    var aiOpenNow = aiEl && !aiEl.hidden;
 
     if (k === "Escape") {
       if (helpOpenNow) {
         event.preventDefault();
         setHelp(false);
-        return;
-      }
-      if (aiOpenNow) {
-        event.preventDefault();
-        setAi(false);
         return;
       }
       if (fromField(event.target) && askEl) {
@@ -1129,7 +831,7 @@
       return;
     }
 
-    if (helpOpenNow || aiOpenNow) return;
+    if (helpOpenNow) return;
     if (fromField(event.target)) return;
 
     if (k === "/" ) {
@@ -1232,8 +934,6 @@
     deskMeta = data.desk || FALLBACK.desk;
     bots = data.bots.slice();
     renderRoster();
-    fillProviderSelect();
-    paintLivePill();
     var initial = hashId() || bots[0].id;
     select(initial, { pulse: true });
 
@@ -1246,17 +946,6 @@
     if (helpEl) {
       helpEl.addEventListener("click", function (event) {
         if (event.target === helpEl) setHelp(false);
-      });
-    }
-    if (aiOpen) aiOpen.addEventListener("click", function () { setAi(true); });
-    if (aiClose) aiClose.addEventListener("click", function () { setAi(false); });
-    if (livePill) livePill.addEventListener("click", function () { setAi(true); });
-    if (aiForm) aiForm.addEventListener("submit", onAiSave);
-    if (aiForget) aiForget.addEventListener("click", onAiForget);
-    if (aiProvider) aiProvider.addEventListener("change", onProviderPick);
-    if (aiEl) {
-      aiEl.addEventListener("click", function (event) {
-        if (event.target === aiEl) setAi(false);
       });
     }
     window.addEventListener("hashchange", onHash);
