@@ -114,7 +114,6 @@ The [Pages desk](https://buntatoes.github.io/buntatoes/) is the interactive prof
 - Eyes follow the pointer
 - `?` opens the legend
 - `#chorusdraft` and `#adaegis` still land on the right bot
-- **Live replies** are optional. GitHub Pages cannot hide a server key, so the desk does not ship a shared model. Open `live`, paste your own xAI / Groq / OpenRouter / OpenAI / Gemini key (it stays in this browser), point at Ollama on this machine, or use Chrome’s on-device LanguageModel. Chips stay on reviewed facts. Typed questions go to the model.
 
 I tinker with local-first tools, Linux, and agents that do not get a free pass at the syscall. A model may draft. A human still ships.
 
@@ -130,6 +129,4 @@ python3 -m http.server 43147
 ```
 
 Then open `http://127.0.0.1:43147/`.
-
-Live replies need a key, [Ollama](https://ollama.com) (`OLLAMA_ORIGINS` must include this origin), or Chrome’s on-device model. Nothing in this repo is a secret.
 </details>

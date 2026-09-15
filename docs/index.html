@@ -42,7 +42,6 @@
         <a href="./langs.html">languages</a>
         <a href="https://github.com/buntatoes">GitHub</a>
         <button type="button" class="text-btn" id="help-open">legend</button>
-        <button type="button" class="text-btn" id="ai-open">live</button>
       </footer>
     </aside>
 
@@ -75,15 +74,13 @@
           id="ask"
           name="ask"
           type="text"
-          maxlength="500"
+          maxlength="240"
           autocomplete="off"
           spellcheck="false"
           placeholder="Ask the bot…"
-          aria-describedby="live-pill"
         />
-        <button type="submit" class="send" id="ask-send">Ask</button>
+        <button type="submit" class="send">Ask</button>
       </form>
-      <button type="button" id="live-pill" class="live-pill" data-live="off">scripted · desk facts</button>
     </main>
   </div>
 
@@ -98,46 +95,9 @@
         <li><kbd>Enter</kbd> send · <kbd>Esc</kbd> close</li>
         <li>Click the big face to poke it</li>
         <li>Eyes follow the pointer</li>
-        <li>Chips stay on reviewed facts. <kbd>live</kbd> can send typed questions to a model in this browser</li>
       </ul>
-      <p class="help-foot">Holdfast gates Linux. ChorusDraft drafts. AdAegis blocks ads. Lang keeps the sky. GitHub Pages cannot hide a server key, so live replies use your key, local Ollama, or Chrome’s on-device model.</p>
+      <p class="help-foot">Holdfast gates Linux. ChorusDraft drafts. AdAegis blocks ads. Lang keeps the sky.</p>
       <button type="button" class="send" id="help-close">Got it</button>
-    </div>
-  </div>
-
-  <div id="ai" class="help" hidden>
-    <div class="help-card ai-card" role="dialog" aria-modal="true" aria-labelledby="ai-title">
-      <p class="kicker" id="ai-title">live replies</p>
-      <p class="help-lede">Typed questions can call a real model. Chips stay reviewed desk facts. The key never goes to GitHub.</p>
-      <form id="ai-form" class="ai-grid" action="#">
-        <label class="ai-check">
-          <input id="ai-live" type="checkbox" />
-          Live model for typed questions
-        </label>
-        <label>
-          Provider
-          <select id="ai-provider"></select>
-        </label>
-        <label id="ai-model-wrap">
-          Model
-          <input id="ai-model" type="text" spellcheck="false" autocomplete="off" />
-        </label>
-        <label id="ai-base-wrap">
-          Base URL
-          <input id="ai-base" type="text" spellcheck="false" autocomplete="off" placeholder="https://host/v1" />
-        </label>
-        <label id="ai-key-wrap">
-          API key
-          <input id="ai-key" type="password" spellcheck="false" autocomplete="off" />
-        </label>
-        <p id="ai-hint" class="ai-hint"></p>
-        <p id="ai-status" class="ai-status" role="status"></p>
-        <div class="ai-actions">
-          <button type="submit" class="send">Save</button>
-          <button type="button" class="send ghost" id="ai-forget">Forget key</button>
-          <button type="button" class="send ghost" id="ai-close">Close</button>
-        </div>
-      </form>
     </div>
   </div>
 
@@ -153,7 +113,6 @@
     </div>
   </noscript>
 
-  <script src="./desk-ai.js"></script>
   <script src="./desk.js"></script>
 </body>
 </html>
