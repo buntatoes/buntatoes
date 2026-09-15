@@ -830,8 +830,17 @@ body {
 
   .brand-tag,
   .rail-hint,
-  .rail-keys,
+  .rail-keys {
+    display: none;
+  }
+
   .rail-foot {
+    display: flex;
+    margin-top: 0;
+    padding: 0 0.2rem;
+  }
+
+  .rail-foot a {
     display: none;
   }
 
