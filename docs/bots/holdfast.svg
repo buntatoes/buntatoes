@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-labelledby="title-holdfast desc-holdfast">
+  <title id="title-holdfast">Holdfast</title>
+  <desc id="desc-holdfast">Steel-gray rounded hexagon bot with close stern eyes and a tiny padlock.</desc>
+  <g class="bot-face">
+    <animateTransform attributeName="transform" type="translate" values="0 0; 0 -3.5; 0 0" dur="3.6s" repeatCount="indefinite"/>
+    <polygon class="bot-body" points="64,28 96,46.5 96,83.5 64,102 32,83.5 32,46.5" fill="#8A97A8" stroke="#8A97A8" stroke-width="14" stroke-linejoin="round"/>
+    <g class="bot-accessory" aria-hidden="true">
+      <path d="M57 30.5 v-7.5 a7 7 0 0 1 14 0 v7.5" fill="none" stroke="#556270" stroke-width="3.5" stroke-linecap="round"/>
+      <rect x="53.5" y="28.5" width="21" height="13.5" rx="3.2" fill="#556270"/>
+      <circle cx="64" cy="35.2" r="2.1" fill="#8A97A8"/>
+    </g>
+    <g class="bot-eyes" fill="#1A1D26">
+      <ellipse class="bot-eye bot-eye-l" cx="56.6" cy="66" rx="5.1" ry="6.5">
+        <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse class="bot-eye bot-eye-r" cx="71.4" cy="66" rx="5.1" ry="6.5">
+        <animate attributeName="ry" values="6.5;6.5;0.7;6.5;6.5" keyTimes="0;0.86;0.90;0.94;1" dur="4.8s" begin="0.07s" repeatCount="indefinite"/>
+      </ellipse>
+    </g>
+  </g>
+</svg>
